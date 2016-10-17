@@ -1,0 +1,72 @@
+/*
+ * uart.c
+ *
+ *  Created on: 6. okt 2016
+ *      Author: Karl
+ */
+
+#include "uart.h"
+
+//*****************************************************************************
+//
+// UART baud rate defines, calculated 
+//
+//*****************************************************************************
+#define UART_PRESCALE 0x0682 //setting for 16MHz clock
+#define UART_FIRST_MOD_REG 0x00
+#define UART_SECOND_MOD_REG 0x06
+
+void UART_init(){
+
+	    USCI_A_UART_initParam param = {0};
+	    param.selectClockSource = USCI_A_UART_CLOCKSOURCE_SMCLK;
+	    param.clockPrescalar = UART_PRESCALE;
+	    param.firstModReg = UART_FIRST_MOD_REG;
+	    param.secondModReg = UART_SECOND_MOD_REG;
+	    param.parity = USCI_A_UART_NO_PARITY;
+	    param.msborLsbFirst = USCI_A_UART_LSB_FIRST;
+	    param.numberofStopBits = USCI_A_UART_ONE_STOP_BIT;
+	    param.uartMode = USCI_A_UART_MODE;
+	    param.overSampling = USCI_A_UART_LOW_FREQUENCY_BAUDRATE_GENERATION;
+        
+	    if(STATUS_FAIL == USCI_A_UART_init(USCI_A0_BASE, &param))
+	    {
+	        return;
+	    }
+
+	    USCI_A_UART_enable(USCI_A0_BASE);
+
+}
+
+void UART_sendByte(uint8_t transmitData){
+    
+     USCI_A_UART_transmitData(USCI_A0_BASE,
+                                 transmitData); 	
+                                 
+}
+
+uint8_t UART_reciveByte(){
+    
+    uint8_t reciveData;
+    reciveData = USCI_A_UART_receiveData(USCI_A0_BASE);
+    
+    return reciveData;
+    
+}
+
+void UART_puts(const char *str)
+{
+
+    if (str != 0) {
+        //status = 0;
+
+        while (*str != '\0') {
+
+            UART_sendByte(*str);
+            str++;
+
+            }
+
+        }
+}
+
