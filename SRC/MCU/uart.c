@@ -9,7 +9,7 @@
 
 //*****************************************************************************
 //
-// UART baud rate defines, calculated 
+// UART baud rate defines, taken from MSP430F5x family guide
 //
 //*****************************************************************************
 #define UART_PRESCALE 0x0682 //setting for 16MHz clock
@@ -17,7 +17,9 @@
 #define UART_SECOND_MOD_REG 0x06
 
 void UART_init(){
-
+        
+        P3SEL |= BIT3; //UART pin select for
+        
 	    USCI_A_UART_initParam param = {0};
 	    param.selectClockSource = USCI_A_UART_CLOCKSOURCE_SMCLK;
 	    param.clockPrescalar = UART_PRESCALE;
@@ -54,19 +56,4 @@ uint8_t UART_reciveByte(){
     
 }
 
-void UART_puts(const char *str)
-{
-
-    if (str != 0) {
-        //status = 0;
-
-        while (*str != '\0') {
-
-            UART_sendByte(*str);
-            str++;
-
-            }
-
-        }
-}
 
