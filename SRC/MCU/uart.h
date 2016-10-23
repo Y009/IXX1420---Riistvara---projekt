@@ -8,6 +8,9 @@
 #ifndef UART_H_
 #define UART_H_
 
+#define SUCCESS 1
+#define FAILURE 0
+
 /*
 #define USCI_INPUT_CLK      (8000000UL)  // in Hz
 #define USCI_BAUD_RATE      (9600)
@@ -28,7 +31,7 @@
 #include "driverlib.h"
 void UART_init();
 
-void UART_sendByte(uint8_t transmitData);
+int UART_sendByte(uint8_t transmitData);
 
 uint8_t UART_reciveByte();
 

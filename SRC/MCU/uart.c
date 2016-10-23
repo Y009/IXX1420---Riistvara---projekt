@@ -40,11 +40,19 @@ void UART_init(){
 
 }
 
-void UART_sendByte(uint8_t transmitData){
+int UART_sendByte(uint8_t transmitData){
     
-     USCI_A_UART_transmitData(USCI_A0_BASE,
-                                 transmitData); 	
-                                 
+     //USCI_A_UART_transmitData(USCI_A0_BASE,
+     //                            transmitData);
+
+     if( UCTXIFG ){
+
+    	 UCA0TXBUF = transmitData;
+
+    	 return (SUCCESS);
+     }
+
+     return (FAILURE);
 }
 
 uint8_t UART_reciveByte(){
