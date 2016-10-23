@@ -16,7 +16,7 @@
 
 void clkInit(){
 
-	P5SEL |= BIT2 + BIT3; //XT2CLK select
+    P5SEL |= BIT2 + BIT3; //XT2CLK select
 
     //**************************************************************************
     // Configure core voltage level

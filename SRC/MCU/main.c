@@ -48,10 +48,11 @@ uint32_t mySMCLK = 0;
 void main(void)
 {
 	WDTCTL = WDTPW + WDTHOLD;
-	P2DIR |= BIT2;
+	
+    P2DIR |= BIT2;
 	P2SEL |= BIT2;
-	P3SEL |= BIT3;
-	P5SEL |= BIT2 + BIT3;
+	//P3SEL |= BIT3;
+	//P5SEL |= BIT2 + BIT3;
 
 	clkInit();
 	UART_init();
