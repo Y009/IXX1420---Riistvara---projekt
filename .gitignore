@@ -34,3 +34,8 @@
 
 # Misc
 *.DS_Store
+*\Debug
+*\Release
+*.xdchelp
+*\.config
+*\.launches

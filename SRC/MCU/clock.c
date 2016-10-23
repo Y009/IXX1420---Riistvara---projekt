@@ -16,6 +16,8 @@
 
 void clkInit(){
 
+	P5SEL |= BIT2 + BIT3; //XT2CLK select
+
     //**************************************************************************
     // Configure core voltage level
     //**************************************************************************
@@ -28,7 +30,7 @@ void clkInit(){
 	            HF_CRYSTAL_FREQUENCY_IN_HZ                                          // XT2CLK input
 	    );
 
-	 UCS_turnOnXT2( UCS_XT2_DRIVE_4MHZ_8MHZ );
+	 UCS_turnOnXT2( UCS_XT2_DRIVE_4MHZ_8MHZ ); //enable XT2CLK
 
 	// Clock init using DCO/FLL
     // Set REFO as the oscillator reference clock for the FLL
