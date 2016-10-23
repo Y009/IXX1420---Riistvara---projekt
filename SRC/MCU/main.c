@@ -35,6 +35,7 @@
 #include <stdio.h>
 #include "uart.h"
 #include "lcd.h"
+#include "timer.h"
 
 //MISC
 #define DELAY 10000000 //0.625 second delay
@@ -42,34 +43,28 @@
 uint32_t mySMCLK = 0;
 //******************************************************************************
 //!
-//!   Empty Project that includes driverlib
+//!   Hardware project: Distance measurer with ultrasonic module.
 //!
 //******************************************************************************
 void main(void)
 {
-	WDTCTL = WDTPW + WDTHOLD;
-	
-    P2DIR |= BIT2;
-	P2SEL |= BIT2;
-	//P3SEL |= BIT3;
-	//P5SEL |= BIT2 + BIT3;
-
+	WDT_A_hold(WDT_A_BASE);
 	clkInit();
 	UART_init();
+	timerInit();
 
-	//while(1){
-
-	UART_sendByte(COMMAND);
+	GPIO_setAsInputPinWithPullUpResistor(GPIO_PORT_P1, GPIO_PIN1);		// Pin 1.1 as input for on board button.
+	__bis_SR_register(GIE);
+	__delay_cycles(DELAY);
+	UART_sendByte(SPECIAL_COMMAND);
+	__delay_cycles(DELAY);
 	UART_sendByte(CLEAR_DISPLAY);
 
-	//__delay_cycles(DELAY);
-	//UART_sendByte(COMMAND);
-	//UART_sendByte(BLINKING_BOX_ON);
-	//__delay_cycles(DELAY);
-	UART_sendByte(SPECIAL_COMMAND);
-	UART_sendByte(MAXIMUM_BACKLIGHT);
-	//}
-	//mySMCLK = UCS_getSMCLK();
+	while(1){
+		if(get_btn()){
+			UART_sendByte(ASCII_A);
+			UART_sendByte(0x45);
+		}
+	}
 
-	while(1);
 }

@@ -12,7 +12,16 @@
 
 //***** DEFINES ***************************************************************
 
-#define HALFMS 0x1F40		// 0.5 ms cycle for timer A. Calculated with 16MHz SMCLK with divider 1
+#define HALFMS 0x1F40						// 0.5 ms cycle for timer A. Calculated with 16MHz SMCLK with divider 1
+#define NOTDEBOUNCED 0xFE
+#define DEBOUNCED 0
+#define ON 1
+#define OFF 0
+#define INTERRUPTCOUNTER 40 				// Times the timer A interrupt has to take place before going to the debounce conditional
+
+unsigned volatile int timerCycle = INTERRUPTCOUNTER;
+unsigned volatile int unbouncedBTN = 0;
+unsigned volatile int BTN = 0;				// Debounced button value
 
 void timerInit(void)
 {
@@ -45,10 +54,24 @@ void timerInit(void)
 // Interrupt Service Routines
 //*****************************************************************************
 #pragma vector=TIMER0_A0_VECTOR
-__interrupt void ccr0_ISR (void)
-{
-	//make debounce
-    Timer_A_clearTimerInterrupt(TIMER_A0_BASE);
+__interrupt void ccr0_ISR (void){
+
+	if (timerCycle == 0){															// DEbouncing pin 1.1
+		unbouncedBTN |= GPIO_getInputPinValue(GPIO_PORT_P1, GPIO_PIN1)&0x01;
+		unbouncedBTN <<= 1;
+		if(unbouncedBTN == NOTDEBOUNCED)
+			BTN = OFF;
+		else if(unbouncedBTN == DEBOUNCED)
+			BTN = ON;
+		timerCycle = INTERRUPTCOUNTER;												// Resetting counter back in order not to deal with overflow
+	}
+
+	timerCycle--;
+    Timer_A_clearTimerInterrupt(TIMER_A0_BASE);										// Clear TA0IFG
 }
 
+
+int get_btn (void){
+  return BTN;
+}
 

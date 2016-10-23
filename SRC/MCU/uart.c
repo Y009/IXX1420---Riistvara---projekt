@@ -46,7 +46,7 @@ int UART_sendByte(uint8_t transmitData){
      //                            transmitData);
 
      if( USCI_A_UART_getInterruptStatus(USCI_A0_BASE,
-                                        USCI_A_UART_TRANSMIT_INTERRUPT_FLAG) == UCTXIFG ){
+             USCI_A_UART_TRANSMIT_INTERRUPT_FLAG) == UCTXIFG ){
 
     	 UCA0TXBUF = transmitData;
 

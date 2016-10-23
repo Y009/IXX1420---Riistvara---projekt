@@ -12,6 +12,6 @@
 
 //***** Prototypes *************************************************
 void timerInit(void);
-
+int get_btn (void);
 
 #endif /* TIMER_H_ */
