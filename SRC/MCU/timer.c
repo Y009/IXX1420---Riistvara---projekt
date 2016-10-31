@@ -12,36 +12,32 @@
 
 //***** DEFINES ***************************************************************
 
-#define HALFMS 0x1F40						// 0.5 ms cycle for timer A. Calculated with 16MHz SMCLK with divider 1
-#define NOTDEBOUNCED 0xFE
-#define DEBOUNCED 0
-#define ON 1
-#define OFF 0
-#define INTERRUPTCOUNTER 40 				// Times the timer A interrupt has to take place before going to the debounce conditional
+#define TIMETO 0x1F40						/* 0.5 ms cycle for timer A. Calculated with 16MHz SMCLK with divider 1 */
+//#define INTERRUPTCOUNTER 40 				/* Times the timer A interrupt has to take place before going to the debounce conditional */
 
-unsigned volatile int timerCycle = INTERRUPTCOUNTER;
-unsigned volatile int unbouncedBTN = 0;
-unsigned volatile int BTN = 0;				// Debounced button value
+unsigned int timerFlag = 0 ; 				/* Teha yheks lipu registriks kuhu k]ik lipud panna ??? */
+//unsigned volatile int timerCycle = INTERRUPTCOUNTER;
+
 
 void timerInit(void)
 {
     Timer_A_initUpModeParam initUpParam = { 0 };
-        initUpParam.clockSource = TIMER_A_CLOCKSOURCE_SMCLK;                       // Use SMCLK (faster clock)
-        initUpParam.clockSourceDivider = TIMER_A_CLOCKSOURCE_DIVIDER_1;           // Input clock = SMCLK / 1 = 16MHz
-        initUpParam.timerPeriod = HALFMS;                                    	  // 0.5ms
-        initUpParam.timerInterruptEnable_TAIE = TIMER_A_TAIE_INTERRUPT_ENABLE;    // Enable TAR -> 0 interrupt
+        initUpParam.clockSource = TIMER_A_CLOCKSOURCE_SMCLK;                      /* Use SMCLK (faster clock) */
+        initUpParam.clockSourceDivider = TIMER_A_CLOCKSOURCE_DIVIDER_1;           /* Input clock = SMCLK / 1 = 16MHz */
+        initUpParam.timerPeriod = TIMETO;                                    	  /* 0.5ms */
+        initUpParam.timerInterruptEnable_TAIE = TIMER_A_TAIE_INTERRUPT_ENABLE;    /* Enable TAR -> 0 interrupt */
         initUpParam.captureCompareInterruptEnable_CCR0_CCIE =
-                TIMER_A_CCIE_CCR0_INTERRUPT_ENABLE;                               // Enable CCR0 compare interrupt
-        initUpParam.timerClear = TIMER_A_DO_CLEAR;                                // Clear TAR & clock divider
-        initUpParam.startTimer = false;                                           // Don't start the timer, yet
-    Timer_A_initUpMode( TIMER_A0_BASE, &initUpParam );                            // Set up Timer A0
+                TIMER_A_CCIE_CCR0_INTERRUPT_ENABLE;                               /* Enable CCR0 compare interrupt */
+        initUpParam.timerClear = TIMER_A_DO_CLEAR;                                /* Clear TAR & clock divider */
+        initUpParam.startTimer = false;                                           /* Don't start the timer, yet */
+    Timer_A_initUpMode( TIMER_A0_BASE, &initUpParam );                            /* Set up Timer A0 */
 
     //*************************************************************************
     //  Clear/enable interrupt flags and start timer
     //*************************************************************************
-    Timer_A_clearTimerInterrupt( TIMER_A0_BASE );                                 // Clear TA0IFG
+    Timer_A_clearTimerInterrupt( TIMER_A0_BASE );                                 /* Clear TA0IFG */
     Timer_A_clearCaptureCompareInterrupt( TIMER_A0_BASE,
-        TIMER_A_CAPTURECOMPARE_REGISTER_0                                         // Clear CCR0IFG interrupt pending flag bit
+        TIMER_A_CAPTURECOMPARE_REGISTER_0                                         /* Clear CCR0IFG interrupt pending flag bit */
     );
 
     Timer_A_startCounter(
@@ -55,23 +51,18 @@ void timerInit(void)
 //*****************************************************************************
 #pragma vector=TIMER0_A0_VECTOR
 __interrupt void ccr0_ISR (void){
-
-	if (timerCycle == 0){															// DEbouncing pin 1.1
-		unbouncedBTN |= GPIO_getInputPinValue(GPIO_PORT_P1, GPIO_PIN1)&0x01;
-		unbouncedBTN <<= 1;
-		if(unbouncedBTN == NOTDEBOUNCED)
-			BTN = OFF;
-		else if(unbouncedBTN == DEBOUNCED)
-			BTN = ON;
-		timerCycle = INTERRUPTCOUNTER;												// Resetting counter back in order not to deal with overflow
-	}
-
-	timerCycle--;
-    Timer_A_clearTimerInterrupt(TIMER_A0_BASE);										// Clear TA0IFG
+	timerFlag = 1;
+    Timer_A_clearTimerInterrupt(TIMER_A0_BASE);										/* Clear TA0IFG */
 }
 
-
-int get_btn (void){
-  return BTN;
+void setFlag(int x){
+	diTAI();
+	timerFlag = x;
+	enTAI();
 }
+
+int getFlag(void){
+	return timerFlag;
+}
+
 
