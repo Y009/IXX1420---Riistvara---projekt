@@ -16,6 +16,8 @@
 #define UART_FIRST_MOD_REG 0x00
 #define UART_SECOND_MOD_REG 0x06
 
+uint8_t reciveData = 0;
+
 void UART_init(){
         
         P3SEL |= BIT3; //UART pin select for
@@ -58,10 +60,15 @@ int UART_sendByte(uint8_t transmitData){
 
 uint8_t UART_reciveByte(){
     
-    uint8_t reciveData;
-    reciveData = USCI_A_UART_receiveData(USCI_A0_BASE);
-    
-    return reciveData;
+    if( USCI_A_UART_getInterruptStatus(USCI_A0_BASE,
+             USCI_A_UART_RECEIVE_INTERRUPT_FLAG) == UCRXIFG ){
+
+        reciveData = UCA0RXBUF;
+
+    	return reciveData;
+     }
+     
+    return (FAILURE);
     
 }
 

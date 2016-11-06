@@ -35,6 +35,4 @@ int UART_sendByte(uint8_t transmitData);
 
 uint8_t UART_reciveByte();
 
-void UART_puts(const char *str);
-
 #endif /* UART_H_ */
