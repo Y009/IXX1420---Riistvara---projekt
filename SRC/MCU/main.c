@@ -68,5 +68,4 @@ void main(void)
 			UART_sendByte(0x45);
 		}
 	}
-
 }
