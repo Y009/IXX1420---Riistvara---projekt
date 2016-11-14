@@ -11,18 +11,24 @@
 #include "counter.h"
 
 //***** DEFINES ***************************************************************
+#define maxDist 23202							/* 23200us is 4m. Giving a little error time. */
+#define minDist 114								/* 116us is 2cm. Giving a little error time. */
+#define cmConst 58								/* Constant to divide time with to get distance in centimeters. */
+
 unsigned long int startTime;
 unsigned long int endTime;
+unsigned long int distance;
+char valid;
 
 void ultraS_init(){
 	startTime = 0;
 	endTime = 0;
-    GPIO_setAsOutputPin (GPIO_PORT_P1, GPIO_PIN4);                      //Pin 1.4 as Output for ultrasonic module
-    GPIO_setAsInputPinWithPullUpResistor (GPIO_PORT_P1, GPIO_PIN5);     //Pin 1.5 as Input for ultrasonic module
+    GPIO_setAsOutputPin (GPIO_PORT_P1, GPIO_PIN4);                      /* Pin 1.4 as Output for ultrasonic module */
+    GPIO_setAsInputPinWithPullUpResistor (GPIO_PORT_P1, GPIO_PIN5);     /* Pin 1.5 as Input for ultrasonic module */
     GPIO_selectInterruptEdge (GPIO_PORT_P1, GPIO_PIN5,
-                              GPIO_LOW_TO_HIGH_TRANSITION);             //Initially set interrupts up for rising edge signal
-    GPIO_clearInterrupt (GPIO_PORT_P1, GPIO_PIN5);                      //Clear interrupts before enabling them
-    GPIO_enableInterrupt (GPIO_PORT_P1, GPIO_PIN5);  	                //Pin 1.5 input interrupt for ultrasonic module data
+                              GPIO_LOW_TO_HIGH_TRANSITION);             /* Initially set interrupts up for rising edge signal */
+    GPIO_clearInterrupt (GPIO_PORT_P1, GPIO_PIN5);                      /* Clear interrupts before enabling them */
+    GPIO_enableInterrupt (GPIO_PORT_P1, GPIO_PIN5);  	                /* Pin 1.5 input interrupt for ultrasonic module data */
 
 }
 
@@ -32,18 +38,30 @@ void ultraS_sendSignal(){
 	GPIO_setOutputLowOnPin (GPIO_PORT_P1, GPIO_PIN4);
 }
 
-void ultraS_prepInfo(){
-	/* endtime - starttime
-	 * korrutada konstandiga, et saada cm
-	 * saata kõrgemale/teha stringiks
-	 * 		mitte voidiks et returinda?
-	 *
-	 *
-	 * */
+void ultraS_prepInfo(){													/* Main can check before getting distance, whether data is actually valid. */
 
-	startTime = 0; 														/* setting up for the next measurement */
+	if ((endTime - startTime) > maxDist){
+		valid = FalseMax;
+	}
+	else if((endTime - startTime) < minDist){
+		valid = FalseMin;
+	}
+	else{
+		distance = (endTime - startTime)/cmConst;
+		valid = True;
+	}
+
+	startTime = 0; 														/* Setting up for the next measurement. */
+	endTime = 0;														/* Set end time also 0 in case we don't catch interrupt.  */
 }
 
+char ultraS_getValidStatus(){
+	return valid;
+}
+
+unsigned int ultraS_getDistance(){										/* In reality distance can not be larger than 2 bytes, hence casting should be fine. */
+	return distance;
+}
 
 #pragma vector=PORT1_VECTOR
 __interrupt void pushbutton_ISR (void){
@@ -64,48 +82,4 @@ __interrupt void pushbutton_ISR (void){
      	                              GPIO_LOW_TO_HIGH_TRANSITION);
      	}
 	 }
-
-    /*switch( __even_in_range( P1IV, P1IV_P1IFG7 )) {
-        case P1IV_NONE:   break;                                // None
-        case P1IV_P1IFG0:                                       // Pin 0
-        	__no_operation();
-             break;
-        case P1IV_P1IFG1:                                       // Pin 1 (button 2)
-        	__no_operation();
-           	break;
-        case P1IV_P1IFG2:                                       // Pin 2
-        	__no_operation();
-            break;
-        case P1IV_P1IFG3:                                       // Pin 3
-        	__no_operation();
-            break;
-
-        case P1IV_P1IFG4:                                       // Pin 4
-        	__no_operation();
-            break;
-
-        case P1IV_P1IFG5:                                       // Pin 5
-        	if (!startTime){
-        		timer_diTBI();
-            	startTime = counter_getCounter();
-            	timer_enTBI();
-                GPIO_selectInterruptEdge (GPIO_PORT_P1, GPIO_PIN5,
-                                          GPIO_HIGH_TO_LOW_TRANSITION);
-        	}
-        	else{
-        		timer_diTBI();
-        		endTime = counter_getCounter();
-        		timer_enTBI();
-        	}
-            break;
-
-        case P1IV_P1IFG6:                                       // Pin 6
-        	__no_operation();
-            break;
-        case P1IV_P1IFG7:                                       // Pin 7
-        	__no_operation();
-            break;
-        default:   __never_executed();
-    }
-    */
 }

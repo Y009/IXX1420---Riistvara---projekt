@@ -37,6 +37,8 @@
 #include "lcd.h"
 #include "timer.h"
 #include "button.h"
+#include "counter.h"
+#include "ultraS.h"
 
 //MISC
 #define DELAY 10000000 //0.625 second delay
