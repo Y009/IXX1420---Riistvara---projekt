@@ -10,7 +10,7 @@
 
 //***** Defines ***************************************************************
 #define MCLK_DESIRED_FREQUENCY  16000                                    // 16MHz
-#define MCLK_FLLREF_RATIO              MCLK_DESIRED_FREQUENCY / 4000	 //(UCS_REFOCLK_FREQUENCY/1000)
+#define MCLK_FLLREF_RATIO              MCLK_DESIRED_FREQUENCY / 4000//(UCS_REFOCLK_FREQUENCY/1000)
 
 //***** Prototypes *************************************************
 void clkInit(void);

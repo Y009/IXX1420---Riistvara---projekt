@@ -36,6 +36,7 @@
 #include "uart.h"
 #include "lcd.h"
 #include "timer.h"
+#include "button.h"
 
 //MISC
 #define DELAY 10000000 //0.625 second delay
@@ -61,11 +62,12 @@ void main(void)
 	UART_sendByte(CLEAR_DISPLAY);
 
 	while(1){
-		counter_checkFlag();
+		timer_checkFlag();
 		button_debounceBtn();
-		if(get_btn()){
+		if(button_getBtn()){
 			UART_sendByte(ASCII_A);
 			UART_sendByte(0x45);
 		}
 	}
+
 }

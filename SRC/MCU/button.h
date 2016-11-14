@@ -9,7 +9,7 @@
 #define BUTTON_H_
 
 int button_getBtn(void);
-void button_debounceBTN();
+void button_debounceBtn();
 
 
 #endif /* BUTTON_H_ */
