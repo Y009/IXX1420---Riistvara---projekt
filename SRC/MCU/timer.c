@@ -17,7 +17,7 @@
 #define TIMETO 0x1F40						/* 0.5 ms cycle for timer A. Calculated with 16MHz SMCLK with divider 1 */
 unsigned long int interruptCounter; 		/* Times the timer A interrupt has to taken place */
 
-unsigned int timerFlag = 0 ; 				/* Hiljem kui kõik töötab korralikult siis võib üheks lippude registriks teha. */
+short timerFlag = 0 ; 			        	/* Hiljem kui kõik töötab korralikult siis võib üheks lippude registriks teha. */
 //unsigned volatile int timerCycle = INTERRUPTCOUNTER;
 
 

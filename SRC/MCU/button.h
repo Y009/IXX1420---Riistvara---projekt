@@ -8,7 +8,7 @@
 #ifndef BUTTON_H_
 #define BUTTON_H_
 
-int button_getBtn(void);
+short button_getBtn(void);
 void button_debounceBtn();
 
 

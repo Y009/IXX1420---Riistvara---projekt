@@ -15,14 +15,14 @@
 #define ON 1
 #define OFF 0
 
-unsigned volatile int unbouncedBTN = 0;
-unsigned volatile int BTN = 0;				/* Debounced button value */
+volatile short unbouncedBTN = 0;
+volatile short BTN = 0;				/* Debounced button value */
 unsigned long int lastCounter = 0;
 
 //unsigned volatile int Data[100]; 			// Testing debounce
 //unsigned volatile int i = 0;
 
-int button_getBtn(void){
+short button_getBtn(void){
   return BTN;
 }
 

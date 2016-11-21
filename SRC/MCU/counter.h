@@ -10,17 +10,17 @@
 
 //***** Defines ***************************************************************
 
-#define timer_enTBI() Timer_B_enableInterrupt(TIMER_B0_BASE)			/* Enable interrupts by Timer B */
-#define timer_diTBI() Timer_B_disableInterrupt(TIMER_B0_BASE)			/* Disable interrupts by Timer B */
-
+#define counter_enTBI() Timer_B_enableInterrupt(TIMER_B0_BASE)			/* Enable interrupts by Timer B */
+#define counter_diTBI() Timer_B_disableInterrupt(TIMER_B0_BASE)			/* Disable interrupts by Timer B */
+/*
 struct time {
-	unsigned short int us;
-	unsigned short int ms;
-	unsigned short int s;
-	unsigned short int min;
+	unsigned int us;
+	unsigned int ms;
+	unsigned int s;
+	unsigned int min;
 };
 
-unsigned long int counter_getCounter(void);
+unsigned long int counter_getCounter(void);*/
 void counter_init(void);
 
 #endif /* COUNTER_H_ */
