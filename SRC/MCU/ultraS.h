@@ -15,9 +15,10 @@
 #define FalseMax 0
 */
 enum status{                                        /* States for ultrasonic module. */
-    ok,                                             /* Ready for work. */
-    busy,                                           /* Working. */
-    error                                           /* Error while working. */
+    Ok,                                             /* Work done. */
+    Busy,                                           /* Working. */
+    Error,                                          /* Error while working. */
+    Idle                                            /* Waiting for work. */
 };
 enum dataStatus{                                    /* States for data preparation. */
     FalseMin,                                       /* Under the minimum 2cm distance. */
@@ -31,10 +32,12 @@ enum dataStatus{                                    /* States for data preparati
 void ultraS_init();
 void ultraS_sendSignal();
 void ultraS_prepInfo();
-short ultraS_getValidStatus();
-void ultraS_setValidStatus(validStatus);
+void ultraS_cyclic();
+unsigned int ultraS_getValidStatus();
+void ultraS_setValidStatus(enum status validStatus);
 unsigned int ultraS_getDistance();
-void ultraS_setDistance(x);
-enum usStatus ultraS_getStatus();
+void ultraS_setDistance(unsigned long int dist);
+int ultraS_getDataStatus();
+void ultraS_setDataStatus(enum dataStatus validStatus);
 
 #endif /* ULTRAS_H_ */

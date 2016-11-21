@@ -1,4 +1,4 @@
-/*
+ /*
  * counter.c
  *
  *  Created on: 31. okt 2016
@@ -18,7 +18,7 @@
 #define sTOus   1000000
 #define minTOus 60000000
 // on yldse vaja seda?
-unsigned long long int timerB_overflow;      /* 71.58 minutes maximum; Will only result in false data when it overflow itself. Could add a short check. */
+unsigned long long int timerB_overflow;      /* Maximum time; Will only result in false data when it overflow itself. 32.77ms * 2^32 = 4.46 years */
 
 //struct time runTime = {0,0,0,0};
 
