@@ -36,11 +36,15 @@
 #include "uart.h"
 #include "lcd.h"
 #include "timer.h"
+#include "button.h"
+#include "counter.h"
+#include "ultraS.h"
 
 //MISC
 #define DELAY 10000000 //0.625 second delay
 
 uint32_t mySMCLK = 0;
+int dist = 0;
 //******************************************************************************
 //!
 //!   Hardware project: Distance measurer with ultrasonic module.
@@ -51,20 +55,29 @@ void main(void)
 	WDT_A_hold(WDT_A_BASE);
 	clkInit();
 	UART_init();
-	timerInit();
+	timer_init();
+	counter_init();
+	ultraS_init();
 
-	GPIO_setAsInputPinWithPullUpResistor(GPIO_PORT_P1, GPIO_PIN1);		// Pin 1.1 as input for on board button.
+	GPIO_setAsInputPinWithPullUpResistor(GPIO_PORT_P1, GPIO_PIN1);		/* Pin 1.1 as input for on board button. */
 	__bis_SR_register(GIE);
 	__delay_cycles(DELAY);
-	UART_sendByte(SPECIAL_COMMAND);
+	UART_sendByte(COMMAND);
 	__delay_cycles(DELAY);
 	UART_sendByte(CLEAR_DISPLAY);
 
 	while(1){
-		if(get_btn()){
-			UART_sendByte(ASCII_A);
-			UART_sendByte(0x45);
-		}
-	}
+		timer_checkFlag();
+		button_debounceBtn();
+        ultraS_cyclic();				            /* make an accuarcy get function? asking from user how many measurements to average */
 
+        if(button_getBtn() & (ultraS_getValidStatus()!= Busy))
+            ultraS_setValidStatus(Busy);             /* enum status usStatus = Busy;  */
+
+        if(ultraS_getValidStatus() == Ok){
+            dist = ultraS_getDistance();            /* To be actually given to the lcd module */
+            ultraS_setDataStatus(Read);
+            printf("%d", dist);
+        }
+    }
 }

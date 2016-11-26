@@ -10,13 +10,13 @@
 
 //***** Defines ***************************************************************
 
-#define enTAI() Timer_A_enableInterrupt(TIMER_A0_BASE)			/* Enable interrupts by Timer A */
-#define diTAI() Timer_A_disableInterrupt(TIMER_A0_BASE)			/* Disable interrupts by Timer A */
+#define timer_enTAI() Timer_A_enableInterrupt(TIMER_A0_BASE)			/* Enable interrupts by Timer A */ // _enable_interrupts()
+#define timer_diTAI() Timer_A_disableInterrupt(TIMER_A0_BASE)			/* Disable interrupts by Timer A */ // _disable_interrupts()
 
-
-//***** DEFINES ***************************************************************
-void timerInit(void);
-void setFlag(int x);
-int getFlag(void);
+void timer_init(void);
+//void timer_setFlag(int x);
+//int timer_getFlag(void);
+int timer_getCounter(void);
+void timer_checkFlag();
 
 #endif /* TIMER_H_ */

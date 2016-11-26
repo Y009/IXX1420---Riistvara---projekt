@@ -8,8 +8,8 @@
 #ifndef BUTTON_H_
 #define BUTTON_H_
 
-int getBtn(void);
-void debounceBTN();
+short button_getBtn(void);
+void button_debounceBtn();
 
 
 #endif /* BUTTON_H_ */

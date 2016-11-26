@@ -3,6 +3,8 @@
  *
  *  Created on: 23. okt 2016
  *      Author: Y009
+ *
+ *      Timer for debouncing button press.
  */
 
 
@@ -13,14 +15,13 @@
 //***** DEFINES ***************************************************************
 
 #define TIMETO 0x1F40						/* 0.5 ms cycle for timer A. Calculated with 16MHz SMCLK with divider 1 */
-//#define INTERRUPTCOUNTER 40 				/* Times the timer A interrupt has to take place before going to the debounce conditional */
+unsigned long int interruptCounter; 		/* Times the timer A interrupt has to taken place */
 
-unsigned int timerFlag = 0 ; 				/* Teha yheks lipu registriks kuhu k]ik lipud panna ??? */
+short timerFlag = 0 ; 			        	/* Hiljem kui kõik töötab korralikult siis võib üheks lippude registriks teha. */
 //unsigned volatile int timerCycle = INTERRUPTCOUNTER;
 
 
-void timerInit(void)
-{
+void timer_init(void){
     Timer_A_initUpModeParam initUpParam = { 0 };
         initUpParam.clockSource = TIMER_A_CLOCKSOURCE_SMCLK;                      /* Use SMCLK (faster clock) */
         initUpParam.clockSourceDivider = TIMER_A_CLOCKSOURCE_DIVIDER_1;           /* Input clock = SMCLK / 1 = 16MHz */
@@ -50,19 +51,33 @@ void timerInit(void)
 // Interrupt Service Routines
 //*****************************************************************************
 #pragma vector=TIMER0_A0_VECTOR
-__interrupt void ccr0_ISR (void){
+__interrupt void debouncingBtn (void){
 	timerFlag = 1;
     Timer_A_clearTimerInterrupt(TIMER_A0_BASE);										/* Clear TA0IFG */
 }
-
-void setFlag(int x){
-	diTAI();
+/*
+void timer_setFlag(int x){
+	timer_diTAI();
 	timerFlag = x;
-	enTAI();
+	timer_enTAI();
 }
 
-int getFlag(void){
+int timer_getFlag(void){
 	return timerFlag;
+}
+*/
+
+void timer_checkFlag(){
+	timer_diTAI();
+	if(timerFlag){
+		interruptCounter++;
+		timerFlag = 0;					/* Clear timerA interrupt up flag */
+	}
+	timer_enTAI();
+}
+
+int timer_getCounter(void){
+	return interruptCounter;
 }
 
 
