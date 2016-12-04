@@ -14,12 +14,10 @@
 
 //***** DEFINES ***************************************************************
 
-#define TIMETO 0x1F40						/* 0.5 ms cycle for timer A. Calculated with 16MHz SMCLK with divider 1 */
-unsigned long int interruptCounter; 		/* Times the timer A interrupt has to taken place */
+#define TIMETO 0x1F40						    /* 0.5 ms cycle for timer A. Calculated with 16MHz SMCLK with divider 1 */
+unsigned long long int interruptCounter; 		/* Times the timer A interrupt has to taken place */
 
-short timerFlag = 0 ; 			        	/* Hiljem kui kõik töötab korralikult siis võib üheks lippude registriks teha. */
-//unsigned volatile int timerCycle = INTERRUPTCOUNTER;
-
+short timerFlag = 0 ; 			        	    /* Hiljem kui kõik töötab korralikult siis võib üheks lippude registriks teha. */
 
 void timer_init(void){
     Timer_A_initUpModeParam initUpParam = { 0 };
@@ -47,26 +45,6 @@ void timer_init(void){
     );
 }
 
-//*****************************************************************************
-// Interrupt Service Routines
-//*****************************************************************************
-#pragma vector=TIMER0_A0_VECTOR
-__interrupt void debouncingBtn (void){
-	timerFlag = 1;
-    Timer_A_clearTimerInterrupt(TIMER_A0_BASE);										/* Clear TA0IFG */
-}
-/*
-void timer_setFlag(int x){
-	timer_diTAI();
-	timerFlag = x;
-	timer_enTAI();
-}
-
-int timer_getFlag(void){
-	return timerFlag;
-}
-*/
-
 void timer_checkFlag(){
 	timer_diTAI();
 	if(timerFlag){
@@ -80,4 +58,12 @@ int timer_getCounter(void){
 	return interruptCounter;
 }
 
+//*****************************************************************************
+// Interrupt Service Routines
+//*****************************************************************************
+#pragma vector=TIMER0_A0_VECTOR
+__interrupt void debouncingBtn (void){
+	timerFlag = 1;
+    Timer_A_clearTimerInterrupt(TIMER_A0_BASE);										/* Clear TA0IFG */
+}
 

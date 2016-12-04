@@ -19,9 +19,6 @@
 uint8_t reciveData = 0;
 
 void UART_init(){
-        
-        P3SEL |= BIT3; //UART pin select for
-        
 	    USCI_A_UART_initParam param = {0};
 	    param.selectClockSource = USCI_A_UART_CLOCKSOURCE_SMCLK;
 	    param.clockPrescalar = UART_PRESCALE;

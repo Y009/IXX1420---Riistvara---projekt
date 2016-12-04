@@ -14,8 +14,6 @@
 #define timer_diTAI() Timer_A_disableInterrupt(TIMER_A0_BASE)			/* Disable interrupts by Timer A */ // _disable_interrupts()
 
 void timer_init(void);
-//void timer_setFlag(int x);
-//int timer_getFlag(void);
 int timer_getCounter(void);
 void timer_checkFlag();
 
