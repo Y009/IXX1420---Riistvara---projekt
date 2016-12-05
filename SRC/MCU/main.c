@@ -68,7 +68,7 @@ void main(void)
 
 	while(1){
 		application_cyclic();
-        ultraS_cyclic();				            /* make an accuarcy get function? asking from user how many measurements to average */
+        ultraS_cyclic();
         lcd_cyclic();
     }
 }

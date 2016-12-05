@@ -12,6 +12,7 @@
 #include "timer.h"
 #include "counter.h"
 #include "stdio.h"
+#include "gpio.h"
 
 //***** DEFINES ***************************************************************
 #define MAXDIST 23202							/* 23200us is 4m. Giving a little error time. */
@@ -26,6 +27,9 @@ unsigned volatile long long int endTime;
 unsigned volatile long long int startTimeMult;
 unsigned volatile long long int endTimeMult;
 unsigned volatile long int distance;
+unsigned volatile long int test[50];
+unsigned volatile long int i;
+
 
 enum status usStatus = US_IDLE;
 enum dataStatus usDataStatus = US_DATA_FALSE;
@@ -38,16 +42,16 @@ void ultraS_init(){
 
 void ultraS_sendSignal(){
     usStatus = US_WORKING;
-	GPIO_setOutputHighOnPin (GPIO_PORT_P1, GPIO_PIN4);
+	gpio_setPinHigh (gpio_PORT_P1, gpio_PIN4);
 	__delay_cycles(160U);												/* trigger time */
-	GPIO_setOutputLowOnPin (GPIO_PORT_P1, GPIO_PIN4);
-	__delay_cycles(96000);												/* echo wait period */
+	gpio_setPinLow (gpio_PORT_P1, gpio_PIN4);
+	__delay_cycles(96000U);												/* echo wait period */
 }
 
 void ultraS_prepInfo(){													/* Main can check before getting distance, whether data is actually valid. */
     endTime += CYCLE * (endTimeMult-startTimeMult);      				/* Adding entire 16bit counter value to end time to compensate for rollover. */
     distance = (endTime - startTime)/CMCONST;
-
+    //printf("dist - %lu \n", distance);
 	if ((endTime - startTime) > MAXDIST){
 		usDataStatus = US_DATA_FALSEMAX;
 	}
@@ -57,6 +61,8 @@ void ultraS_prepInfo(){													/* Main can check before getting distance, w
 	else{
 		usDataStatus = US_DATA_TRUE;
 	}
+	test[i] = distance;
+	i++;
 }
 
 void resetTimes(){
@@ -138,21 +144,21 @@ void ultraS_setDataStatus(enum dataStatus validStatus){
 #pragma vector=PORT1_VECTOR
 __interrupt void ultraS_ISR (void){
 
-    if (GPIO_getInterruptStatus(GPIO_PORT_P1, GPIO_PIN5)){
+    if (gpio_getInterrupt(gpio_PORT_P1, gpio_PIN5)){
      	if (!startTime){													/* Rising endge. */
          	startTime = Timer_B_getCounterValue(TIMER_B0_BASE);
          	startTimeMult = counter_getOverflow();
-            GPIO_selectInterruptEdge (GPIO_PORT_P1, GPIO_PIN5,
-                                       GPIO_HIGH_TO_LOW_TRANSITION);
+         	gpio_setInterruptEdge (gpio_PORT_P1, gpio_PIN5,
+									  gpio_HIGH_TO_LOW_TRANSITION);
      	}
         else if (startTime && !endTime ){									/* Falling edge. */
      		endTime = Timer_B_getCounterValue(TIMER_B0_BASE);
      		endTimeMult = counter_getOverflow();
-     	    GPIO_selectInterruptEdge (GPIO_PORT_P1, GPIO_PIN5,
-     	                              GPIO_LOW_TO_HIGH_TRANSITION);
+     		gpio_setInterruptEdge (gpio_PORT_P1, gpio_PIN5,
+     							      gpio_LOW_TO_HIGH_TRANSITION);
             usDataStatus = US_DATA_TRUE2;											/* In module status. */
         }
     }
 
-    GPIO_clearInterrupt ( GPIO_PORT_P1, GPIO_PIN5 );
+    gpio_clearInterrupt ( gpio_PORT_P1, gpio_PIN5 );
 }

@@ -8,6 +8,7 @@
 #include <driverlib.h>
 #include "button.h"
 #include "timer.h"
+#include "gpio.h"
 
 //***** DEFINES ***************************************************************
 #define NOTDEBOUNCED 0xFF
@@ -29,7 +30,7 @@ void button_debounceBtn(){
 	timer_diTAI();
 	if ((timer_getCounter() - lastCounter) >= ACCUARCY){	/* Debouncing pin 1.1 (on board button) */
 		unbouncedBTN <<= 1;
-		unbouncedBTN |= GPIO_getInputPinValue(GPIO_PORT_P2, GPIO_PIN1)&0x01;
+		unbouncedBTN |= gpio_getPinInput(gpio_PORT_P2, gpio_PIN1)&0x01;
 		if(unbouncedBTN == NOTDEBOUNCED)
 			BTN = OFF;
 		else if(unbouncedBTN == DEBOUNCED)
