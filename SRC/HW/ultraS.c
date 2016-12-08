@@ -27,8 +27,6 @@ unsigned volatile long long int endTime;
 unsigned volatile long long int startTimeMult;
 unsigned volatile long long int endTimeMult;
 unsigned volatile long int distance;
-unsigned volatile long int test[50];
-unsigned volatile long int i;
 
 
 enum status usStatus = US_IDLE;
@@ -51,7 +49,6 @@ void ultraS_sendSignal(){
 void ultraS_prepInfo(){													/* Main can check before getting distance, whether data is actually valid. */
     endTime += CYCLE * (endTimeMult-startTimeMult);      				/* Adding entire 16bit counter value to end time to compensate for rollover. */
     distance = (endTime - startTime)/CMCONST;
-    //printf("dist - %lu \n", distance);
 	if ((endTime - startTime) > MAXDIST){
 		usDataStatus = US_DATA_FALSEMAX;
 	}
@@ -61,8 +58,6 @@ void ultraS_prepInfo(){													/* Main can check before getting distance, w
 	else{
 		usDataStatus = US_DATA_TRUE;
 	}
-	test[i] = distance;
-	i++;
 }
 
 void resetTimes(){
