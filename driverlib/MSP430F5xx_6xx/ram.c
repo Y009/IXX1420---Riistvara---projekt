@@ -29,46 +29,41 @@
  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  * --/COPYRIGHT--*/
+//*****************************************************************************
+//
+// ram.c - Driver for the ram Module.
+//
+//*****************************************************************************
 
-#include "driverlib.h"
-#include "clock.h"
-#include "uart.h"
-#include "lcd.h"
-#include "timer.h"
-#include "counter.h"
-#include "ultraS.h"
-#include "gpio.h"
-#include "application.h"
+//*****************************************************************************
+//
+//! \addtogroup ram_api ram
+//! @{
+//
+//*****************************************************************************
 
-//MISC
-#define DELAY 10000000 //0.625 second delay
+#include "inc/hw_memmap.h"
 
+#ifdef __MSP430_HAS_RC__
+#include "ram.h"
 
-//******************************************************************************
-//!
-//!   Hardware project: Distance measurer with ultrasonic module.
-//!
-//******************************************************************************
-void main(void)
+#include <assert.h>
+
+void RAM_setSectorOff(uint8_t sector)
 {
-	WDT_A_hold(WDT_A_BASE);
-	gpio_init();
-	clkInit();
-	UART_init();
-	timer_init();
-	counter_init();
-	ultraS_init();
-
-	__bis_SR_register(GIE); 						/* Global interrupt enable. */
-
-	UART_sendByte(COMMAND);
-	__delay_cycles(DELAY/1000);
-	UART_sendByte(CLEAR_DISPLAY);
-    lcd_sendString(" Hello and bye! ");				/* Welcome message -.-*/
-
-	while(1){
-		application_cyclic();
-        ultraS_cyclic();
-        lcd_cyclic();
-    }
+    //Write key to start write to RCCTL0 and sector
+    HWREG16(RAM_BASE + OFS_RCCTL0) = (RCKEY + sector);
 }
+
+uint8_t RAM_getSectorState(uint8_t sector)
+{
+    return (HWREG8(RAM_BASE + OFS_RCCTL0_L) & sector);
+}
+
+#endif
+//*****************************************************************************
+//
+//! Close the doxygen group for ram_api
+//! @}
+//
+//*****************************************************************************

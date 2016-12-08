@@ -29,46 +29,14 @@
  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  * --/COPYRIGHT--*/
+#ifndef __DRIVERLIB_VERSION__
+        #define DRIVERLIB_VER_MAJOR 2
+        #define DRIVERLIB_VER_MINOR 80
+        #define DRIVERLIB_VER_PATCH 00
+        #define DRIVERLIB_VER_BUILD 01
+#endif
 
-#include "driverlib.h"
-#include "clock.h"
-#include "uart.h"
-#include "lcd.h"
-#include "timer.h"
-#include "counter.h"
-#include "ultraS.h"
-#include "gpio.h"
-#include "application.h"
-
-//MISC
-#define DELAY 10000000 //0.625 second delay
-
-
-//******************************************************************************
-//!
-//!   Hardware project: Distance measurer with ultrasonic module.
-//!
-//******************************************************************************
-void main(void)
-{
-	WDT_A_hold(WDT_A_BASE);
-	gpio_init();
-	clkInit();
-	UART_init();
-	timer_init();
-	counter_init();
-	ultraS_init();
-
-	__bis_SR_register(GIE); 						/* Global interrupt enable. */
-
-	UART_sendByte(COMMAND);
-	__delay_cycles(DELAY/1000);
-	UART_sendByte(CLEAR_DISPLAY);
-    lcd_sendString(" Hello and bye! ");				/* Welcome message -.-*/
-
-	while(1){
-		application_cyclic();
-        ultraS_cyclic();
-        lcd_cyclic();
-    }
-}
+#define getVersion() ((uint32_t)DRIVERLIB_VER_MAJOR << 24 | \
+                      (uint32_t)DRIVERLIB_VER_MINOR << 16 | \
+                      (uint32_t)DRIVERLIB_VER_PATCH << 8 | \
+                      (uint32_t)DRIVERLIB_VER_BUILD)

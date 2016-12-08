@@ -33,9 +33,13 @@
 *.su
 
 # Misc
-*.DS_Store
-*\Debug
-*\Release
-*.xdchelp
-*\.config
-*\.launches
+.DS_Store
+Debug
+Release
+.xdchelp
+\.config
+\.launches
+\.d
+.ccsproject
+.project
+.cproject

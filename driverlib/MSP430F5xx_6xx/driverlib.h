@@ -29,46 +29,45 @@
  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  * --/COPYRIGHT--*/
+#include "inc/hw_memmap.h"
 
-#include "driverlib.h"
-#include "clock.h"
-#include "uart.h"
-#include "lcd.h"
-#include "timer.h"
-#include "counter.h"
-#include "ultraS.h"
+#include "adc10_a.h"
+#include "adc12_a.h"
+#include "aes.h"
+#include "battbak.h"
+#include "comp_b.h"
+#include "crc.h"
+#include "ctsd16.h"
+#include "dac12_a.h"
+#include "dma.h"
+#include "eusci_a_spi.h"
+#include "eusci_a_uart.h"
+#include "eusci_b_i2c.h"
+#include "eusci_b_spi.h"
+#include "flashctl.h"
 #include "gpio.h"
-#include "application.h"
-
-//MISC
-#define DELAY 10000000 //0.625 second delay
-
-
-//******************************************************************************
-//!
-//!   Hardware project: Distance measurer with ultrasonic module.
-//!
-//******************************************************************************
-void main(void)
-{
-	WDT_A_hold(WDT_A_BASE);
-	gpio_init();
-	clkInit();
-	UART_init();
-	timer_init();
-	counter_init();
-	ultraS_init();
-
-	__bis_SR_register(GIE); 						/* Global interrupt enable. */
-
-	UART_sendByte(COMMAND);
-	__delay_cycles(DELAY/1000);
-	UART_sendByte(CLEAR_DISPLAY);
-    lcd_sendString(" Hello and bye! ");				/* Welcome message -.-*/
-
-	while(1){
-		application_cyclic();
-        ultraS_cyclic();
-        lcd_cyclic();
-    }
-}
+#include "lcd_b.h"
+#include "ldopwr.h"
+#include "mpy32.h"
+#include "oa.h"
+#include "pmap.h"
+#include "pmm.h"
+#include "ram.h"
+#include "ref.h"
+#include "rtc_a.h"
+#include "rtc_b.h"
+#include "rtc_c.h"
+#include "sd24_b.h"
+#include "sfr.h"
+#include "sysctl.h"
+#include "tec.h"
+#include "timer_a.h"
+#include "timer_b.h"
+#include "timer_d.h"
+#include "tlv.h"
+#include "ucs.h"
+#include "usci_a_spi.h"
+#include "usci_a_uart.h"
+#include "usci_b_i2c.h"
+#include "usci_b_spi.h"
+#include "wdt_a.h"

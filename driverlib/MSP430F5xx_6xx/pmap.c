@@ -29,46 +29,58 @@
  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  * --/COPYRIGHT--*/
+//*****************************************************************************
+//
+// pmap.c - Driver for the pmap Module.
+//
+//*****************************************************************************
 
-#include "driverlib.h"
-#include "clock.h"
-#include "uart.h"
-#include "lcd.h"
-#include "timer.h"
-#include "counter.h"
-#include "ultraS.h"
-#include "gpio.h"
-#include "application.h"
+//*****************************************************************************
+//
+//! \addtogroup pmap_api pmap
+//! @{
+//
+//*****************************************************************************
 
-//MISC
-#define DELAY 10000000 //0.625 second delay
+#include "inc/hw_memmap.h"
 
+#ifdef __MSP430_HAS_PORT_MAPPING__
+#include "pmap.h"
 
-//******************************************************************************
-//!
-//!   Hardware project: Distance measurer with ultrasonic module.
-//!
-//******************************************************************************
-void main(void)
+#include <assert.h>
+
+void PMAP_initPorts(uint16_t baseAddress,
+                    PMAP_initPortsParam *param)
 {
-	WDT_A_hold(WDT_A_BASE);
-	gpio_init();
-	clkInit();
-	UART_init();
-	timer_init();
-	counter_init();
-	ultraS_init();
+    //Store current interrupt state, then disable all interrupts
+    uint16_t globalInterruptState = __get_SR_register() & GIE;
+    __disable_interrupt();
 
-	__bis_SR_register(GIE); 						/* Global interrupt enable. */
+    //Get write-access to port mapping registers:
+    HWREG16(baseAddress + OFS_PMAPKEYID) = PMAPPW;
 
-	UART_sendByte(COMMAND);
-	__delay_cycles(DELAY/1000);
-	UART_sendByte(CLEAR_DISPLAY);
-    lcd_sendString(" Hello and bye! ");				/* Welcome message -.-*/
+    //Enable/Disable reconfiguration during runtime
+    HWREG8(baseAddress + OFS_PMAPCTL) &= ~PMAPRECFG;
+    HWREG8(baseAddress + OFS_PMAPCTL) |= param->portMapReconfigure;
 
-	while(1){
-		application_cyclic();
-        ultraS_cyclic();
-        lcd_cyclic();
+    //Configure Port Mapping:
+    uint16_t i;
+    for(i = 0; i < param->numberOfPorts * 8; i++)
+    {
+        param->PxMAPy[i] = param->portMapping[i];
     }
+
+    //Disable write-access to port mapping registers:
+    HWREG8(baseAddress + OFS_PMAPKEYID) = 0;
+
+    //Restore previous interrupt state
+    __bis_SR_register(globalInterruptState);
 }
+
+#endif
+//*****************************************************************************
+//
+//! Close the doxygen group for pmap_api
+//! @}
+//
+//*****************************************************************************

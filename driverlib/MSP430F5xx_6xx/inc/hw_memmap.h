@@ -29,46 +29,47 @@
  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  * --/COPYRIGHT--*/
+#ifndef __HW_MEMMAP__
+#define __HW_MEMMAP__
 
-#include "driverlib.h"
-#include "clock.h"
-#include "uart.h"
-#include "lcd.h"
-#include "timer.h"
-#include "counter.h"
-#include "ultraS.h"
-#include "gpio.h"
-#include "application.h"
+#define __DRIVERLIB_MSP430F5XX_6XX_FAMILY__
+//*****************************************************************************
+//
+// Include device specific header file
+//
+//*****************************************************************************
+#include <msp430.h>
 
-//MISC
-#define DELAY 10000000 //0.625 second delay
+#include "msp430f5xx_6xxgeneric.h"
 
+#include "stdint.h"
+#include "stdbool.h"
 
-//******************************************************************************
-//!
-//!   Hardware project: Distance measurer with ultrasonic module.
-//!
-//******************************************************************************
-void main(void)
-{
-	WDT_A_hold(WDT_A_BASE);
-	gpio_init();
-	clkInit();
-	UART_init();
-	timer_init();
-	counter_init();
-	ultraS_init();
+//*****************************************************************************
+//
+// SUCCESS and FAILURE for API return value
+//
+//*****************************************************************************
+#define STATUS_SUCCESS  0x01
+#define STATUS_FAIL     0x00
 
-	__bis_SR_register(GIE); 						/* Global interrupt enable. */
+//*****************************************************************************
+//
+// Macro for enabling assert statements for debugging
+//
+//*****************************************************************************
+#define NDEBUG
 
-	UART_sendByte(COMMAND);
-	__delay_cycles(DELAY/1000);
-	UART_sendByte(CLEAR_DISPLAY);
-    lcd_sendString(" Hello and bye! ");				/* Welcome message -.-*/
+//*****************************************************************************
+//
+// Macros for hardware access
+//
+//*****************************************************************************
+#define HWREG32(x)                                                              \
+    (*((volatile uint32_t *)((uint16_t)x)))
+#define HWREG16(x)                                                             \
+    (*((volatile uint16_t *)((uint16_t)x)))
+#define HWREG8(x)                                                             \
+    (*((volatile uint8_t *)((uint16_t)x)))
 
-	while(1){
-		application_cyclic();
-        ultraS_cyclic();
-        lcd_cyclic();
-    }
-}
+#endif // #ifndef __HW_MEMMAP__
