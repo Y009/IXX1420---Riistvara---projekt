@@ -1,5 +1,5 @@
 /*
- * gpioInit.c
+ * gpio.c
  *
  *  Created on: 16. okt 2016
  *      Author: Y009
