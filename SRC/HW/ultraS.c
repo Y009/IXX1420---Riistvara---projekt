@@ -10,7 +10,7 @@
 #include "ultraS.h"
 #include "../MCU/counter.h"
 #include "../MCU/timer.h"
-s#include "stdio.h"
+#include "stdio.h"
 #include "gpio.h"
 
 //***** DEFINES ***************************************************************
