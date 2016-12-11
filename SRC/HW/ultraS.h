@@ -5,28 +5,32 @@
  *      Author: Y009
  */
 
+ /*! \file ultraS.h
+    \brief Header file for the ultrasonic module.
+*/
+
 #ifndef ULTRAS_H_
 #define ULTRAS_H_
 
 //***** Defines ***************************************************************
 
-enum status{                                       		/* States for ultrasonic module. */
-	US_OK,                                            	/* Work done. */
-	US_WORKING,                                        	/* Working. */
-	US_ERROR,                                          	/* Error while working. */
-	US_IDLE,                                           	/* Waiting for work. */
+typedef enum{                                       	/* States for ultrasonic module. */
+	US_OK,                                            	/**< Work done. */
+	US_WORKING,                                        	/**< Working. */
+	US_ERROR,                                          	/**< Error while working. */
+	US_IDLE,                                           	/**< Waiting for work. */
 	US_NUMBER_OF_TYPES
-};
+}status;
 
-enum dataStatus{                                  		/* States for data preparation. */
-	US_DATA_FALSEMIN,                                        /* Under the minimum 2cm distance. */
-	US_DATA_FALSEMAX,                                        /* Over the maximum 4m distance. */
-	US_DATA_TRUE,                                            /* Data should be good and is ready to be read. */
-	US_DATA_TRUE2,                                           /* Time has been read from counter and is ready for processing. */
-	US_DATA_FALSE,                                           /* Initial status indicating the need to read data, so we don't read before doing any work. */
-	US_DATA_READ,                                            /* If Read, then application has read the data. */
+typedef enum{                                           /* States for data preparation. */
+	US_DATA_FALSEMIN,                                   /**< Under the minimum 2cm distance. */
+	US_DATA_FALSEMAX,                                   /**< Over the maximum 4m distance. */
+	US_DATA_TRUE,                                       /**< Data should be good and is ready to be read. */
+	US_DATA_TRUE2,                                      /**< Time has been read from counter and is ready for processing. */
+	US_DATA_FALSE,                                      /**< Initial status indicating the need to read data, so we don't read before doing any work. */
+	US_DATA_READ,                                       /**< If Read, then application has read the data. */
 	US_DATA_NUMBER_OF_TYPES
-};
+}dataStatus;
 
 void ultraS_init();
 void ultraS_sendSignal();

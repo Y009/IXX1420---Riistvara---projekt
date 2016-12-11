@@ -2,7 +2,7 @@
 
 
 Hardware project for course "IXX1420 Riistvara projekt" <br>
-TTÜ <br>
+TTY <br>
 2016 <br>
 <br>
 

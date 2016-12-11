@@ -1,0 +1,185 @@
+\hypertarget{ultra_s_8h}{}\section{S\+R\+C/\+H\+W/ultraS.h File Reference}
+\label{ultra_s_8h}\index{S\+R\+C/\+H\+W/ultra\+S.\+h@{S\+R\+C/\+H\+W/ultra\+S.\+h}}
+
+
+Header file for the ultrasonic module.  
+
+
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{ultra_s_8h_a015eb90e0de9f16e87bd149d4b9ce959}{status} \{ \newline
+\hyperlink{ultra_s_8h_a015eb90e0de9f16e87bd149d4b9ce959a688bb2aea3f560be00db855a2807e6fa}{U\+S\+\_\+\+OK}, 
+\hyperlink{ultra_s_8h_a015eb90e0de9f16e87bd149d4b9ce959a8b86e148c08da560ab163c02be34254c}{U\+S\+\_\+\+W\+O\+R\+K\+I\+NG}, 
+\hyperlink{ultra_s_8h_a015eb90e0de9f16e87bd149d4b9ce959a2fd3a96bffe618698f94b9308c9b4f51}{U\+S\+\_\+\+E\+R\+R\+OR}, 
+\hyperlink{ultra_s_8h_a015eb90e0de9f16e87bd149d4b9ce959a4444eecc516e45f891e67e9278efd311}{U\+S\+\_\+\+I\+D\+LE}, 
+\newline
+{\bfseries U\+S\+\_\+\+N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+T\+Y\+P\+ES}
+ \}
+\item 
+enum \hyperlink{ultra_s_8h_a5af22166e4d97bfcc7589baec25bec7b}{data\+Status} \{ \newline
+\hyperlink{ultra_s_8h_a5af22166e4d97bfcc7589baec25bec7ba2b0d9c232a242f02d30e512b8908b35a}{U\+S\+\_\+\+D\+A\+T\+A\+\_\+\+F\+A\+L\+S\+E\+M\+IN}, 
+\hyperlink{ultra_s_8h_a5af22166e4d97bfcc7589baec25bec7bacc98738e6892bda59facfa3ad35aac69}{U\+S\+\_\+\+D\+A\+T\+A\+\_\+\+F\+A\+L\+S\+E\+M\+AX}, 
+\hyperlink{ultra_s_8h_a5af22166e4d97bfcc7589baec25bec7bab4e04d20d63c362b5bba9b6125d34eee}{U\+S\+\_\+\+D\+A\+T\+A\+\_\+\+T\+R\+UE}, 
+\hyperlink{ultra_s_8h_a5af22166e4d97bfcc7589baec25bec7ba2139ffa97370f4cb86ee95404d78ef7b}{U\+S\+\_\+\+D\+A\+T\+A\+\_\+\+T\+R\+U\+E2}, 
+\newline
+\hyperlink{ultra_s_8h_a5af22166e4d97bfcc7589baec25bec7bae27f17d8a7ef52a5d6d5b8c4e562d453}{U\+S\+\_\+\+D\+A\+T\+A\+\_\+\+F\+A\+L\+SE}, 
+\hyperlink{ultra_s_8h_a5af22166e4d97bfcc7589baec25bec7ba50827340ffe4c961347eb0c3e601f3c4}{U\+S\+\_\+\+D\+A\+T\+A\+\_\+\+R\+E\+AD}, 
+{\bfseries U\+S\+\_\+\+D\+A\+T\+A\+\_\+\+N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+T\+Y\+P\+ES}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{ultra_s_8h_a76007e39c7b3397710dee9bab7b5d9b5}{ultra\+S\+\_\+init} ()
+\item 
+void \hyperlink{ultra_s_8h_a2dc7671dcfab4e1cb316c3443f709a85}{ultra\+S\+\_\+send\+Signal} ()
+\item 
+void \hyperlink{ultra_s_8h_acdff37f2f4e581b47645303906a09417}{ultra\+S\+\_\+prep\+Info} ()
+\item 
+void \hyperlink{ultra_s_8h_a186e138633dbd47cca8dec6f41f86fb4}{ultra\+S\+\_\+cyclic} ()
+\item 
+unsigned int \hyperlink{ultra_s_8h_a85065971712e1812bab36f1366bc0416}{ultra\+S\+\_\+get\+Valid\+Status} ()
+\item 
+void \hyperlink{ultra_s_8h_a3aa336805b30c760503c3a2c9792d1b0}{ultra\+S\+\_\+set\+Valid\+Status} (enum \hyperlink{ultra_s_8h_a015eb90e0de9f16e87bd149d4b9ce959}{status} valid\+Status)
+\item 
+unsigned int \hyperlink{ultra_s_8h_ac80c09ba6b899105f44bdfe0be849296}{ultra\+S\+\_\+get\+Distance} ()
+\item 
+int \hyperlink{ultra_s_8h_ad5c0f2f041f3985396910a4b8c325b2a}{ultra\+S\+\_\+get\+Data\+Status} ()
+\item 
+void \hyperlink{ultra_s_8h_a8a5d4bdd11c244c8b0341256f5998d13}{ultra\+S\+\_\+set\+Data\+Status} (enum \hyperlink{ultra_s_8h_a5af22166e4d97bfcc7589baec25bec7b}{data\+Status} valid\+Status)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Header file for the ultrasonic module. 
+
+
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{ultra_s_8h_a5af22166e4d97bfcc7589baec25bec7b}{}\label{ultra_s_8h_a5af22166e4d97bfcc7589baec25bec7b} 
+\index{ultra\+S.\+h@{ultra\+S.\+h}!data\+Status@{data\+Status}}
+\index{data\+Status@{data\+Status}!ultra\+S.\+h@{ultra\+S.\+h}}
+\subsubsection{\texorpdfstring{data\+Status}{dataStatus}}
+{\footnotesize\ttfamily enum \hyperlink{ultra_s_8h_a5af22166e4d97bfcc7589baec25bec7b}{data\+Status}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{U\+S\+\_\+\+D\+A\+T\+A\+\_\+\+F\+A\+L\+S\+E\+M\+IN@{U\+S\+\_\+\+D\+A\+T\+A\+\_\+\+F\+A\+L\+S\+E\+M\+IN}!ultra\+S.\+h@{ultra\+S.\+h}}\index{ultra\+S.\+h@{ultra\+S.\+h}!U\+S\+\_\+\+D\+A\+T\+A\+\_\+\+F\+A\+L\+S\+E\+M\+IN@{U\+S\+\_\+\+D\+A\+T\+A\+\_\+\+F\+A\+L\+S\+E\+M\+IN}}}\hypertarget{ultra_s_8h_a5af22166e4d97bfcc7589baec25bec7ba2b0d9c232a242f02d30e512b8908b35a}{}\label{ultra_s_8h_a5af22166e4d97bfcc7589baec25bec7ba2b0d9c232a242f02d30e512b8908b35a} 
+U\+S\+\_\+\+D\+A\+T\+A\+\_\+\+F\+A\+L\+S\+E\+M\+IN&Under the minimum 2cm distance. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{U\+S\+\_\+\+D\+A\+T\+A\+\_\+\+F\+A\+L\+S\+E\+M\+AX@{U\+S\+\_\+\+D\+A\+T\+A\+\_\+\+F\+A\+L\+S\+E\+M\+AX}!ultra\+S.\+h@{ultra\+S.\+h}}\index{ultra\+S.\+h@{ultra\+S.\+h}!U\+S\+\_\+\+D\+A\+T\+A\+\_\+\+F\+A\+L\+S\+E\+M\+AX@{U\+S\+\_\+\+D\+A\+T\+A\+\_\+\+F\+A\+L\+S\+E\+M\+AX}}}\hypertarget{ultra_s_8h_a5af22166e4d97bfcc7589baec25bec7bacc98738e6892bda59facfa3ad35aac69}{}\label{ultra_s_8h_a5af22166e4d97bfcc7589baec25bec7bacc98738e6892bda59facfa3ad35aac69} 
+U\+S\+\_\+\+D\+A\+T\+A\+\_\+\+F\+A\+L\+S\+E\+M\+AX&Over the maximum 4m distance. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{U\+S\+\_\+\+D\+A\+T\+A\+\_\+\+T\+R\+UE@{U\+S\+\_\+\+D\+A\+T\+A\+\_\+\+T\+R\+UE}!ultra\+S.\+h@{ultra\+S.\+h}}\index{ultra\+S.\+h@{ultra\+S.\+h}!U\+S\+\_\+\+D\+A\+T\+A\+\_\+\+T\+R\+UE@{U\+S\+\_\+\+D\+A\+T\+A\+\_\+\+T\+R\+UE}}}\hypertarget{ultra_s_8h_a5af22166e4d97bfcc7589baec25bec7bab4e04d20d63c362b5bba9b6125d34eee}{}\label{ultra_s_8h_a5af22166e4d97bfcc7589baec25bec7bab4e04d20d63c362b5bba9b6125d34eee} 
+U\+S\+\_\+\+D\+A\+T\+A\+\_\+\+T\+R\+UE&Data should be good and is ready to be read. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{U\+S\+\_\+\+D\+A\+T\+A\+\_\+\+T\+R\+U\+E2@{U\+S\+\_\+\+D\+A\+T\+A\+\_\+\+T\+R\+U\+E2}!ultra\+S.\+h@{ultra\+S.\+h}}\index{ultra\+S.\+h@{ultra\+S.\+h}!U\+S\+\_\+\+D\+A\+T\+A\+\_\+\+T\+R\+U\+E2@{U\+S\+\_\+\+D\+A\+T\+A\+\_\+\+T\+R\+U\+E2}}}\hypertarget{ultra_s_8h_a5af22166e4d97bfcc7589baec25bec7ba2139ffa97370f4cb86ee95404d78ef7b}{}\label{ultra_s_8h_a5af22166e4d97bfcc7589baec25bec7ba2139ffa97370f4cb86ee95404d78ef7b} 
+U\+S\+\_\+\+D\+A\+T\+A\+\_\+\+T\+R\+U\+E2&Time has been read from counter and is ready for processing. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{U\+S\+\_\+\+D\+A\+T\+A\+\_\+\+F\+A\+L\+SE@{U\+S\+\_\+\+D\+A\+T\+A\+\_\+\+F\+A\+L\+SE}!ultra\+S.\+h@{ultra\+S.\+h}}\index{ultra\+S.\+h@{ultra\+S.\+h}!U\+S\+\_\+\+D\+A\+T\+A\+\_\+\+F\+A\+L\+SE@{U\+S\+\_\+\+D\+A\+T\+A\+\_\+\+F\+A\+L\+SE}}}\hypertarget{ultra_s_8h_a5af22166e4d97bfcc7589baec25bec7bae27f17d8a7ef52a5d6d5b8c4e562d453}{}\label{ultra_s_8h_a5af22166e4d97bfcc7589baec25bec7bae27f17d8a7ef52a5d6d5b8c4e562d453} 
+U\+S\+\_\+\+D\+A\+T\+A\+\_\+\+F\+A\+L\+SE&Initial status indicating the need to read data, so we don\textquotesingle{}t read before doing any work. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{U\+S\+\_\+\+D\+A\+T\+A\+\_\+\+R\+E\+AD@{U\+S\+\_\+\+D\+A\+T\+A\+\_\+\+R\+E\+AD}!ultra\+S.\+h@{ultra\+S.\+h}}\index{ultra\+S.\+h@{ultra\+S.\+h}!U\+S\+\_\+\+D\+A\+T\+A\+\_\+\+R\+E\+AD@{U\+S\+\_\+\+D\+A\+T\+A\+\_\+\+R\+E\+AD}}}\hypertarget{ultra_s_8h_a5af22166e4d97bfcc7589baec25bec7ba50827340ffe4c961347eb0c3e601f3c4}{}\label{ultra_s_8h_a5af22166e4d97bfcc7589baec25bec7ba50827340ffe4c961347eb0c3e601f3c4} 
+U\+S\+\_\+\+D\+A\+T\+A\+\_\+\+R\+E\+AD&If Read, then application has read the data. \\
+\hline
+
+\end{DoxyEnumFields}
+\hypertarget{ultra_s_8h_a015eb90e0de9f16e87bd149d4b9ce959}{}\label{ultra_s_8h_a015eb90e0de9f16e87bd149d4b9ce959} 
+\index{ultra\+S.\+h@{ultra\+S.\+h}!status@{status}}
+\index{status@{status}!ultra\+S.\+h@{ultra\+S.\+h}}
+\subsubsection{\texorpdfstring{status}{status}}
+{\footnotesize\ttfamily enum \hyperlink{ultra_s_8h_a015eb90e0de9f16e87bd149d4b9ce959}{status}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{U\+S\+\_\+\+OK@{U\+S\+\_\+\+OK}!ultra\+S.\+h@{ultra\+S.\+h}}\index{ultra\+S.\+h@{ultra\+S.\+h}!U\+S\+\_\+\+OK@{U\+S\+\_\+\+OK}}}\hypertarget{ultra_s_8h_a015eb90e0de9f16e87bd149d4b9ce959a688bb2aea3f560be00db855a2807e6fa}{}\label{ultra_s_8h_a015eb90e0de9f16e87bd149d4b9ce959a688bb2aea3f560be00db855a2807e6fa} 
+U\+S\+\_\+\+OK&Work done. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{U\+S\+\_\+\+W\+O\+R\+K\+I\+NG@{U\+S\+\_\+\+W\+O\+R\+K\+I\+NG}!ultra\+S.\+h@{ultra\+S.\+h}}\index{ultra\+S.\+h@{ultra\+S.\+h}!U\+S\+\_\+\+W\+O\+R\+K\+I\+NG@{U\+S\+\_\+\+W\+O\+R\+K\+I\+NG}}}\hypertarget{ultra_s_8h_a015eb90e0de9f16e87bd149d4b9ce959a8b86e148c08da560ab163c02be34254c}{}\label{ultra_s_8h_a015eb90e0de9f16e87bd149d4b9ce959a8b86e148c08da560ab163c02be34254c} 
+U\+S\+\_\+\+W\+O\+R\+K\+I\+NG&Working. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{U\+S\+\_\+\+E\+R\+R\+OR@{U\+S\+\_\+\+E\+R\+R\+OR}!ultra\+S.\+h@{ultra\+S.\+h}}\index{ultra\+S.\+h@{ultra\+S.\+h}!U\+S\+\_\+\+E\+R\+R\+OR@{U\+S\+\_\+\+E\+R\+R\+OR}}}\hypertarget{ultra_s_8h_a015eb90e0de9f16e87bd149d4b9ce959a2fd3a96bffe618698f94b9308c9b4f51}{}\label{ultra_s_8h_a015eb90e0de9f16e87bd149d4b9ce959a2fd3a96bffe618698f94b9308c9b4f51} 
+U\+S\+\_\+\+E\+R\+R\+OR&Error while working. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{U\+S\+\_\+\+I\+D\+LE@{U\+S\+\_\+\+I\+D\+LE}!ultra\+S.\+h@{ultra\+S.\+h}}\index{ultra\+S.\+h@{ultra\+S.\+h}!U\+S\+\_\+\+I\+D\+LE@{U\+S\+\_\+\+I\+D\+LE}}}\hypertarget{ultra_s_8h_a015eb90e0de9f16e87bd149d4b9ce959a4444eecc516e45f891e67e9278efd311}{}\label{ultra_s_8h_a015eb90e0de9f16e87bd149d4b9ce959a4444eecc516e45f891e67e9278efd311} 
+U\+S\+\_\+\+I\+D\+LE&Waiting for work. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Function Documentation}
+\hypertarget{ultra_s_8h_a186e138633dbd47cca8dec6f41f86fb4}{}\label{ultra_s_8h_a186e138633dbd47cca8dec6f41f86fb4} 
+\index{ultra\+S.\+h@{ultra\+S.\+h}!ultra\+S\+\_\+cyclic@{ultra\+S\+\_\+cyclic}}
+\index{ultra\+S\+\_\+cyclic@{ultra\+S\+\_\+cyclic}!ultra\+S.\+h@{ultra\+S.\+h}}
+\subsubsection{\texorpdfstring{ultra\+S\+\_\+cyclic()}{ultraS\_cyclic()}}
+{\footnotesize\ttfamily void ultra\+S\+\_\+cyclic (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Ultrasonic modules main finite state machine.
+
+In the ultrasonic modules working state is another F\+SM to control in module actions. \hypertarget{ultra_s_8h_ad5c0f2f041f3985396910a4b8c325b2a}{}\label{ultra_s_8h_ad5c0f2f041f3985396910a4b8c325b2a} 
+\index{ultra\+S.\+h@{ultra\+S.\+h}!ultra\+S\+\_\+get\+Data\+Status@{ultra\+S\+\_\+get\+Data\+Status}}
+\index{ultra\+S\+\_\+get\+Data\+Status@{ultra\+S\+\_\+get\+Data\+Status}!ultra\+S.\+h@{ultra\+S.\+h}}
+\subsubsection{\texorpdfstring{ultra\+S\+\_\+get\+Data\+Status()}{ultraS\_getDataStatus()}}
+{\footnotesize\ttfamily int ultra\+S\+\_\+get\+Data\+Status (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get ultrasonic modules workings state.
+
+Get the inner F\+SM\textquotesingle{}s state. \hypertarget{ultra_s_8h_ac80c09ba6b899105f44bdfe0be849296}{}\label{ultra_s_8h_ac80c09ba6b899105f44bdfe0be849296} 
+\index{ultra\+S.\+h@{ultra\+S.\+h}!ultra\+S\+\_\+get\+Distance@{ultra\+S\+\_\+get\+Distance}}
+\index{ultra\+S\+\_\+get\+Distance@{ultra\+S\+\_\+get\+Distance}!ultra\+S.\+h@{ultra\+S.\+h}}
+\subsubsection{\texorpdfstring{ultra\+S\+\_\+get\+Distance()}{ultraS\_getDistance()}}
+{\footnotesize\ttfamily unsigned int ultra\+S\+\_\+get\+Distance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get the calculated distance. \hypertarget{ultra_s_8h_a85065971712e1812bab36f1366bc0416}{}\label{ultra_s_8h_a85065971712e1812bab36f1366bc0416} 
+\index{ultra\+S.\+h@{ultra\+S.\+h}!ultra\+S\+\_\+get\+Valid\+Status@{ultra\+S\+\_\+get\+Valid\+Status}}
+\index{ultra\+S\+\_\+get\+Valid\+Status@{ultra\+S\+\_\+get\+Valid\+Status}!ultra\+S.\+h@{ultra\+S.\+h}}
+\subsubsection{\texorpdfstring{ultra\+S\+\_\+get\+Valid\+Status()}{ultraS\_getValidStatus()}}
+{\footnotesize\ttfamily unsigned int ultra\+S\+\_\+get\+Valid\+Status (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Getters, Setters Get ultrasonic modules state. \hypertarget{ultra_s_8h_a76007e39c7b3397710dee9bab7b5d9b5}{}\label{ultra_s_8h_a76007e39c7b3397710dee9bab7b5d9b5} 
+\index{ultra\+S.\+h@{ultra\+S.\+h}!ultra\+S\+\_\+init@{ultra\+S\+\_\+init}}
+\index{ultra\+S\+\_\+init@{ultra\+S\+\_\+init}!ultra\+S.\+h@{ultra\+S.\+h}}
+\subsubsection{\texorpdfstring{ultra\+S\+\_\+init()}{ultraS\_init()}}
+{\footnotesize\ttfamily void ultra\+S\+\_\+init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Set ultrasonic module to be ready for work.
+
+Set\textquotesingle{}s appropriate F\+SM states and resets start and end times to 0. \hypertarget{ultra_s_8h_acdff37f2f4e581b47645303906a09417}{}\label{ultra_s_8h_acdff37f2f4e581b47645303906a09417} 
+\index{ultra\+S.\+h@{ultra\+S.\+h}!ultra\+S\+\_\+prep\+Info@{ultra\+S\+\_\+prep\+Info}}
+\index{ultra\+S\+\_\+prep\+Info@{ultra\+S\+\_\+prep\+Info}!ultra\+S.\+h@{ultra\+S.\+h}}
+\subsubsection{\texorpdfstring{ultra\+S\+\_\+prep\+Info()}{ultraS\_prepInfo()}}
+{\footnotesize\ttfamily void ultra\+S\+\_\+prep\+Info (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Calculates measured distance.
+
+Measured distance is calculated as\+: end time -\/ start time, which is then divided by 58 -\/ constant to get the distance in centimeters. End time is the difference of the end and start time multiplier times the counter size added to the measured end time. Start time is just the measured start time. \hypertarget{ultra_s_8h_a2dc7671dcfab4e1cb316c3443f709a85}{}\label{ultra_s_8h_a2dc7671dcfab4e1cb316c3443f709a85} 
+\index{ultra\+S.\+h@{ultra\+S.\+h}!ultra\+S\+\_\+send\+Signal@{ultra\+S\+\_\+send\+Signal}}
+\index{ultra\+S\+\_\+send\+Signal@{ultra\+S\+\_\+send\+Signal}!ultra\+S.\+h@{ultra\+S.\+h}}
+\subsubsection{\texorpdfstring{ultra\+S\+\_\+send\+Signal()}{ultraS\_sendSignal()}}
+{\footnotesize\ttfamily void ultra\+S\+\_\+send\+Signal (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Send signal to the physical ultrasonic module.
+
+Set\textquotesingle{}s appropriate F\+SM state. Send\textquotesingle{}s a high signal for required time -\/ 10uS. Delays system to not send multiple signals at the same time. \hypertarget{ultra_s_8h_a8a5d4bdd11c244c8b0341256f5998d13}{}\label{ultra_s_8h_a8a5d4bdd11c244c8b0341256f5998d13} 
+\index{ultra\+S.\+h@{ultra\+S.\+h}!ultra\+S\+\_\+set\+Data\+Status@{ultra\+S\+\_\+set\+Data\+Status}}
+\index{ultra\+S\+\_\+set\+Data\+Status@{ultra\+S\+\_\+set\+Data\+Status}!ultra\+S.\+h@{ultra\+S.\+h}}
+\subsubsection{\texorpdfstring{ultra\+S\+\_\+set\+Data\+Status()}{ultraS\_setDataStatus()}}
+{\footnotesize\ttfamily void ultra\+S\+\_\+set\+Data\+Status (\begin{DoxyParamCaption}\item[{enum \hyperlink{ultra_s_8h_a5af22166e4d97bfcc7589baec25bec7b}{data\+Status}}]{valid\+Status }\end{DoxyParamCaption})}
+
+Set ultrasonic modules workings state.
+
+Set the inner F\+SM\textquotesingle{}s state. \hypertarget{ultra_s_8h_a3aa336805b30c760503c3a2c9792d1b0}{}\label{ultra_s_8h_a3aa336805b30c760503c3a2c9792d1b0} 
+\index{ultra\+S.\+h@{ultra\+S.\+h}!ultra\+S\+\_\+set\+Valid\+Status@{ultra\+S\+\_\+set\+Valid\+Status}}
+\index{ultra\+S\+\_\+set\+Valid\+Status@{ultra\+S\+\_\+set\+Valid\+Status}!ultra\+S.\+h@{ultra\+S.\+h}}
+\subsubsection{\texorpdfstring{ultra\+S\+\_\+set\+Valid\+Status()}{ultraS\_setValidStatus()}}
+{\footnotesize\ttfamily void ultra\+S\+\_\+set\+Valid\+Status (\begin{DoxyParamCaption}\item[{enum \hyperlink{ultra_s_8h_a015eb90e0de9f16e87bd149d4b9ce959}{status}}]{valid\+Status }\end{DoxyParamCaption})}
+
+Set ultrasonic modules state. 
