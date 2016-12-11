@@ -8,19 +8,19 @@
 #include <driverlib.h>
 #include "button.h"
 #include "timer.h"
+#include "gpio.h"
 
 //***** DEFINES ***************************************************************
 #define NOTDEBOUNCED 0xFF
 #define DEBOUNCED 0
 #define ON 1
 #define OFF 0
+#define ACCUARCY  0x10
 
-volatile short unbouncedBTN = 0;
-volatile short BTN = 0;				/* Debounced button value */
-unsigned long int lastCounter = 0;
+volatile int unbouncedBTN = 0;
+volatile short BTN = 0;										/* Debounced button value */
+unsigned long long int lastCounter = 0;
 
-//unsigned volatile int Data[100]; 			// Testing debounce
-//unsigned volatile int i = 0;
 
 short button_getBtn(void){
   return BTN;
@@ -28,16 +28,14 @@ short button_getBtn(void){
 
 void button_debounceBtn(){
 	timer_diTAI();
-	if ((timer_getCounter() - lastCounter) <=  0x20){	/* Debouncing pin 1.1 (on board button) */
+	if ((timer_getCounter() - lastCounter) >= ACCUARCY){	/* Debouncing pin 1.1 (on board button) */
 		unbouncedBTN <<= 1;
-		unbouncedBTN |= GPIO_getInputPinValue(GPIO_PORT_P1, GPIO_PIN1)&0x01;
+		unbouncedBTN |= gpio_getPinInput(gpio_PORT_P2, gpio_PIN1)&0x01;
 		if(unbouncedBTN == NOTDEBOUNCED)
 			BTN = OFF;
 		else if(unbouncedBTN == DEBOUNCED)
 			BTN = ON;
 		lastCounter = timer_getCounter();
-		//Data[i] = unbouncedBTN;
-		//i++;
 	}
 	timer_enTAI();
 }
