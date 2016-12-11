@@ -1,8 +1,11 @@
 eclipse.preferences.version=1
+<<<<<<< HEAD
 encoding//Debug/SRC/HW/subdir_rules.mk=UTF-8
 encoding//Debug/SRC/HW/subdir_vars.mk=UTF-8
 encoding//Debug/SRC/MCU/subdir_rules.mk=UTF-8
 encoding//Debug/SRC/MCU/subdir_vars.mk=UTF-8
+=======
+>>>>>>> ff0c9283685c50632dfe2e8e8a3b6e5a066d3d09
 encoding//Debug/driverlib/MSP430F5xx_6xx/subdir_rules.mk=UTF-8
 encoding//Debug/driverlib/MSP430F5xx_6xx/subdir_vars.mk=UTF-8
 encoding//Debug/makefile=UTF-8

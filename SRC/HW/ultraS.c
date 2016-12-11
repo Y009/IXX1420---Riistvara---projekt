@@ -10,7 +10,7 @@
 #include "ultraS.h"
 #include "../MCU/counter.h"
 #include "../MCU/timer.h"
-#include "stdio.h"
+s#include "stdio.h"
 #include "gpio.h"
 
 //***** DEFINES ***************************************************************
@@ -26,7 +26,6 @@ unsigned volatile long long int endTime;
 unsigned volatile long long int startTimeMult;
 unsigned volatile long long int endTimeMult;
 unsigned volatile long int distance;
-
 
 enum status usStatus = US_IDLE;
 enum dataStatus usDataStatus = US_DATA_FALSE;
@@ -141,7 +140,7 @@ __interrupt void ultraS_ISR (void){
     if (gpio_getInterrupt(gpio_PORT_P1, gpio_PIN5)){
      	if (!startTime){													/* Rising endge. */
          	startTime = counter_getCountValue(counter_timerBase);
-         	startTimeMult = counter_getOverflow();
+        	startTimeMult = counter_getOverflow();
          	gpio_setInterruptEdge (gpio_PORT_P1, gpio_PIN5,
 									  gpio_HIGH_TO_LOW_TRANSITION);
      	}

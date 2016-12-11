@@ -35,6 +35,7 @@ void counter_init(void){
     //*************************************************************************
     //  Clear/enable interrupt flags and start timer
     //*************************************************************************
+
     Timer_B_clearTimerInterrupt( counter_timerBase );                                 /* Clear TA0IFG */
     Timer_B_clearCaptureCompareInterrupt( counter_timerBase,
         TIMER_B_CAPTURECOMPARE_REGISTER_0                                         /* Clear CCR0IFG interrupt pending flag bit */
