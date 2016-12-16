@@ -5,6 +5,12 @@
  *      Author: Y009
  */
 
+/** \file ultraS.c
+**	\brief Documentation for the ultrasonic module.
+**
+**  Describes the workings of the ultrasonic module.
+**/
+
 //***** Header Files **********************************************************
 #include <driverlib.h>
 #include "ultraS.h"
@@ -15,10 +21,10 @@
 
 //***** DEFINES ***************************************************************
 
-#define MAXDIST 23202							/* 23200us is 4m. Giving a little error time. */
-#define MINDIST 114								/* 116us is 2cm. Giving a little error time. */
-#define CMCONST 58								/* Constant to divide time with to get distance in centimeters. */
-#define CYCLE 0xFDE8
+#define MAXDIST 23200							/**< 23200us is 4m. */
+#define MINDIST 116								/**< 116us is 2cm. */
+#define CMCONST 58								/**< Constant to divide time with to get distance in centimeters. */
+#define CYCLE 0xFDE8							/**< Timer size - added to endTime when rollover happens.*/
 
 void resetTimes();
 
@@ -31,22 +37,28 @@ unsigned volatile long int distance;                    /**< Distance calculated
 enum status usStatus = US_IDLE;                         /**< Set finite state machine to idle/waiting state. */
 enum dataStatus usDataStatus = US_DATA_FALSE;           /**< Set finite state machine to start in false state to insure no false information. */
 
+/*********************************************************/
+void 
+ultraS_init()
 /** Set ultrasonic module to be ready for work.
-
- *  Set's appropriate FSM states and resets start and end times to 0.
- */
-void ultraS_init(){
+**
+**  Set's appropriate FSM states and resets start and end times to 0.
+**/
+{
     usStatus = US_WORKING;
     resetTimes();
     usStatus = US_IDLE;
 }
 
+/*********************************************************/
+void 
+ultraS_sendSignal()
 /** Send signal to the physical ultrasonic module.
-
- *  Set's appropriate FSM state. Send's a high signal for required time - 10uS.
- *  Delays system to not send multiple signals at the same time.
- */
-void ultraS_sendSignal(){
+**
+**  Set's appropriate FSM state. Send's a high signal for required time - 10uS.
+**  Delays system to not send multiple signals at the same time.
+**/
+{
     usStatus = US_WORKING;
 	gpio_setPinHigh (gpio_PORT_P1, gpio_PIN4);
 	__delay_cycles(160U);												/* trigger time */
@@ -54,14 +66,19 @@ void ultraS_sendSignal(){
 	__delay_cycles(96000U);												/* echo wait period */
 }
 
+/*********************************************************/
+void 
+ultraS_prepInfo()
 /** Calculates measured distance.
-
- *  Measured distance is calculated as: end time - start time, which is then divided by 58 - constant
- *  to get the distance in centimeters.
- *  End time is the difference of the end and start time multiplier times the counter size added to
- *  the measured end time. Start time is just the measured start time.
- */
-void ultraS_prepInfo(){													/* Main can check before getting distance, whether data is actually valid. */
+**
+**  Measured distance is calculated as: end time - start time, which is then divided by 58 - constant
+**  to get the distance in centimeters.
+**  End time is the difference of the end and start time multiplier times the counter size added to
+**  the measured end time. Start time is just the measured start time.
+** \attention Only when rollover happens!
+** \attention Adds the entire counter size to endTime to compensate for potential rollover.
+**/
+{
     endTime += CYCLE * (endTimeMult-startTimeMult);      				/* Adding entire 16bit counter value to end time to compensate for rollover. */
     distance = (endTime - startTime)/CMCONST;
 	if ((endTime - startTime) > MAXDIST){
@@ -74,17 +91,26 @@ void ultraS_prepInfo(){													/* Main can check before getting distance, w
 		usDataStatus = US_DATA_TRUE;
 	}
 }
+
+/*********************************************************/
+void 
+resetTimes()
 /**  Reset start and end time to 0 to insure proper results.
- */
-void resetTimes(){
+**/
+{
 	startTime = 0; 														/* Setting up for the next measurement. */
 	endTime = 0;														/* Set end time also 0 in case we don't catch interrupt.  */
 }
-/** Ultrasonic modules main finite state machine.
 
- *  In the ultrasonic modules working state is another FSM to control in module actions.
- */
-void ultraS_cyclic(){
+/*********************************************************/
+void 
+ultraS_cyclic()
+/** Ultrasonic modules main finite state machine.
+**
+**  Controls the work regarding the ultrasonic hardware. Finite state machine to decide state of system.
+**  \attention US_WORKING state is further controlled by another state machine.
+**/
+{
     switch(usStatus){
     case US_OK:
         if(usDataStatus == US_DATA_READ){
@@ -132,45 +158,75 @@ void ultraS_cyclic(){
 
 /** Getters, Setters  **/
 
+/*********************************************************/
+unsigned int 
+ultraS_getValidStatus()
 /** Get ultrasonic modules state.
- */
-unsigned int ultraS_getValidStatus(){
+** 
+** \return usStatus
+**/
+{
 	return usStatus;
 }
+
+/*********************************************************/
+void
+ultraS_setValidStatus(
+			enum status validStatus)     /**< Status to set */
 /** Set ultrasonic modules state.
- */
-void ultraS_setValidStatus(enum status validStatus){
+**/
+{
 	usStatus = validStatus;
 }
-/** Get the calculated distance.
- */
-unsigned int ultraS_getDistance(){										/* In reality distance can not be larger than 2 bytes, hence casting should be fine. */
+
+/*********************************************************/
+unsigned int 
+ultraS_getDistance()
+/** Get measured distance.
+**
+** \return Distance 
+*/
+{										/* In reality distance can not be larger than 2 bytes, hence casting should be fine. */
 	return distance;
 }
-/** Get ultrasonic modules workings state.
 
- *  Get the inner FSM's state.
- */
-int ultraS_getDataStatus(){
+/*********************************************************/
+int 
+ultraS_getDataStatus()
+{
+/** Get ultrasonic modules workings state.
+**
+**  Get the inner FSM's state.
+** \return usDataStatus
+*/
     return usDataStatus;
 }
-/** Set ultrasonic modules workings state.
 
- *  Set the inner FSM's state.
- */
-void ultraS_setDataStatus(enum dataStatus validStatus){
+/*********************************************************/
+void 
+ultraS_setDataStatus(
+		enum dataStatus validStatus)	/**< Status to set */
+/** Set ultrasonic modules workings state.
+**
+**  Set the inner FSM's state.
+**/
+{
     usDataStatus = validStatus;
 }
 
 /** Getters, Setters  **/
 
-/** Interrupt vector for Port 1.
-
- *  Is triggered when the hardware ultrasonic module sends back an echo signal.
- *  The rising edge of the echo signal is saved as the starting time and the falling edge as the ending time.
- */
+/*********************************************************/
 #pragma vector=PORT1_VECTOR
-__interrupt void ultraS_ISR (void){
+__interrupt 
+void 
+ultraS_ISR (void)
+/** Interrupt vector for Port 1.
+**
+**  Is triggered when the hardware ultrasonic module sends back an echo signal.
+**  The rising edge of the echo signal is saved as the starting time and the falling edge as the ending time.
+**/
+{
 
     if (gpio_getInterrupt(gpio_PORT_P1, gpio_PIN5)){
      	if (!startTime){													/* Rising endge. */

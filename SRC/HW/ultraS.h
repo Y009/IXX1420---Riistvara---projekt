@@ -5,9 +5,11 @@
  *      Author: Y009
  */
 
- /*! \file ultraS.h
-    \brief Header file for the ultrasonic module.
-*/
+/** \file ultraS.h
+**	\brief Documentation for the ultrasonic module.
+**
+**  Global enumeration defines.
+**/
 
 #ifndef ULTRAS_H_
 #define ULTRAS_H_

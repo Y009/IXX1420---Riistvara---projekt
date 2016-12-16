@@ -5,11 +5,19 @@
  *      Author: Y009
  */
 
+/** \file gpio.c
+**	\brief Documentation for the general purpose input-output module.
+**/
+
 //***** Header Files **********************************************************
 #include <driverlib.h>
 #include "gpio.h"
 
-void gpio_init(){
+void 
+gpio_init()
+/** Initializes the used pins on the board.
+**/
+{
 	P3SEL |= BIT3; 														/* UART pin select */
 	P5SEL |= BIT2 + BIT3;  												/* XT2CLK pin select */
 

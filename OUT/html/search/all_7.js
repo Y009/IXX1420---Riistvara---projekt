@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['ultras_2ec',['ultraS.c',['../ultra_s_8c.html',1,'']]],
+  ['ultras_2eh',['ultraS.h',['../ultra_s_8h.html',1,'']]],
+  ['ultras_5fcyclic',['ultraS_cyclic',['../ultra_s_8c.html#a186e138633dbd47cca8dec6f41f86fb4',1,'ultraS_cyclic():&#160;ultraS.c'],['../ultra_s_8h.html#a186e138633dbd47cca8dec6f41f86fb4',1,'ultraS_cyclic():&#160;ultraS.c']]],
+  ['ultras_5fgetdatastatus',['ultraS_getDataStatus',['../ultra_s_8c.html#ad5c0f2f041f3985396910a4b8c325b2a',1,'ultraS_getDataStatus():&#160;ultraS.c'],['../ultra_s_8h.html#ad5c0f2f041f3985396910a4b8c325b2a',1,'ultraS_getDataStatus():&#160;ultraS.c']]],
+  ['ultras_5fgetdistance',['ultraS_getDistance',['../ultra_s_8c.html#ac80c09ba6b899105f44bdfe0be849296',1,'ultraS_getDistance():&#160;ultraS.c'],['../ultra_s_8h.html#ac80c09ba6b899105f44bdfe0be849296',1,'ultraS_getDistance():&#160;ultraS.c']]],
+  ['ultras_5fgetvalidstatus',['ultraS_getValidStatus',['../ultra_s_8c.html#a85065971712e1812bab36f1366bc0416',1,'ultraS_getValidStatus():&#160;ultraS.c'],['../ultra_s_8h.html#a85065971712e1812bab36f1366bc0416',1,'ultraS_getValidStatus():&#160;ultraS.c']]],
+  ['ultras_5finit',['ultraS_init',['../ultra_s_8c.html#a76007e39c7b3397710dee9bab7b5d9b5',1,'ultraS_init():&#160;ultraS.c'],['../ultra_s_8h.html#a76007e39c7b3397710dee9bab7b5d9b5',1,'ultraS_init():&#160;ultraS.c']]],
+  ['ultras_5fisr',['ultraS_ISR',['../ultra_s_8c.html#aa8c3f90478a445d776dff99fc0c98b57',1,'ultraS.c']]],
+  ['ultras_5fprepinfo',['ultraS_prepInfo',['../ultra_s_8c.html#acdff37f2f4e581b47645303906a09417',1,'ultraS_prepInfo():&#160;ultraS.c'],['../ultra_s_8h.html#acdff37f2f4e581b47645303906a09417',1,'ultraS_prepInfo():&#160;ultraS.c']]],
+  ['ultras_5fsendsignal',['ultraS_sendSignal',['../ultra_s_8c.html#a2dc7671dcfab4e1cb316c3443f709a85',1,'ultraS_sendSignal():&#160;ultraS.c'],['../ultra_s_8h.html#a2dc7671dcfab4e1cb316c3443f709a85',1,'ultraS_sendSignal():&#160;ultraS.c']]],
+  ['ultras_5fsetdatastatus',['ultraS_setDataStatus',['../ultra_s_8c.html#a8a5d4bdd11c244c8b0341256f5998d13',1,'ultraS_setDataStatus(enum dataStatus validStatus):&#160;ultraS.c'],['../ultra_s_8h.html#a8a5d4bdd11c244c8b0341256f5998d13',1,'ultraS_setDataStatus(enum dataStatus validStatus):&#160;ultraS.c']]],
+  ['ultras_5fsetvalidstatus',['ultraS_setValidStatus',['../ultra_s_8c.html#a3aa336805b30c760503c3a2c9792d1b0',1,'ultraS_setValidStatus(enum status validStatus):&#160;ultraS.c'],['../ultra_s_8h.html#a3aa336805b30c760503c3a2c9792d1b0',1,'ultraS_setValidStatus(enum status validStatus):&#160;ultraS.c']]],
+  ['us_5fdata_5ffalse',['US_DATA_FALSE',['../ultra_s_8h.html#a5af22166e4d97bfcc7589baec25bec7bae27f17d8a7ef52a5d6d5b8c4e562d453',1,'ultraS.h']]],
+  ['us_5fdata_5ffalsemax',['US_DATA_FALSEMAX',['../ultra_s_8h.html#a5af22166e4d97bfcc7589baec25bec7bacc98738e6892bda59facfa3ad35aac69',1,'ultraS.h']]],
+  ['us_5fdata_5ffalsemin',['US_DATA_FALSEMIN',['../ultra_s_8h.html#a5af22166e4d97bfcc7589baec25bec7ba2b0d9c232a242f02d30e512b8908b35a',1,'ultraS.h']]],
+  ['us_5fdata_5fread',['US_DATA_READ',['../ultra_s_8h.html#a5af22166e4d97bfcc7589baec25bec7ba50827340ffe4c961347eb0c3e601f3c4',1,'ultraS.h']]],
+  ['us_5fdata_5ftrue',['US_DATA_TRUE',['../ultra_s_8h.html#a5af22166e4d97bfcc7589baec25bec7bab4e04d20d63c362b5bba9b6125d34eee',1,'ultraS.h']]],
+  ['us_5fdata_5ftrue2',['US_DATA_TRUE2',['../ultra_s_8h.html#a5af22166e4d97bfcc7589baec25bec7ba2139ffa97370f4cb86ee95404d78ef7b',1,'ultraS.h']]],
+  ['us_5ferror',['US_ERROR',['../ultra_s_8h.html#a015eb90e0de9f16e87bd149d4b9ce959a2fd3a96bffe618698f94b9308c9b4f51',1,'ultraS.h']]],
+  ['us_5fidle',['US_IDLE',['../ultra_s_8h.html#a015eb90e0de9f16e87bd149d4b9ce959a4444eecc516e45f891e67e9278efd311',1,'ultraS.h']]],
+  ['us_5fok',['US_OK',['../ultra_s_8h.html#a015eb90e0de9f16e87bd149d4b9ce959a688bb2aea3f560be00db855a2807e6fa',1,'ultraS.h']]],
+  ['us_5fworking',['US_WORKING',['../ultra_s_8h.html#a015eb90e0de9f16e87bd149d4b9ce959a8b86e148c08da560ab163c02be34254c',1,'ultraS.h']]],
+  ['usdatastatus',['usDataStatus',['../ultra_s_8c.html#ad28bb54ae6e9031bd6205e4069042cc2',1,'ultraS.c']]],
+  ['usstatus',['usStatus',['../ultra_s_8c.html#a25c9f4eb624319b65b1fc6f64db7d410',1,'ultraS.c']]]
+];

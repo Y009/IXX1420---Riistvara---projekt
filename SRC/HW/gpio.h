@@ -5,6 +5,12 @@
  *      Author: Y009
  */
 
+/** \file gpio.h
+**	\brief Documentation for the gpio module.
+**
+**  Global macro defines.
+**/
+
 #ifndef GPIO_H_
 #define GPIO_H_
 
@@ -12,13 +18,61 @@
 
 // Getting all used gpio calls to go through the gpio module to preserve hierachy.
 
+/**
+** \def gpio_getPinInput(port, pin) 				GPIO_getInputPinValue(port, pin)
+**	\brief Sets local gpio to appropriate board function of same name.
+**
+** Gets port pin's logical value.
+**/
+
+/**
+** \def gpio_setPinHigh(port, pin) 				GPIO_setOutputHighOnPin(port, pin)
+**	\brief Sets local gpio to appropriate board function of same name.
+** 
+** Sets port's pin to a logical 1
+**/
+
+/**
+** \def gpio_setPinLow(port, pin) 				GPIO_setOutputLowOnPin(port, pin)
+**	\brief Sets local gpio to appropriate board function of same name.
+**
+** Sets port's pin to a logical 0
+**/
+
+/**
+** \def gpio_getInterrupt(port, pin)				GPIO_getInterruptStatus(port, pin)
+**	\brief Sets local gpio to appropriate board function of same name.
+**
+** Gets port pin's pending interrupt status.
+**/
+
+/**
+** \def gpio_setInterruptEdge(port, pin, edge)		GPIO_selectInterruptEdge(port, pin, edge)
+**	\brief Sets local gpio to appropriate board function of same name.
+**
+** Sets port's pin interrupt status to be set by either a falling or a rising edge.
+**/
+
+/**
+** \def gpio_clearInterrupt(port, pin)				GPIO_clearInterrupt(port, pin)
+**	\brief Sets local gpio to appropriate board function of same name.
+**
+** Used to clear serviced interrupts.
+**/
+
+/**
+** \def gpio_getInterrupt(port, pin)				GPIO_getInterruptStatus(port, pin)
+**	\brief Sets local gpio to appropriate board function of same name.
+**
+** Sets port's pin to a logical 1
+**/
+
 #define gpio_getPinInput(port, pin) 				GPIO_getInputPinValue(port, pin)
 #define gpio_setPinHigh(port, pin) 					GPIO_setOutputHighOnPin(port, pin)
 #define gpio_setPinLow(port, pin) 					GPIO_setOutputLowOnPin(port, pin)
 #define gpio_getInterrupt(port, pin)				GPIO_getInterruptStatus(port, pin)
 #define gpio_setInterruptEdge(port, pin, edge)		GPIO_selectInterruptEdge(port, pin, edge)
 #define gpio_clearInterrupt(port, pin)				GPIO_clearInterrupt(port, pin)
-#define gpio_getInterrupt(port, pin)				GPIO_getInterruptStatus(port, pin)
 
 #define gpio_PORT_P1                        GPIO_PORT_P1
 #define gpio_PORT_P2                        GPIO_PORT_P2

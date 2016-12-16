@@ -1,0 +1,258 @@
+\hypertarget{ultra_s_8c}{}\section{S\+R\+C/\+H\+W/ultraS.c File Reference}
+\label{ultra_s_8c}\index{S\+R\+C/\+H\+W/ultra\+S.\+c@{S\+R\+C/\+H\+W/ultra\+S.\+c}}
+
+
+Documentation for the ultrasonic module.  
+
+
+{\ttfamily \#include $<$driverlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}ultra\+S.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../\+M\+C\+U/counter.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../\+M\+C\+U/timer.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}stdio.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}gpio.\+h\char`\"{}}\newline
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{ultra_s_8c_ad20257241c97c3e731b64608dcdc5096}{M\+A\+X\+D\+I\+ST}~23200
+\item 
+\#define \hyperlink{ultra_s_8c_abd40c30aeb838e9729fd6ebd4c4787d8}{M\+I\+N\+D\+I\+ST}~116
+\item 
+\#define \hyperlink{ultra_s_8c_a0212ca8fac649015507d58329b4e2cfc}{C\+M\+C\+O\+N\+ST}~58
+\item 
+\#define \hyperlink{ultra_s_8c_a78e81cc81d968960cf6089af8c033769}{C\+Y\+C\+LE}~0x\+F\+D\+E8
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{ultra_s_8c_afded4b6fd641aaf196a2bf062b82615d}{reset\+Times} ()
+\item 
+void \hyperlink{ultra_s_8c_a76007e39c7b3397710dee9bab7b5d9b5}{ultra\+S\+\_\+init} ()
+\item 
+void \hyperlink{ultra_s_8c_a2dc7671dcfab4e1cb316c3443f709a85}{ultra\+S\+\_\+send\+Signal} ()
+\item 
+void \hyperlink{ultra_s_8c_acdff37f2f4e581b47645303906a09417}{ultra\+S\+\_\+prep\+Info} ()
+\item 
+void \hyperlink{ultra_s_8c_a186e138633dbd47cca8dec6f41f86fb4}{ultra\+S\+\_\+cyclic} ()
+\item 
+unsigned int \hyperlink{ultra_s_8c_a85065971712e1812bab36f1366bc0416}{ultra\+S\+\_\+get\+Valid\+Status} ()
+\item 
+void \hyperlink{ultra_s_8c_a3aa336805b30c760503c3a2c9792d1b0}{ultra\+S\+\_\+set\+Valid\+Status} (enum \hyperlink{ultra_s_8h_a015eb90e0de9f16e87bd149d4b9ce959}{status} valid\+Status)
+\item 
+unsigned int \hyperlink{ultra_s_8c_ac80c09ba6b899105f44bdfe0be849296}{ultra\+S\+\_\+get\+Distance} ()
+\item 
+int \hyperlink{ultra_s_8c_ad5c0f2f041f3985396910a4b8c325b2a}{ultra\+S\+\_\+get\+Data\+Status} ()
+\item 
+void \hyperlink{ultra_s_8c_a8a5d4bdd11c244c8b0341256f5998d13}{ultra\+S\+\_\+set\+Data\+Status} (enum \hyperlink{ultra_s_8h_a5af22166e4d97bfcc7589baec25bec7b}{data\+Status} valid\+Status)
+\item 
+\+\_\+\+\_\+interrupt void \hyperlink{ultra_s_8c_aa8c3f90478a445d776dff99fc0c98b57}{ultra\+S\+\_\+\+I\+SR} (void)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+unsigned volatile long long int \hyperlink{ultra_s_8c_a844b54572135dff378b658bd65221263}{start\+Time}
+\item 
+unsigned volatile long long int \hyperlink{ultra_s_8c_a5abce346ccd3cad73218a5938c205e7d}{end\+Time}
+\item 
+unsigned volatile long long int \hyperlink{ultra_s_8c_a349cd5cafa77914b2cc6166055010c9b}{start\+Time\+Mult}
+\item 
+unsigned volatile long long int \hyperlink{ultra_s_8c_a6221a55ce2abd90d7398b6199cd179c4}{end\+Time\+Mult}
+\item 
+unsigned volatile long int \hyperlink{ultra_s_8c_a71ff771a4087c8674a0fa6720182d23f}{distance}
+\item 
+enum \hyperlink{ultra_s_8h_a015eb90e0de9f16e87bd149d4b9ce959}{status} \hyperlink{ultra_s_8c_a25c9f4eb624319b65b1fc6f64db7d410}{us\+Status} = \hyperlink{ultra_s_8h_a015eb90e0de9f16e87bd149d4b9ce959a4444eecc516e45f891e67e9278efd311}{U\+S\+\_\+\+I\+D\+LE}
+\item 
+enum \hyperlink{ultra_s_8h_a5af22166e4d97bfcc7589baec25bec7b}{data\+Status} \hyperlink{ultra_s_8c_ad28bb54ae6e9031bd6205e4069042cc2}{us\+Data\+Status} = \hyperlink{ultra_s_8h_a5af22166e4d97bfcc7589baec25bec7bae27f17d8a7ef52a5d6d5b8c4e562d453}{U\+S\+\_\+\+D\+A\+T\+A\+\_\+\+F\+A\+L\+SE}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Documentation for the ultrasonic module. 
+
+Describes the workings of the ultrasonic module. 
+
+\subsection{Macro Definition Documentation}
+\hypertarget{ultra_s_8c_a0212ca8fac649015507d58329b4e2cfc}{}\label{ultra_s_8c_a0212ca8fac649015507d58329b4e2cfc} 
+\index{ultra\+S.\+c@{ultra\+S.\+c}!C\+M\+C\+O\+N\+ST@{C\+M\+C\+O\+N\+ST}}
+\index{C\+M\+C\+O\+N\+ST@{C\+M\+C\+O\+N\+ST}!ultra\+S.\+c@{ultra\+S.\+c}}
+\subsubsection{\texorpdfstring{C\+M\+C\+O\+N\+ST}{CMCONST}}
+{\footnotesize\ttfamily \#define C\+M\+C\+O\+N\+ST~58}
+
+Constant to divide time with to get distance in centimeters. \hypertarget{ultra_s_8c_a78e81cc81d968960cf6089af8c033769}{}\label{ultra_s_8c_a78e81cc81d968960cf6089af8c033769} 
+\index{ultra\+S.\+c@{ultra\+S.\+c}!C\+Y\+C\+LE@{C\+Y\+C\+LE}}
+\index{C\+Y\+C\+LE@{C\+Y\+C\+LE}!ultra\+S.\+c@{ultra\+S.\+c}}
+\subsubsection{\texorpdfstring{C\+Y\+C\+LE}{CYCLE}}
+{\footnotesize\ttfamily \#define C\+Y\+C\+LE~0x\+F\+D\+E8}
+
+Timer size -\/ added to end\+Time when rollover happens. \hypertarget{ultra_s_8c_ad20257241c97c3e731b64608dcdc5096}{}\label{ultra_s_8c_ad20257241c97c3e731b64608dcdc5096} 
+\index{ultra\+S.\+c@{ultra\+S.\+c}!M\+A\+X\+D\+I\+ST@{M\+A\+X\+D\+I\+ST}}
+\index{M\+A\+X\+D\+I\+ST@{M\+A\+X\+D\+I\+ST}!ultra\+S.\+c@{ultra\+S.\+c}}
+\subsubsection{\texorpdfstring{M\+A\+X\+D\+I\+ST}{MAXDIST}}
+{\footnotesize\ttfamily \#define M\+A\+X\+D\+I\+ST~23200}
+
+23200us is 4m. \hypertarget{ultra_s_8c_abd40c30aeb838e9729fd6ebd4c4787d8}{}\label{ultra_s_8c_abd40c30aeb838e9729fd6ebd4c4787d8} 
+\index{ultra\+S.\+c@{ultra\+S.\+c}!M\+I\+N\+D\+I\+ST@{M\+I\+N\+D\+I\+ST}}
+\index{M\+I\+N\+D\+I\+ST@{M\+I\+N\+D\+I\+ST}!ultra\+S.\+c@{ultra\+S.\+c}}
+\subsubsection{\texorpdfstring{M\+I\+N\+D\+I\+ST}{MINDIST}}
+{\footnotesize\ttfamily \#define M\+I\+N\+D\+I\+ST~116}
+
+116us is 2cm. 
+
+\subsection{Function Documentation}
+\hypertarget{ultra_s_8c_afded4b6fd641aaf196a2bf062b82615d}{}\label{ultra_s_8c_afded4b6fd641aaf196a2bf062b82615d} 
+\index{ultra\+S.\+c@{ultra\+S.\+c}!reset\+Times@{reset\+Times}}
+\index{reset\+Times@{reset\+Times}!ultra\+S.\+c@{ultra\+S.\+c}}
+\subsubsection{\texorpdfstring{reset\+Times()}{resetTimes()}}
+{\footnotesize\ttfamily void reset\+Times (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Reset start and end time to 0 to insure proper results. \hypertarget{ultra_s_8c_a186e138633dbd47cca8dec6f41f86fb4}{}\label{ultra_s_8c_a186e138633dbd47cca8dec6f41f86fb4} 
+\index{ultra\+S.\+c@{ultra\+S.\+c}!ultra\+S\+\_\+cyclic@{ultra\+S\+\_\+cyclic}}
+\index{ultra\+S\+\_\+cyclic@{ultra\+S\+\_\+cyclic}!ultra\+S.\+c@{ultra\+S.\+c}}
+\subsubsection{\texorpdfstring{ultra\+S\+\_\+cyclic()}{ultraS\_cyclic()}}
+{\footnotesize\ttfamily void ultra\+S\+\_\+cyclic (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Ultrasonic modules main finite state machine.
+
+Controls the work regarding the ultrasonic hardware. Finite state machine to decide state of system. \begin{DoxyAttention}{Attention}
+U\+S\+\_\+\+W\+O\+R\+K\+I\+NG state is further controlled by another state machine. 
+\end{DoxyAttention}
+\hypertarget{ultra_s_8c_ad5c0f2f041f3985396910a4b8c325b2a}{}\label{ultra_s_8c_ad5c0f2f041f3985396910a4b8c325b2a} 
+\index{ultra\+S.\+c@{ultra\+S.\+c}!ultra\+S\+\_\+get\+Data\+Status@{ultra\+S\+\_\+get\+Data\+Status}}
+\index{ultra\+S\+\_\+get\+Data\+Status@{ultra\+S\+\_\+get\+Data\+Status}!ultra\+S.\+c@{ultra\+S.\+c}}
+\subsubsection{\texorpdfstring{ultra\+S\+\_\+get\+Data\+Status()}{ultraS\_getDataStatus()}}
+{\footnotesize\ttfamily int ultra\+S\+\_\+get\+Data\+Status (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get ultrasonic modules workings state.
+
+Get the inner F\+SM\textquotesingle{}s state. \begin{DoxyReturn}{Returns}
+us\+Data\+Status
+\end{DoxyReturn}
+\hypertarget{ultra_s_8c_ac80c09ba6b899105f44bdfe0be849296}{}\label{ultra_s_8c_ac80c09ba6b899105f44bdfe0be849296} 
+\index{ultra\+S.\+c@{ultra\+S.\+c}!ultra\+S\+\_\+get\+Distance@{ultra\+S\+\_\+get\+Distance}}
+\index{ultra\+S\+\_\+get\+Distance@{ultra\+S\+\_\+get\+Distance}!ultra\+S.\+c@{ultra\+S.\+c}}
+\subsubsection{\texorpdfstring{ultra\+S\+\_\+get\+Distance()}{ultraS\_getDistance()}}
+{\footnotesize\ttfamily unsigned int ultra\+S\+\_\+get\+Distance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get measured distance.
+
+\begin{DoxyReturn}{Returns}
+Distance 
+\end{DoxyReturn}
+\hypertarget{ultra_s_8c_a85065971712e1812bab36f1366bc0416}{}\label{ultra_s_8c_a85065971712e1812bab36f1366bc0416} 
+\index{ultra\+S.\+c@{ultra\+S.\+c}!ultra\+S\+\_\+get\+Valid\+Status@{ultra\+S\+\_\+get\+Valid\+Status}}
+\index{ultra\+S\+\_\+get\+Valid\+Status@{ultra\+S\+\_\+get\+Valid\+Status}!ultra\+S.\+c@{ultra\+S.\+c}}
+\subsubsection{\texorpdfstring{ultra\+S\+\_\+get\+Valid\+Status()}{ultraS\_getValidStatus()}}
+{\footnotesize\ttfamily unsigned int ultra\+S\+\_\+get\+Valid\+Status (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Getters, Setters Get ultrasonic modules state.
+
+\begin{DoxyReturn}{Returns}
+us\+Status 
+\end{DoxyReturn}
+\hypertarget{ultra_s_8c_a76007e39c7b3397710dee9bab7b5d9b5}{}\label{ultra_s_8c_a76007e39c7b3397710dee9bab7b5d9b5} 
+\index{ultra\+S.\+c@{ultra\+S.\+c}!ultra\+S\+\_\+init@{ultra\+S\+\_\+init}}
+\index{ultra\+S\+\_\+init@{ultra\+S\+\_\+init}!ultra\+S.\+c@{ultra\+S.\+c}}
+\subsubsection{\texorpdfstring{ultra\+S\+\_\+init()}{ultraS\_init()}}
+{\footnotesize\ttfamily void ultra\+S\+\_\+init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Set ultrasonic module to be ready for work.
+
+Set\textquotesingle{}s appropriate F\+SM states and resets start and end times to 0. \hypertarget{ultra_s_8c_aa8c3f90478a445d776dff99fc0c98b57}{}\label{ultra_s_8c_aa8c3f90478a445d776dff99fc0c98b57} 
+\index{ultra\+S.\+c@{ultra\+S.\+c}!ultra\+S\+\_\+\+I\+SR@{ultra\+S\+\_\+\+I\+SR}}
+\index{ultra\+S\+\_\+\+I\+SR@{ultra\+S\+\_\+\+I\+SR}!ultra\+S.\+c@{ultra\+S.\+c}}
+\subsubsection{\texorpdfstring{ultra\+S\+\_\+\+I\+S\+R()}{ultraS\_ISR()}}
+{\footnotesize\ttfamily \+\_\+\+\_\+interrupt void ultra\+S\+\_\+\+I\+SR (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Getters, Setters Interrupt vector for Port 1.
+
+Is triggered when the hardware ultrasonic module sends back an echo signal. The rising edge of the echo signal is saved as the starting time and the falling edge as the ending time. \hypertarget{ultra_s_8c_acdff37f2f4e581b47645303906a09417}{}\label{ultra_s_8c_acdff37f2f4e581b47645303906a09417} 
+\index{ultra\+S.\+c@{ultra\+S.\+c}!ultra\+S\+\_\+prep\+Info@{ultra\+S\+\_\+prep\+Info}}
+\index{ultra\+S\+\_\+prep\+Info@{ultra\+S\+\_\+prep\+Info}!ultra\+S.\+c@{ultra\+S.\+c}}
+\subsubsection{\texorpdfstring{ultra\+S\+\_\+prep\+Info()}{ultraS\_prepInfo()}}
+{\footnotesize\ttfamily void ultra\+S\+\_\+prep\+Info (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Calculates measured distance.
+
+Measured distance is calculated as\+: end time -\/ start time, which is then divided by 58 -\/ constant to get the distance in centimeters. End time is the difference of the end and start time multiplier times the counter size added to the measured end time. Start time is just the measured start time. \begin{DoxyAttention}{Attention}
+Only when rollover happens! 
+
+Adds the entire counter size to end\+Time to compensate for potential rollover. 
+\end{DoxyAttention}
+\hypertarget{ultra_s_8c_a2dc7671dcfab4e1cb316c3443f709a85}{}\label{ultra_s_8c_a2dc7671dcfab4e1cb316c3443f709a85} 
+\index{ultra\+S.\+c@{ultra\+S.\+c}!ultra\+S\+\_\+send\+Signal@{ultra\+S\+\_\+send\+Signal}}
+\index{ultra\+S\+\_\+send\+Signal@{ultra\+S\+\_\+send\+Signal}!ultra\+S.\+c@{ultra\+S.\+c}}
+\subsubsection{\texorpdfstring{ultra\+S\+\_\+send\+Signal()}{ultraS\_sendSignal()}}
+{\footnotesize\ttfamily void ultra\+S\+\_\+send\+Signal (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Send signal to the physical ultrasonic module.
+
+Set\textquotesingle{}s appropriate F\+SM state. Send\textquotesingle{}s a high signal for required time -\/ 10uS. Delays system to not send multiple signals at the same time. \hypertarget{ultra_s_8c_a8a5d4bdd11c244c8b0341256f5998d13}{}\label{ultra_s_8c_a8a5d4bdd11c244c8b0341256f5998d13} 
+\index{ultra\+S.\+c@{ultra\+S.\+c}!ultra\+S\+\_\+set\+Data\+Status@{ultra\+S\+\_\+set\+Data\+Status}}
+\index{ultra\+S\+\_\+set\+Data\+Status@{ultra\+S\+\_\+set\+Data\+Status}!ultra\+S.\+c@{ultra\+S.\+c}}
+\subsubsection{\texorpdfstring{ultra\+S\+\_\+set\+Data\+Status()}{ultraS\_setDataStatus()}}
+{\footnotesize\ttfamily void ultra\+S\+\_\+set\+Data\+Status (\begin{DoxyParamCaption}\item[{enum \hyperlink{ultra_s_8h_a5af22166e4d97bfcc7589baec25bec7b}{data\+Status}}]{valid\+Status }\end{DoxyParamCaption})}
+
+Set ultrasonic modules workings state.
+
+Set the inner F\+SM\textquotesingle{}s state. 
+\begin{DoxyParams}{Parameters}
+{\em valid\+Status} & Status to set \\
+\hline
+\end{DoxyParams}
+\hypertarget{ultra_s_8c_a3aa336805b30c760503c3a2c9792d1b0}{}\label{ultra_s_8c_a3aa336805b30c760503c3a2c9792d1b0} 
+\index{ultra\+S.\+c@{ultra\+S.\+c}!ultra\+S\+\_\+set\+Valid\+Status@{ultra\+S\+\_\+set\+Valid\+Status}}
+\index{ultra\+S\+\_\+set\+Valid\+Status@{ultra\+S\+\_\+set\+Valid\+Status}!ultra\+S.\+c@{ultra\+S.\+c}}
+\subsubsection{\texorpdfstring{ultra\+S\+\_\+set\+Valid\+Status()}{ultraS\_setValidStatus()}}
+{\footnotesize\ttfamily void ultra\+S\+\_\+set\+Valid\+Status (\begin{DoxyParamCaption}\item[{enum \hyperlink{ultra_s_8h_a015eb90e0de9f16e87bd149d4b9ce959}{status}}]{valid\+Status }\end{DoxyParamCaption})}
+
+Set ultrasonic modules state. 
+\begin{DoxyParams}{Parameters}
+{\em valid\+Status} & Status to set \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Variable Documentation}
+\hypertarget{ultra_s_8c_a71ff771a4087c8674a0fa6720182d23f}{}\label{ultra_s_8c_a71ff771a4087c8674a0fa6720182d23f} 
+\index{ultra\+S.\+c@{ultra\+S.\+c}!distance@{distance}}
+\index{distance@{distance}!ultra\+S.\+c@{ultra\+S.\+c}}
+\subsubsection{\texorpdfstring{distance}{distance}}
+{\footnotesize\ttfamily unsigned volatile long int distance}
+
+Distance calculated based on start and end time and it\textquotesingle{}s multipliers \hypertarget{ultra_s_8c_a5abce346ccd3cad73218a5938c205e7d}{}\label{ultra_s_8c_a5abce346ccd3cad73218a5938c205e7d} 
+\index{ultra\+S.\+c@{ultra\+S.\+c}!end\+Time@{end\+Time}}
+\index{end\+Time@{end\+Time}!ultra\+S.\+c@{ultra\+S.\+c}}
+\subsubsection{\texorpdfstring{end\+Time}{endTime}}
+{\footnotesize\ttfamily unsigned volatile long long int end\+Time}
+
+Time captured on usmodule\textquotesingle{}s falling edge echo signal. \hypertarget{ultra_s_8c_a6221a55ce2abd90d7398b6199cd179c4}{}\label{ultra_s_8c_a6221a55ce2abd90d7398b6199cd179c4} 
+\index{ultra\+S.\+c@{ultra\+S.\+c}!end\+Time\+Mult@{end\+Time\+Mult}}
+\index{end\+Time\+Mult@{end\+Time\+Mult}!ultra\+S.\+c@{ultra\+S.\+c}}
+\subsubsection{\texorpdfstring{end\+Time\+Mult}{endTimeMult}}
+{\footnotesize\ttfamily unsigned volatile long long int end\+Time\+Mult}
+
+Insurance variable to insure that start\+Time and end\+Time are correct. \hypertarget{ultra_s_8c_a844b54572135dff378b658bd65221263}{}\label{ultra_s_8c_a844b54572135dff378b658bd65221263} 
+\index{ultra\+S.\+c@{ultra\+S.\+c}!start\+Time@{start\+Time}}
+\index{start\+Time@{start\+Time}!ultra\+S.\+c@{ultra\+S.\+c}}
+\subsubsection{\texorpdfstring{start\+Time}{startTime}}
+{\footnotesize\ttfamily unsigned volatile long long int start\+Time}
+
+Time captured on usmodule\textquotesingle{}s rising edge echo signal. \hypertarget{ultra_s_8c_a349cd5cafa77914b2cc6166055010c9b}{}\label{ultra_s_8c_a349cd5cafa77914b2cc6166055010c9b} 
+\index{ultra\+S.\+c@{ultra\+S.\+c}!start\+Time\+Mult@{start\+Time\+Mult}}
+\index{start\+Time\+Mult@{start\+Time\+Mult}!ultra\+S.\+c@{ultra\+S.\+c}}
+\subsubsection{\texorpdfstring{start\+Time\+Mult}{startTimeMult}}
+{\footnotesize\ttfamily unsigned volatile long long int start\+Time\+Mult}
+
+Insurance variable to insure that start\+Time and end\+Time are correct. \hypertarget{ultra_s_8c_ad28bb54ae6e9031bd6205e4069042cc2}{}\label{ultra_s_8c_ad28bb54ae6e9031bd6205e4069042cc2} 
+\index{ultra\+S.\+c@{ultra\+S.\+c}!us\+Data\+Status@{us\+Data\+Status}}
+\index{us\+Data\+Status@{us\+Data\+Status}!ultra\+S.\+c@{ultra\+S.\+c}}
+\subsubsection{\texorpdfstring{us\+Data\+Status}{usDataStatus}}
+{\footnotesize\ttfamily enum \hyperlink{ultra_s_8h_a5af22166e4d97bfcc7589baec25bec7b}{data\+Status} us\+Data\+Status = \hyperlink{ultra_s_8h_a5af22166e4d97bfcc7589baec25bec7bae27f17d8a7ef52a5d6d5b8c4e562d453}{U\+S\+\_\+\+D\+A\+T\+A\+\_\+\+F\+A\+L\+SE}}
+
+Set finite state machine to start in false state to insure no false information. \hypertarget{ultra_s_8c_a25c9f4eb624319b65b1fc6f64db7d410}{}\label{ultra_s_8c_a25c9f4eb624319b65b1fc6f64db7d410} 
+\index{ultra\+S.\+c@{ultra\+S.\+c}!us\+Status@{us\+Status}}
+\index{us\+Status@{us\+Status}!ultra\+S.\+c@{ultra\+S.\+c}}
+\subsubsection{\texorpdfstring{us\+Status}{usStatus}}
+{\footnotesize\ttfamily enum \hyperlink{ultra_s_8h_a015eb90e0de9f16e87bd149d4b9ce959}{status} us\+Status = \hyperlink{ultra_s_8h_a015eb90e0de9f16e87bd149d4b9ce959a4444eecc516e45f891e67e9278efd311}{U\+S\+\_\+\+I\+D\+LE}}
+
+Set finite state machine to idle/waiting state. 

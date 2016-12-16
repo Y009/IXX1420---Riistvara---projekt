@@ -1,10 +1,12 @@
 var indexSectionsWithContent =
 {
-  0: "dsu",
-  1: "u",
-  2: "u",
-  3: "ds",
-  4: "u"
+  0: "cdegmrsu",
+  1: "gu",
+  2: "gru",
+  3: "desu",
+  4: "ds",
+  5: "u",
+  6: "cgm"
 };
 
 var indexSectionNames =
@@ -12,8 +14,10 @@ var indexSectionNames =
   0: "all",
   1: "files",
   2: "functions",
-  3: "enums",
-  4: "enumvalues"
+  3: "variables",
+  4: "enums",
+  5: "enumvalues",
+  6: "defines"
 };
 
 var indexSectionLabels =
@@ -21,7 +25,9 @@ var indexSectionLabels =
   0: "All",
   1: "Files",
   2: "Functions",
-  3: "Enumerations",
-  4: "Enumerator"
+  3: "Variables",
+  4: "Enumerations",
+  5: "Enumerator",
+  6: "Macros"
 };
 

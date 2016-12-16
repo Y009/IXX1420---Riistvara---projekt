@@ -70,7 +70,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Header file for the ultrasonic module.  
+<p>Documentation for the ultrasonic module.  
 <a href="#details">More...</a></p>
 
 <p><a href="ultra_s_8h_source.html">Go to the source code of this file.</a></p>
@@ -122,7 +122,8 @@ Functions</h2></td></tr>
 <tr class="separator:a8a5d4bdd11c244c8b0341256f5998d13"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Header file for the ultrasonic module. </p>
+<div class="textblock"><p>Documentation for the ultrasonic module. </p>
+<p>Global enumeration defines. </p>
 </div><h2 class="groupheader">Enumeration Type Documentation</h2>
 <a id="a5af22166e4d97bfcc7589baec25bec7b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5af22166e4d97bfcc7589baec25bec7b">&sect;&nbsp;</a></span>dataStatus</h2>
@@ -192,7 +193,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Ultrasonic modules main finite state machine.</p>
-<p>In the ultrasonic modules working state is another FSM to control in module actions. </p>
+<p>Controls the work regarding the ultrasonic hardware. Finite state machine to decide state of system. </p><dl class="section attention"><dt>Attention</dt><dd>US_WORKING state is further controlled by another state machine. </dd></dl>
 
 </div>
 </div>
@@ -211,7 +212,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Get ultrasonic modules workings state.</p>
-<p>Get the inner FSM's state. </p>
+<p>Get the inner FSM's state. </p><dl class="section return"><dt>Returns</dt><dd>usDataStatus</dd></dl>
 
 </div>
 </div>
@@ -229,7 +230,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Get the calculated distance. </p>
+<p>Get measured distance.</p>
+<dl class="section return"><dt>Returns</dt><dd>Distance </dd></dl>
 
 </div>
 </div>
@@ -247,7 +249,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Getters, Setters Get ultrasonic modules state. </p>
+<p>Getters, Setters Get ultrasonic modules state.</p>
+<dl class="section return"><dt>Returns</dt><dd>usStatus </dd></dl>
 
 </div>
 </div>
@@ -285,7 +288,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Calculates measured distance.</p>
-<p>Measured distance is calculated as: end time - start time, which is then divided by 58 - constant to get the distance in centimeters. End time is the difference of the end and start time multiplier times the counter size added to the measured end time. Start time is just the measured start time. </p>
+<p>Measured distance is calculated as: end time - start time, which is then divided by 58 - constant to get the distance in centimeters. End time is the difference of the end and start time multiplier times the counter size added to the measured end time. Start time is just the measured start time. </p><dl class="section attention"><dt>Attention</dt><dd>Only when rollover happens! </dd>
+<dd>
+Adds the entire counter size to endTime to compensate for potential rollover. </dd></dl>
 
 </div>
 </div>
@@ -325,6 +330,12 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Set ultrasonic modules workings state.</p>
 <p>Set the inner FSM's state. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">validStatus</td><td>Status to set </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -344,6 +355,12 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Set ultrasonic modules state. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">validStatus</td><td>Status to set </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
