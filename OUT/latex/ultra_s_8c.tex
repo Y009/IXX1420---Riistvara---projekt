@@ -105,7 +105,10 @@ Timer size -\/ added to end\+Time when rollover happens. \hypertarget{ultra_s_8c
 \subsubsection{\texorpdfstring{reset\+Times()}{resetTimes()}}
 {\footnotesize\ttfamily void reset\+Times (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-Reset start and end time to 0 to insure proper results. \hypertarget{ultra_s_8c_a186e138633dbd47cca8dec6f41f86fb4}{}\label{ultra_s_8c_a186e138633dbd47cca8dec6f41f86fb4} 
+Reset start and end time to 0 to insure proper results. \begin{DoxyAttention}{Attention}
+Private function. 
+\end{DoxyAttention}
+\hypertarget{ultra_s_8c_a186e138633dbd47cca8dec6f41f86fb4}{}\label{ultra_s_8c_a186e138633dbd47cca8dec6f41f86fb4} 
 \index{ultra\+S.\+c@{ultra\+S.\+c}!ultra\+S\+\_\+cyclic@{ultra\+S\+\_\+cyclic}}
 \index{ultra\+S\+\_\+cyclic@{ultra\+S\+\_\+cyclic}!ultra\+S.\+c@{ultra\+S.\+c}}
 \subsubsection{\texorpdfstring{ultra\+S\+\_\+cyclic()}{ultraS\_cyclic()}}
@@ -144,7 +147,7 @@ Distance
 \subsubsection{\texorpdfstring{ultra\+S\+\_\+get\+Valid\+Status()}{ultraS\_getValidStatus()}}
 {\footnotesize\ttfamily unsigned int ultra\+S\+\_\+get\+Valid\+Status (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-Getters, Setters Get ultrasonic modules state.
+Get ultrasonic modules state.
 
 \begin{DoxyReturn}{Returns}
 us\+Status 
@@ -163,9 +166,10 @@ Set\textquotesingle{}s appropriate F\+SM states and resets start and end times t
 \subsubsection{\texorpdfstring{ultra\+S\+\_\+\+I\+S\+R()}{ultraS\_ISR()}}
 {\footnotesize\ttfamily \+\_\+\+\_\+interrupt void ultra\+S\+\_\+\+I\+SR (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
-Getters, Setters Interrupt vector for Port 1.
+Interrupt vector for Port 1.
 
-Is triggered when the hardware ultrasonic module sends back an echo signal. The rising edge of the echo signal is saved as the starting time and the falling edge as the ending time. \hypertarget{ultra_s_8c_acdff37f2f4e581b47645303906a09417}{}\label{ultra_s_8c_acdff37f2f4e581b47645303906a09417} 
+Is triggered when the hardware ultrasonic module sends back an echo signal. ~\newline
+ The rising edge of the echo signal is saved as the starting time and the falling edge as the ending time. \hypertarget{ultra_s_8c_acdff37f2f4e581b47645303906a09417}{}\label{ultra_s_8c_acdff37f2f4e581b47645303906a09417} 
 \index{ultra\+S.\+c@{ultra\+S.\+c}!ultra\+S\+\_\+prep\+Info@{ultra\+S\+\_\+prep\+Info}}
 \index{ultra\+S\+\_\+prep\+Info@{ultra\+S\+\_\+prep\+Info}!ultra\+S.\+c@{ultra\+S.\+c}}
 \subsubsection{\texorpdfstring{ultra\+S\+\_\+prep\+Info()}{ultraS\_prepInfo()}}
@@ -173,7 +177,8 @@ Is triggered when the hardware ultrasonic module sends back an echo signal. The 
 
 Calculates measured distance.
 
-Measured distance is calculated as\+: end time -\/ start time, which is then divided by 58 -\/ constant to get the distance in centimeters. End time is the difference of the end and start time multiplier times the counter size added to the measured end time. Start time is just the measured start time. \begin{DoxyAttention}{Attention}
+Measured distance is calculated as\+: end time -\/ start time, which is then divided by 58 -\/ constant to get the distance in centimeters. ~\newline
+ End time is the difference of the end and start time multiplier times the counter size added to the measured end time. Start time is just the measured start time. \begin{DoxyAttention}{Attention}
 Only when rollover happens! 
 
 Adds the entire counter size to end\+Time to compensate for potential rollover. 
@@ -186,7 +191,8 @@ Adds the entire counter size to end\+Time to compensate for potential rollover.
 
 Send signal to the physical ultrasonic module.
 
-Set\textquotesingle{}s appropriate F\+SM state. Send\textquotesingle{}s a high signal for required time -\/ 10uS. Delays system to not send multiple signals at the same time. \hypertarget{ultra_s_8c_a8a5d4bdd11c244c8b0341256f5998d13}{}\label{ultra_s_8c_a8a5d4bdd11c244c8b0341256f5998d13} 
+Set\textquotesingle{}s appropriate F\+SM state. Send\textquotesingle{}s a high signal for required time -\/ 10uS. ~\newline
+ Delays system to not send multiple signals at the same time. \hypertarget{ultra_s_8c_a8a5d4bdd11c244c8b0341256f5998d13}{}\label{ultra_s_8c_a8a5d4bdd11c244c8b0341256f5998d13} 
 \index{ultra\+S.\+c@{ultra\+S.\+c}!ultra\+S\+\_\+set\+Data\+Status@{ultra\+S\+\_\+set\+Data\+Status}}
 \index{ultra\+S\+\_\+set\+Data\+Status@{ultra\+S\+\_\+set\+Data\+Status}!ultra\+S.\+c@{ultra\+S.\+c}}
 \subsubsection{\texorpdfstring{ultra\+S\+\_\+set\+Data\+Status()}{ultraS\_setDataStatus()}}

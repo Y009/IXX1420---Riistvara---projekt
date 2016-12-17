@@ -75,8 +75,8 @@ $(function() {
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;driverlib.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="ultra_s_8h_source.html">ultraS.h</a>&quot;</code><br />
-<code>#include &quot;../MCU/counter.h&quot;</code><br />
-<code>#include &quot;../MCU/timer.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="counter_8h_source.html">../MCU/counter.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="timer_8h_source.html">../MCU/timer.h</a>&quot;</code><br />
 <code>#include &quot;stdio.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="gpio_8h_source.html">gpio.h</a>&quot;</code><br />
 </div><table class="memberdecls">
@@ -212,7 +212,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Reset start and end time to 0 to insure proper results. </p>
+<p>Reset start and end time to 0 to insure proper results. </p><dl class="section attention"><dt>Attention</dt><dd>Private function. </dd></dl>
 
 </div>
 </div>
@@ -287,7 +287,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Getters, Setters Get ultrasonic modules state.</p>
+<p>Get ultrasonic modules state.</p>
 <dl class="section return"><dt>Returns</dt><dd>usStatus </dd></dl>
 
 </div>
@@ -326,8 +326,9 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Getters, Setters Interrupt vector for Port 1.</p>
-<p>Is triggered when the hardware ultrasonic module sends back an echo signal. The rising edge of the echo signal is saved as the starting time and the falling edge as the ending time. </p>
+<p>Interrupt vector for Port 1.</p>
+<p>Is triggered when the hardware ultrasonic module sends back an echo signal. <br />
+ The rising edge of the echo signal is saved as the starting time and the falling edge as the ending time. </p>
 
 </div>
 </div>
@@ -346,7 +347,8 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Calculates measured distance.</p>
-<p>Measured distance is calculated as: end time - start time, which is then divided by 58 - constant to get the distance in centimeters. End time is the difference of the end and start time multiplier times the counter size added to the measured end time. Start time is just the measured start time. </p><dl class="section attention"><dt>Attention</dt><dd>Only when rollover happens! </dd>
+<p>Measured distance is calculated as: end time - start time, which is then divided by 58 - constant to get the distance in centimeters. <br />
+ End time is the difference of the end and start time multiplier times the counter size added to the measured end time. Start time is just the measured start time. </p><dl class="section attention"><dt>Attention</dt><dd>Only when rollover happens! </dd>
 <dd>
 Adds the entire counter size to endTime to compensate for potential rollover. </dd></dl>
 
@@ -367,7 +369,8 @@ Adds the entire counter size to endTime to compensate for potential rollover. </
       </table>
 </div><div class="memdoc">
 <p>Send signal to the physical ultrasonic module.</p>
-<p>Set's appropriate FSM state. Send's a high signal for required time - 10uS. Delays system to not send multiple signals at the same time. </p>
+<p>Set's appropriate FSM state. Send's a high signal for required time - 10uS. <br />
+ Delays system to not send multiple signals at the same time. </p>
 
 </div>
 </div>

@@ -28,7 +28,7 @@
 
 void resetTimes();
 
-unsigned volatile long long int startTime;              /**< Time captured on usmodule's rising edge echo signal. */
+unsigned volatile long long int startTime;              /**< Time captured on usmodule's rising edge echo signal.*/
 unsigned volatile long long int endTime;                /**< Time captured on usmodule's falling edge echo signal. */
 unsigned volatile long long int startTimeMult;          /**< Insurance variable to insure that startTime and endTime are correct. */
 unsigned volatile long long int endTimeMult;            /**< Insurance variable to insure that startTime and endTime are correct. */
@@ -56,7 +56,7 @@ ultraS_sendSignal()
 /** Send signal to the physical ultrasonic module.
 **
 **  Set's appropriate FSM state. Send's a high signal for required time - 10uS.
-**  Delays system to not send multiple signals at the same time.
+**  \n Delays system to not send multiple signals at the same time.
 **/
 {
     usStatus = US_WORKING;
@@ -73,7 +73,7 @@ ultraS_prepInfo()
 **
 **  Measured distance is calculated as: end time - start time, which is then divided by 58 - constant
 **  to get the distance in centimeters.
-**  End time is the difference of the end and start time multiplier times the counter size added to
+**  \n End time is the difference of the end and start time multiplier times the counter size added to
 **  the measured end time. Start time is just the measured start time.
 ** \attention Only when rollover happens!
 ** \attention Adds the entire counter size to endTime to compensate for potential rollover.
@@ -96,6 +96,7 @@ ultraS_prepInfo()
 void 
 resetTimes()
 /**  Reset start and end time to 0 to insure proper results.
+**  \attention Private function.
 **/
 {
 	startTime = 0; 														/* Setting up for the next measurement. */
@@ -155,9 +156,6 @@ ultraS_cyclic()
     }
 }
 
-
-/** Getters, Setters  **/
-
 /*********************************************************/
 unsigned int 
 ultraS_getValidStatus()
@@ -214,17 +212,16 @@ ultraS_setDataStatus(
     usDataStatus = validStatus;
 }
 
-/** Getters, Setters  **/
-
 /*********************************************************/
-#pragma vector=PORT1_VECTOR
+#pragma vector=PORT1_VECTOR			 /*< Interrupt vector pragma for port 1. */
 __interrupt 
 void 
-ultraS_ISR (void)
+ultraS_ISR (
+		void)
 /** Interrupt vector for Port 1.
 **
 **  Is triggered when the hardware ultrasonic module sends back an echo signal.
-**  The rising edge of the echo signal is saved as the starting time and the falling edge as the ending time.
+**  \n The rising edge of the echo signal is saved as the starting time and the falling edge as the ending time.
 **/
 {
 

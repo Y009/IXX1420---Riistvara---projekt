@@ -1,0 +1,104 @@
+\hypertarget{application_8c}{}\section{S\+R\+C/\+M\+C\+U/application.c File Reference}
+\label{application_8c}\index{S\+R\+C/\+M\+C\+U/application.\+c@{S\+R\+C/\+M\+C\+U/application.\+c}}
+
+
+Documentation for the application module.  
+
+
+{\ttfamily \#include \char`\"{}timer.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../\+H\+W/button.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../\+H\+W/ultra\+S.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../\+H\+W/lcd.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}uart.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{application_8c_a62249e384b997229a3e2ae74ade334e2}{D\+E\+L\+AY}~10000U
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{application_8c_a9dff310201803ed56106c927a9ced9cd}{convert\+U\+Dec} (unsigned long n)
+\item 
+void \hyperlink{application_8c_aca9e2d049a005223eab8810cc5443efb}{application\+\_\+cyclic} ()
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+unsigned long int \hyperlink{application_8c_a74c36f72b6828fd5e43189b2c52f7828}{distance}
+\item 
+char \hyperlink{application_8c_a9678f24f03848defae48d7a9568ddcb4}{String} \mbox{[}16\mbox{]} = \char`\"{}Kaugus \+: \char`\"{}
+\item 
+char \hyperlink{application_8c_a6b6430d8f5edc9acef65aa3f3ebfaa51}{String\+Error} \mbox{[}16\mbox{]} = \char`\"{}Error! \char`\"{}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Documentation for the application module. 
+
+The application module serves as an intermediary between modules to handle work sequence. 
+
+\subsection{Macro Definition Documentation}
+\hypertarget{application_8c_a62249e384b997229a3e2ae74ade334e2}{}\label{application_8c_a62249e384b997229a3e2ae74ade334e2} 
+\index{application.\+c@{application.\+c}!D\+E\+L\+AY@{D\+E\+L\+AY}}
+\index{D\+E\+L\+AY@{D\+E\+L\+AY}!application.\+c@{application.\+c}}
+\subsubsection{\texorpdfstring{D\+E\+L\+AY}{DELAY}}
+{\footnotesize\ttfamily \#define D\+E\+L\+AY~10000U}
+
+0.\+000625 second delay 
+
+\subsection{Function Documentation}
+\hypertarget{application_8c_aca9e2d049a005223eab8810cc5443efb}{}\label{application_8c_aca9e2d049a005223eab8810cc5443efb} 
+\index{application.\+c@{application.\+c}!application\+\_\+cyclic@{application\+\_\+cyclic}}
+\index{application\+\_\+cyclic@{application\+\_\+cyclic}!application.\+c@{application.\+c}}
+\subsubsection{\texorpdfstring{application\+\_\+cyclic()}{application\_cyclic()}}
+{\footnotesize\ttfamily void application\+\_\+cyclic (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+The main cyclic function to control the workflow.
+
+Initiates check on button. ~\newline
+ If the button has been debounced starts the work (if not already in progress.) ~\newline
+ Clears the display and checks with ultrasonic module. ~\newline
+ Sends a string to the L\+CD module to be displayed based on value from the ultrasonic module. \hypertarget{application_8c_a9dff310201803ed56106c927a9ced9cd}{}\label{application_8c_a9dff310201803ed56106c927a9ced9cd} 
+\index{application.\+c@{application.\+c}!convert\+U\+Dec@{convert\+U\+Dec}}
+\index{convert\+U\+Dec@{convert\+U\+Dec}!application.\+c@{application.\+c}}
+\subsubsection{\texorpdfstring{convert\+U\+Dec()}{convertUDec()}}
+{\footnotesize\ttfamily void convert\+U\+Dec (\begin{DoxyParamCaption}\item[{unsigned long}]{n }\end{DoxyParamCaption})}
+
+Converts integer value to string
+
+Converts integer to string and places it in {\bfseries String} to the appropriate position ~\newline
+ Converts each digit of the value on its own by taking modulo 10 of it and adding a value of 30 to it. ~\newline
+ Based on the ascii table where numbers are from 30 to 39.
+
+\begin{DoxyAttention}{Attention}
+Currently limited to 4 digit numbers. 
+\end{DoxyAttention}
+
+\begin{DoxyParams}{Parameters}
+{\em n} & Numeric value to be converted to string. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Variable Documentation}
+\hypertarget{application_8c_a74c36f72b6828fd5e43189b2c52f7828}{}\label{application_8c_a74c36f72b6828fd5e43189b2c52f7828} 
+\index{application.\+c@{application.\+c}!distance@{distance}}
+\index{distance@{distance}!application.\+c@{application.\+c}}
+\subsubsection{\texorpdfstring{distance}{distance}}
+{\footnotesize\ttfamily unsigned long int distance}
+
+Local variable of distance to be converted to string \hypertarget{application_8c_a9678f24f03848defae48d7a9568ddcb4}{}\label{application_8c_a9678f24f03848defae48d7a9568ddcb4} 
+\index{application.\+c@{application.\+c}!String@{String}}
+\index{String@{String}!application.\+c@{application.\+c}}
+\subsubsection{\texorpdfstring{String}{String}}
+{\footnotesize\ttfamily char String\mbox{[}16\mbox{]} = \char`\"{}Kaugus \+: \char`\"{}}
+
+String to be displayed on the L\+CD {\bfseries after} the distance has been added to it \hypertarget{application_8c_a6b6430d8f5edc9acef65aa3f3ebfaa51}{}\label{application_8c_a6b6430d8f5edc9acef65aa3f3ebfaa51} 
+\index{application.\+c@{application.\+c}!String\+Error@{String\+Error}}
+\index{String\+Error@{String\+Error}!application.\+c@{application.\+c}}
+\subsubsection{\texorpdfstring{String\+Error}{StringError}}
+{\footnotesize\ttfamily char String\+Error\mbox{[}16\mbox{]} = \char`\"{}Error! \char`\"{}}
+
+String to be displayed on the L\+CD {\bfseries if} the distance fell out of the measurable range 

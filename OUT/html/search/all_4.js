@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['maxdist',['MAXDIST',['../ultra_s_8c.html#ad20257241c97c3e731b64608dcdc5096',1,'ultraS.c']]],
-  ['mindist',['MINDIST',['../ultra_s_8c.html#abd40c30aeb838e9729fd6ebd4c4787d8',1,'ultraS.c']]]
+  ['endtime',['endTime',['../ultra_s_8c.html#a5abce346ccd3cad73218a5938c205e7d',1,'ultraS.c']]],
+  ['endtimemult',['endTimeMult',['../ultra_s_8c.html#a6221a55ce2abd90d7398b6199cd179c4',1,'ultraS.c']]]
 ];

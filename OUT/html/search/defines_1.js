@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['gpio_5fclearinterrupt',['gpio_clearInterrupt',['../gpio_8h.html#abbd3d2cc6720be19186b1262f2e4c11b',1,'gpio.h']]],
-  ['gpio_5fgetinterrupt',['gpio_getInterrupt',['../gpio_8h.html#a41e2274d7895a0d405af1938c849dc76',1,'gpio.h']]],
-  ['gpio_5fgetpininput',['gpio_getPinInput',['../gpio_8h.html#ae952a5196156d96628c1e91f057fa182',1,'gpio.h']]],
-  ['gpio_5fsetinterruptedge',['gpio_setInterruptEdge',['../gpio_8h.html#af6ca6ac27e29c175d0fc1f59e4478984',1,'gpio.h']]],
-  ['gpio_5fsetpinhigh',['gpio_setPinHigh',['../gpio_8h.html#a335097c54e37a27dda7744bb26e9c003',1,'gpio.h']]],
-  ['gpio_5fsetpinlow',['gpio_setPinLow',['../gpio_8h.html#a9ee956f33908b93898e82301b9a1b2c1',1,'gpio.h']]]
+  ['cmconst',['CMCONST',['../ultra_s_8c.html#a0212ca8fac649015507d58329b4e2cfc',1,'ultraS.c']]],
+  ['counter_5fditbi',['counter_diTBI',['../counter_8h.html#ad53f7cf4741c618c5cce65f273bd52c9',1,'counter.h']]],
+  ['counter_5fentbi',['counter_enTBI',['../counter_8h.html#a383bc9817a0a055d07f3b2b948fb0b7e',1,'counter.h']]],
+  ['counter_5fgetcountvalue',['counter_getCountValue',['../counter_8h.html#abffd74faf0296b433da654c54555bf91',1,'counter.h']]],
+  ['counter_5ftimerbase',['counter_timerBase',['../counter_8h.html#a987db31c103beded52c16d4553224150',1,'counter.h']]],
+  ['cycle',['CYCLE',['../ultra_s_8c.html#a78e81cc81d968960cf6089af8c033769',1,'ultraS.c']]]
 ];

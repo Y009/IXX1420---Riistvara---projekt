@@ -1,0 +1,127 @@
+\hypertarget{button_8c}{}\section{S\+R\+C/\+H\+W/button.c File Reference}
+\label{button_8c}\index{S\+R\+C/\+H\+W/button.\+c@{S\+R\+C/\+H\+W/button.\+c}}
+
+
+Documentation for the button module.  
+
+
+{\ttfamily \#include $<$driverlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}button.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../\+M\+C\+U/timer.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}gpio.\+h\char`\"{}}\newline
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{button_8c_a5e9b983b06dc34f0800a43201ef9cbd8}{N\+O\+T\+D\+E\+B\+O\+U\+N\+C\+ED}~0x\+FF
+\item 
+\#define \hyperlink{button_8c_a05e3e5cf3f8ae14c20f7c5ca06290ac0}{D\+E\+B\+O\+U\+N\+C\+ED}~0
+\item 
+\#define \hyperlink{button_8c_ad76d1750a6cdeebd506bfcd6752554d2}{ON}~1
+\item 
+\#define \hyperlink{button_8c_a29e413f6725b2ba32d165ffaa35b01e5}{O\+FF}~0
+\item 
+\#define \hyperlink{button_8c_a390936ddde1874ed563e6427681e5a23}{A\+C\+C\+U\+A\+R\+CY}~0xF
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+short \hyperlink{button_8c_a186ee6b09e00657d71468c4a98f2bccd}{button\+\_\+get\+Btn} ()
+\item 
+void \hyperlink{button_8c_ae3e592eedd316ea878ef061218417c6f}{button\+\_\+debounce\+Btn} ()
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+volatile int \hyperlink{button_8c_a45bcd1a7980fadae48fb73f7eabf66bf}{unbounced\+B\+TN} = 0
+\item 
+volatile short \hyperlink{button_8c_aa33b84d1f3b7878bc221656d47324cd4}{B\+TN} = 0
+\item 
+unsigned long long int \hyperlink{button_8c_af53beb5d7b0435f29d82d7326945eb2c}{last\+Counter} = 0
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Documentation for the button module. 
+
+Describes the debouncing of a button press. 
+
+\subsection{Macro Definition Documentation}
+\hypertarget{button_8c_a390936ddde1874ed563e6427681e5a23}{}\label{button_8c_a390936ddde1874ed563e6427681e5a23} 
+\index{button.\+c@{button.\+c}!A\+C\+C\+U\+A\+R\+CY@{A\+C\+C\+U\+A\+R\+CY}}
+\index{A\+C\+C\+U\+A\+R\+CY@{A\+C\+C\+U\+A\+R\+CY}!button.\+c@{button.\+c}}
+\subsubsection{\texorpdfstring{A\+C\+C\+U\+A\+R\+CY}{ACCUARCY}}
+{\footnotesize\ttfamily \#define A\+C\+C\+U\+A\+R\+CY~0xF}
+
+Variable to compare how long it has been since the debounced button has been checked. \hypertarget{button_8c_a05e3e5cf3f8ae14c20f7c5ca06290ac0}{}\label{button_8c_a05e3e5cf3f8ae14c20f7c5ca06290ac0} 
+\index{button.\+c@{button.\+c}!D\+E\+B\+O\+U\+N\+C\+ED@{D\+E\+B\+O\+U\+N\+C\+ED}}
+\index{D\+E\+B\+O\+U\+N\+C\+ED@{D\+E\+B\+O\+U\+N\+C\+ED}!button.\+c@{button.\+c}}
+\subsubsection{\texorpdfstring{D\+E\+B\+O\+U\+N\+C\+ED}{DEBOUNCED}}
+{\footnotesize\ttfamily \#define D\+E\+B\+O\+U\+N\+C\+ED~0}
+
+The value chosen as the debounced value for the button. \hypertarget{button_8c_a5e9b983b06dc34f0800a43201ef9cbd8}{}\label{button_8c_a5e9b983b06dc34f0800a43201ef9cbd8} 
+\index{button.\+c@{button.\+c}!N\+O\+T\+D\+E\+B\+O\+U\+N\+C\+ED@{N\+O\+T\+D\+E\+B\+O\+U\+N\+C\+ED}}
+\index{N\+O\+T\+D\+E\+B\+O\+U\+N\+C\+ED@{N\+O\+T\+D\+E\+B\+O\+U\+N\+C\+ED}!button.\+c@{button.\+c}}
+\subsubsection{\texorpdfstring{N\+O\+T\+D\+E\+B\+O\+U\+N\+C\+ED}{NOTDEBOUNCED}}
+{\footnotesize\ttfamily \#define N\+O\+T\+D\+E\+B\+O\+U\+N\+C\+ED~0x\+FF}
+
+The value chosen as the undebounced value for the button. \hypertarget{button_8c_a29e413f6725b2ba32d165ffaa35b01e5}{}\label{button_8c_a29e413f6725b2ba32d165ffaa35b01e5} 
+\index{button.\+c@{button.\+c}!O\+FF@{O\+FF}}
+\index{O\+FF@{O\+FF}!button.\+c@{button.\+c}}
+\subsubsection{\texorpdfstring{O\+FF}{OFF}}
+{\footnotesize\ttfamily \#define O\+FF~0}
+
+Logical 0 to indicate the button is not pressed. \hypertarget{button_8c_ad76d1750a6cdeebd506bfcd6752554d2}{}\label{button_8c_ad76d1750a6cdeebd506bfcd6752554d2} 
+\index{button.\+c@{button.\+c}!ON@{ON}}
+\index{ON@{ON}!button.\+c@{button.\+c}}
+\subsubsection{\texorpdfstring{ON}{ON}}
+{\footnotesize\ttfamily \#define ON~1}
+
+Logical 1 to indicate the button is pressed. 
+
+\subsection{Function Documentation}
+\hypertarget{button_8c_ae3e592eedd316ea878ef061218417c6f}{}\label{button_8c_ae3e592eedd316ea878ef061218417c6f} 
+\index{button.\+c@{button.\+c}!button\+\_\+debounce\+Btn@{button\+\_\+debounce\+Btn}}
+\index{button\+\_\+debounce\+Btn@{button\+\_\+debounce\+Btn}!button.\+c@{button.\+c}}
+\subsubsection{\texorpdfstring{button\+\_\+debounce\+Btn()}{button\_debounceBtn()}}
+{\footnotesize\ttfamily void button\+\_\+debounce\+Btn (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Debounces pressed button.
+
+Debounces a button press based on time and how the value on the button changes in that time. ~\newline
+ Uses the timer module and its interrupt\+Counter to check how much time hase passed since the last check on the button. ~\newline
+ Check time is based on the {\bfseries A\+C\+C\+U\+A\+R\+CY} variable. Increasing or decreasing it makes this function faster or slower accordingly. ~\newline
+ Debounces by shifting the unbounced\+B\+TN variable left everytime it enter the conditional then replaces the least significant bit with the current value given by the pin. ~\newline
+ This process is repeated until a desired value is reached at which point the button is debounced. \begin{DoxyAttention}{Attention}
+Button\textquotesingle{}s value is not changed during the debug process -\/ only when the N\+O\+T\+D\+E\+B\+O\+U\+N\+C\+ED or D\+E\+B\+O\+U\+N\+C\+ED values have been reached. 
+\end{DoxyAttention}
+\hypertarget{button_8c_a186ee6b09e00657d71468c4a98f2bccd}{}\label{button_8c_a186ee6b09e00657d71468c4a98f2bccd} 
+\index{button.\+c@{button.\+c}!button\+\_\+get\+Btn@{button\+\_\+get\+Btn}}
+\index{button\+\_\+get\+Btn@{button\+\_\+get\+Btn}!button.\+c@{button.\+c}}
+\subsubsection{\texorpdfstring{button\+\_\+get\+Btn()}{button\_getBtn()}}
+{\footnotesize\ttfamily short button\+\_\+get\+Btn (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get debounced value pressed button. \begin{DoxyReturn}{Returns}
+B\+TN 
+\end{DoxyReturn}
+
+
+\subsection{Variable Documentation}
+\hypertarget{button_8c_aa33b84d1f3b7878bc221656d47324cd4}{}\label{button_8c_aa33b84d1f3b7878bc221656d47324cd4} 
+\index{button.\+c@{button.\+c}!B\+TN@{B\+TN}}
+\index{B\+TN@{B\+TN}!button.\+c@{button.\+c}}
+\subsubsection{\texorpdfstring{B\+TN}{BTN}}
+{\footnotesize\ttfamily volatile short B\+TN = 0}
+
+Debounced button value. \hypertarget{button_8c_af53beb5d7b0435f29d82d7326945eb2c}{}\label{button_8c_af53beb5d7b0435f29d82d7326945eb2c} 
+\index{button.\+c@{button.\+c}!last\+Counter@{last\+Counter}}
+\index{last\+Counter@{last\+Counter}!button.\+c@{button.\+c}}
+\subsubsection{\texorpdfstring{last\+Counter}{lastCounter}}
+{\footnotesize\ttfamily unsigned long long int last\+Counter = 0}
+
+The last time the button was debounced. \hypertarget{button_8c_a45bcd1a7980fadae48fb73f7eabf66bf}{}\label{button_8c_a45bcd1a7980fadae48fb73f7eabf66bf} 
+\index{button.\+c@{button.\+c}!unbounced\+B\+TN@{unbounced\+B\+TN}}
+\index{unbounced\+B\+TN@{unbounced\+B\+TN}!button.\+c@{button.\+c}}
+\subsubsection{\texorpdfstring{unbounced\+B\+TN}{unbouncedBTN}}
+{\footnotesize\ttfamily volatile int unbounced\+B\+TN = 0}
+
+Modified value on which it is decided whether the button has been debounced or not. 

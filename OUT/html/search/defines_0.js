@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['cmconst',['CMCONST',['../ultra_s_8c.html#a0212ca8fac649015507d58329b4e2cfc',1,'ultraS.c']]],
-  ['cycle',['CYCLE',['../ultra_s_8c.html#a78e81cc81d968960cf6089af8c033769',1,'ultraS.c']]]
+  ['accuarcy',['ACCUARCY',['../button_8c.html#a390936ddde1874ed563e6427681e5a23',1,'button.c']]]
 ];

@@ -1,0 +1,98 @@
+\hypertarget{timer_8c}{}\section{S\+R\+C/\+M\+C\+U/timer.c File Reference}
+\label{timer_8c}\index{S\+R\+C/\+M\+C\+U/timer.\+c@{S\+R\+C/\+M\+C\+U/timer.\+c}}
+
+
+Documentation for the timer module.  
+
+
+{\ttfamily \#include $<$driverlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}timer.\+h\char`\"{}}\newline
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{timer_8c_a1bc63400ff91806a4c1a79caefead705}{T\+I\+M\+E\+TO}~0x1\+F40
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{timer_8c_a7b8ab79df77b57475a5494f5f81c3bd9}{timer\+\_\+init} (void)
+\item 
+void \hyperlink{timer_8c_a50eeb50a751ec06e0d58643f45c92874}{timer\+\_\+check\+Flag} ()
+\item 
+int \hyperlink{timer_8c_a1021e8241d2431ad3c33e4dca3479e30}{timer\+\_\+get\+Counter} (void)
+\item 
+\+\_\+\+\_\+interrupt void \hyperlink{timer_8c_a5c04b6546e82f2e5f0af1410addf382c}{timer\+\_\+debouncing\+Btn} (void)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+unsigned long long int \hyperlink{timer_8c_a34a34f6517460d2f8fff3dbfc8764ac0}{interrupt\+Counter}
+\item 
+short \hyperlink{timer_8c_a0939402298c3765d4bbc62cea55ea0be}{timer\+Flag} = 0
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Documentation for the timer module. 
+
+Describes the workings of the timer module. Is used to debounce a button press. 
+
+\subsection{Macro Definition Documentation}
+\hypertarget{timer_8c_a1bc63400ff91806a4c1a79caefead705}{}\label{timer_8c_a1bc63400ff91806a4c1a79caefead705} 
+\index{timer.\+c@{timer.\+c}!T\+I\+M\+E\+TO@{T\+I\+M\+E\+TO}}
+\index{T\+I\+M\+E\+TO@{T\+I\+M\+E\+TO}!timer.\+c@{timer.\+c}}
+\subsubsection{\texorpdfstring{T\+I\+M\+E\+TO}{TIMETO}}
+{\footnotesize\ttfamily \#define T\+I\+M\+E\+TO~0x1\+F40}
+
+0.\+5 ms cycle for timer A. Calculated with 16\+M\+Hz S\+M\+C\+LK with divider 1 
+
+\subsection{Function Documentation}
+\hypertarget{timer_8c_a50eeb50a751ec06e0d58643f45c92874}{}\label{timer_8c_a50eeb50a751ec06e0d58643f45c92874} 
+\index{timer.\+c@{timer.\+c}!timer\+\_\+check\+Flag@{timer\+\_\+check\+Flag}}
+\index{timer\+\_\+check\+Flag@{timer\+\_\+check\+Flag}!timer.\+c@{timer.\+c}}
+\subsubsection{\texorpdfstring{timer\+\_\+check\+Flag()}{timer\_checkFlag()}}
+{\footnotesize\ttfamily void timer\+\_\+check\+Flag (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Checks whether there has been a timer interrupt and increments a counter if so.
+
+Is called from application level in every cycle. timer\+Flag is set to true whenever a timer A interrupt has occurred. Is used to get a delay of T\+I\+M\+E\+TO $\ast$ interrupt\+Counter. \hypertarget{timer_8c_a5c04b6546e82f2e5f0af1410addf382c}{}\label{timer_8c_a5c04b6546e82f2e5f0af1410addf382c} 
+\index{timer.\+c@{timer.\+c}!timer\+\_\+debouncing\+Btn@{timer\+\_\+debouncing\+Btn}}
+\index{timer\+\_\+debouncing\+Btn@{timer\+\_\+debouncing\+Btn}!timer.\+c@{timer.\+c}}
+\subsubsection{\texorpdfstring{timer\+\_\+debouncing\+Btn()}{timer\_debouncingBtn()}}
+{\footnotesize\ttfamily \+\_\+\+\_\+interrupt void timer\+\_\+debouncing\+Btn (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Interrupt vector for timer\+A0.
+
+Is triggered when the timerA\textquotesingle{}s value reaches T\+I\+M\+E\+TO and resets back to 0. \hypertarget{timer_8c_a1021e8241d2431ad3c33e4dca3479e30}{}\label{timer_8c_a1021e8241d2431ad3c33e4dca3479e30} 
+\index{timer.\+c@{timer.\+c}!timer\+\_\+get\+Counter@{timer\+\_\+get\+Counter}}
+\index{timer\+\_\+get\+Counter@{timer\+\_\+get\+Counter}!timer.\+c@{timer.\+c}}
+\subsubsection{\texorpdfstring{timer\+\_\+get\+Counter()}{timer\_getCounter()}}
+{\footnotesize\ttfamily int timer\+\_\+get\+Counter (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Get timerA\textquotesingle{}s interrupt\+Counter.
+
+\begin{DoxyReturn}{Returns}
+interrupt\+Counter 
+\end{DoxyReturn}
+\hypertarget{timer_8c_a7b8ab79df77b57475a5494f5f81c3bd9}{}\label{timer_8c_a7b8ab79df77b57475a5494f5f81c3bd9} 
+\index{timer.\+c@{timer.\+c}!timer\+\_\+init@{timer\+\_\+init}}
+\index{timer\+\_\+init@{timer\+\_\+init}!timer.\+c@{timer.\+c}}
+\subsubsection{\texorpdfstring{timer\+\_\+init()}{timer\_init()}}
+{\footnotesize\ttfamily void timer\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Initializes Timer A in up mode with T\+I\+M\+E\+TO ms cycle time. 
+
+\subsection{Variable Documentation}
+\hypertarget{timer_8c_a34a34f6517460d2f8fff3dbfc8764ac0}{}\label{timer_8c_a34a34f6517460d2f8fff3dbfc8764ac0} 
+\index{timer.\+c@{timer.\+c}!interrupt\+Counter@{interrupt\+Counter}}
+\index{interrupt\+Counter@{interrupt\+Counter}!timer.\+c@{timer.\+c}}
+\subsubsection{\texorpdfstring{interrupt\+Counter}{interruptCounter}}
+{\footnotesize\ttfamily unsigned long long int interrupt\+Counter}
+
+Times the timer A interrupt has to taken place \hypertarget{timer_8c_a0939402298c3765d4bbc62cea55ea0be}{}\label{timer_8c_a0939402298c3765d4bbc62cea55ea0be} 
+\index{timer.\+c@{timer.\+c}!timer\+Flag@{timer\+Flag}}
+\index{timer\+Flag@{timer\+Flag}!timer.\+c@{timer.\+c}}
+\subsubsection{\texorpdfstring{timer\+Flag}{timerFlag}}
+{\footnotesize\ttfamily short timer\+Flag = 0}
+
+Flag to check whether an interrupt has occured or not. 

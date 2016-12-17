@@ -6,7 +6,7 @@
  */
 
 /** \file gpio.c
-**	\brief Documentation for the general purpose input-output module.
+**	\brief Documentation for the gpio module.
 **/
 
 //***** Header Files **********************************************************

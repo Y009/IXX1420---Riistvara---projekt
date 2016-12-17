@@ -6,7 +6,7 @@
  */
 
 /** \file ultraS.h
-**	\brief Documentation for the ultrasonic module.
+**	\brief Documentation for the ultrasonic module's header.
 **
 **  Global enumeration defines.
 **/
@@ -34,6 +34,7 @@ typedef enum{                                           /* States for data prepa
 	US_DATA_NUMBER_OF_TYPES
 }dataStatus;
 
+/** \cond IGNORE*/
 void ultraS_init();
 void ultraS_sendSignal();
 void ultraS_prepInfo();
@@ -43,5 +44,6 @@ void ultraS_setValidStatus(enum status validStatus);
 unsigned int ultraS_getDistance();
 int ultraS_getDataStatus();
 void ultraS_setDataStatus(enum dataStatus validStatus);
+/** \endcond IGNORE*/
 
 #endif /* ULTRAS_H_ */
