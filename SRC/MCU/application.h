@@ -10,6 +10,8 @@
 
 /** \cond IGNORE*/
 void application_cyclic();
+void readyTime();
+unsigned long int distance;
 /** \endcond IGNORE*/
 
 #endif /* APPLICATION_H_ */

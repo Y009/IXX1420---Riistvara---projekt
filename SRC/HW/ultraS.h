@@ -40,10 +40,10 @@ void ultraS_sendSignal();
 void ultraS_prepInfo();
 void ultraS_cyclic();
 unsigned int ultraS_getValidStatus();
-void ultraS_setValidStatus(enum status validStatus);
+void ultraS_setValidStatus(status validStatus);
 unsigned int ultraS_getDistance();
 int ultraS_getDataStatus();
-void ultraS_setDataStatus(enum dataStatus validStatus);
-/** \endcond IGNORE*/
+void ultraS_setDataStatus(dataStatus validStatus);
+///** \endcond IGNORE*/
 
 #endif /* ULTRAS_H_ */

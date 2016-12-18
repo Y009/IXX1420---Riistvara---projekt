@@ -9,12 +9,22 @@
 #ifndef LCD_H_
 #define LCD_H_
 
-#define MAX_LEN 15 /* maximum number of characters that fits a row */
-enum states {
-	IDLES,
-	BUSYS };
+#define MAX_LEN 32 /* maximum number of characters that fits a row */
+typedef enum
+{
+	LCD_IDLE,
+	LCD_BUSY,
+	LCD_ROW_CHANGE,
+	LCD_WAIT_STATE,
+	LCD_CLEAR_DISPLAY,
+	LCD_NUMBER_OF_TYPES
+}lcd_states;
 
 #include <stdint.h>
+
+#define lcd_IDLE 1
+#define lcd_BUSY 0
+
 //special commands
 #define SPECIAL_COMMAND 0x7C
 #define MAXIMUM_BACKLIGHT 0x9D
@@ -30,8 +40,11 @@ enum states {
 #define UNDERLINE_CURSOR_ON 0x0C
 #define BLINKING_BOX_ON 0x0D
 
+
 int lcd_initStateMachine();
 int lcd_cyclic();
 int lcd_sendString(char *i);
+short lcd_getState(void);
+
 
 #endif /* LCD_H_ */

@@ -34,8 +34,8 @@ unsigned volatile long long int startTimeMult;          /**< Insurance variable 
 unsigned volatile long long int endTimeMult;            /**< Insurance variable to insure that startTime and endTime are correct. */
 unsigned volatile long int distance;                    /**< Distance calculated based on start and end time and it's multipliers */
 
-enum status usStatus = US_IDLE;                         /**< Set finite state machine to idle/waiting state. */
-enum dataStatus usDataStatus = US_DATA_FALSE;           /**< Set finite state machine to start in false state to insure no false information. */
+status usStatus = US_IDLE;                         /**< Set finite state machine to idle/waiting state. */
+dataStatus usDataStatus = US_DATA_FALSE;           /**< Set finite state machine to start in false state to insure no false information. */
 
 /*********************************************************/
 void 
@@ -170,7 +170,7 @@ ultraS_getValidStatus()
 /*********************************************************/
 void
 ultraS_setValidStatus(
-			enum status validStatus)     /**< Status to set */
+			status validStatus)     /**< Status to set */
 /** Set ultrasonic modules state.
 **/
 {
@@ -201,9 +201,9 @@ ultraS_getDataStatus()
 }
 
 /*********************************************************/
-void 
+void
 ultraS_setDataStatus(
-		enum dataStatus validStatus)	/**< Status to set */
+		dataStatus validStatus)	/**< Status to set */
 /** Set ultrasonic modules workings state.
 **
 **  Set the inner FSM's state.

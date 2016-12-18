@@ -49,10 +49,10 @@ int UART_sendByte(uint8_t transmitData){
 
     	 UCA0TXBUF = transmitData;
 
-    	 return (SUCCESS);
+    	 return (uart_SUCCESS);
      }
 
-     return (FAILURE);
+     return (uart_FAILURE);
 }
 
 uint8_t UART_reciveByte(){
@@ -65,7 +65,7 @@ uint8_t UART_reciveByte(){
     	return reciveData;
      }
      
-    return (FAILURE);
+    return (uart_FAILURE);
     
 }
 

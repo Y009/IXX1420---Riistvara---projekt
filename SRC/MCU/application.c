@@ -16,54 +16,87 @@
 #include "../HW/ultraS.h"
 #include "../HW/lcd.h"
 #include "uart.h"
+#include "../MCU/counter.h"
 #include <stdio.h>
 
 #define DELAY 10000U							/**< 0.000625 second delay */
 
 void convertUDec(unsigned long n);
-
+unsigned long long int lastCounter2 =77;
 unsigned long int distance;						/**< Local variable of distance to be converted to string */
 
 char String[16] = "Kaugus : ";					/**< String to be displayed on the LCD \b after the distance has been added to it */
 char StringError[16] = "Error!         ";		/**< String to be displayed on the LCD \b if the distance fell out of the measurable range */
+
+#define TRUE 1
+#define FALSE 0
+#define WAITTIME 77
+int ready = 0;
+
+void
+readyTime()
+
+{
+    if ((counter_getOverflow() - lastCounter2) > WAITTIME){
+        ready = TRUE;
+        lastCounter2 = counter_getOverflow();
+    }
+    else
+    {
+        ready = FALSE;
+    }
+
+}
 
 void 
 application_cyclic()
 /**	The main cyclic function to control the workflow.
 **
 **	Initiates check on button.
-**	\n If the button has been debounced starts the work (if not already in progress.) 
+**	\n If the button has been debounced starts the work (if not already in progress.)
 **	\n Clears the display and checks with ultrasonic module.
 **	\n Sends a string to the LCD module to be displayed based on value from the ultrasonic module.
 **/
 {
+
+	//readyTime();
 	timer_checkFlag();
 	button_debounceBtn();
 
-    if(button_getBtn() && (ultraS_getValidStatus() != US_WORKING)){
+    if(button_getBtn() && (ultraS_getValidStatus() != US_WORKING) && (ultraS_getValidStatus()!= US_OK)){
     	ultraS_sendSignal();
     }
 
-    if (ultraS_getValidStatus() == US_OK) {
-
-    	UART_sendByte(COMMAND);
-		__delay_cycles(DELAY);
-		UART_sendByte(CLEAR_DISPLAY);
+    if (ultraS_getValidStatus() == US_OK /*&& ready*/) {
 
     	if (ultraS_getDataStatus() == (US_DATA_FALSEMAX || US_DATA_FALSEMIN)){
-            lcd_sendString(StringError);
+
+    		if(lcd_getState() == lcd_IDLE)
+    		{
+    			lcd_sendString(StringError);
+    		}
+
+
     	}
     	else {
-        	dist = ultraS_getDistance();            	/* To be actually given to the lcd module */
+    		distance = ultraS_getDistance();            	/* To be actually given to the lcd module */
             convertUDec(distance);
-    		lcd_sendString(String);
+
+        	if(lcd_getState() == lcd_IDLE)
+        	{
+        		lcd_sendString(String);
+        	}
+           // UART_sendByte(0x42);
+
+
+
     	}
 
 		ultraS_setDataStatus(US_DATA_READ);
     }
 }
 
-void 
+void
 convertUDec(
 		unsigned long n)						/**< Numeric value to be converted to string. */
 /**	Converts integer value to string

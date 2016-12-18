@@ -8,8 +8,8 @@
 #ifndef UART_H_
 #define UART_H_
 
-#define SUCCESS 1
-#define FAILURE 0
+#define uart_SUCCESS 1
+#define uart_FAILURE 0
 
 /*
 #define USCI_INPUT_CLK      (8000000UL)  // in Hz
