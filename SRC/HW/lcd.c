@@ -20,26 +20,23 @@
 
 //***** DEFINES ***************************************************************
 
-uint8_t strMeasurement[MAX_LEN];
-uint8_t MOVE_CURSOR[2] = { COMMAND, 0xC0 };
-uint8_t DISPLAY[2] = { COMMAND, CLEAR_DISPLAY };
-unsigned long long int SEC = 0;
+uint8_t strMeasurement[MAX_LEN]; /**< Array for transmission ready string */
+uint8_t DISPLAY[2] = { COMMAND, CLEAR_DISPLAY }; /**<Array for sending the display clean command to lcd */
+unsigned long long int SEC = 0; /**< Timeout start time */
 
-lcd_states state = LCD_WAIT_STATE;
+lcd_states state = LCD_WAIT_STATE; /**< Set finite state machine to idle/waiting state. */
 
-int i;
-int e = 0;
-int f = 0;
-int flag = 0;
-int trans_flag=1;
-int puhasta_flag = 1;
-int REAL_LEN = 0;
-int MAX_ROW = 16;
-int row_flag = 0;
+int CHAR_COUNT; /**< index of the current character in transmission */
+int CLEAR_DISPLAY_INDEX = 0; /**< Display cleaning array index  */
+int DATA_TO_SEND = 0; /**< Flag to indicate if is any data to send, 0 if no  */
+int trans_flag=1; /**< Flag to indicate if transmission has ended, 1 if yes */
+int puhasta_flag = 1; /**< flag to indicate need for cleaning the display */
+int REAL_LEN = 0; /**< length of the string to be displayed */
+
 
 /*********************************************************/
 
-/*	returns the current state of the machine
+/*	returns the current status of the machine
  *  ToDo: return value constants
  */
 short
@@ -48,7 +45,7 @@ lcd_getState(void)
 **
 **  \return lcd_IDLE
 **  \return lcd_BUSY
-**/
+*********************************************************/
 {
 	if (trans_flag == 0)
 	{
@@ -63,33 +60,36 @@ lcd_getState(void)
  * 		 ASCII character bound checking (we won't let user display everything)
  * 		 fix counter names
  */
-
-int lcd_sendString(char *e)
+/*********************************************************/
+int 
+lcd_sendString(
+				char *e ) /**< Pointer to the first character of the string */
+/** Send a string to the display. 
+**	Initializes flags for transmission. Resolves the string legth and prepares it for transit.
+**
+**
+********************************************************/
 {
 	SEC = counter_getOverflow();
-	if (lcd_initStateMachine() == 1)
+	if (lcd_initStateMachine() == 1 )
 	{
+
 		trans_flag=0;
-		for (i = 0; i < MAX_LEN + 1; i++)
+		for (CHAR_COUNT = 0; CHAR_COUNT < 16 + 1; CHAR_COUNT++)
 		{
 
-			if (i > MAX_ROW && row_flag == 0)
+			if ((uint8_t)(*(e + CHAR_COUNT)) == '\0')
 			{
-				row_flag = 1;
-			}
-
-			if ((uint8_t)(*(e + i)) == '\0')
-			{
-				REAL_LEN = i;
+				REAL_LEN = CHAR_COUNT ;
 				break;
 
 			}
 
-			*(strMeasurement + i) = (uint8_t)(*(e + i));
+			*(strMeasurement + CHAR_COUNT ) = (uint8_t)(*(e + CHAR_COUNT ));
 		}
+		CHAR_COUNT = 0; /*reset character counter */
+		DATA_TO_SEND = 1; /* set flag indicating need for transmission */
 
-		i = 0; /*reset character counter */
-		flag = 1; /* set flag indicating need for transmission */
 		return 1;
 	}
 	return 0;
@@ -97,12 +97,20 @@ int lcd_sendString(char *e)
 /*
  * ToDo: proper return constants (no magic numbers)
  */
-int lcd_initStateMachine()
+/*********************************************************/
+int 
+lcd_initStateMachine()
+/** Initializes the FSM.
+**	\return 1 on success
+**	\return 0 on failure
+**
+********************************************************/
 {
-	if (lcd_getState() == lcd_IDLE)
+	if (lcd_getState() == lcd_IDLE )
 	{
+
 		state = LCD_IDLE; 					/*initial state*/
-		i = 0;							/*counter for string displaying(name needs fixing), max value defined in lcd.h as MAX_LEN(32)*/
+		CHAR_COUNT = 0;							/*counter for string displaying, max value defined in lcd.h as MAX_LEN(32)*/
 		SEC = counter_getOverflow();
 		puhasta_flag = 1; /* add if clauses for string type, which one to clear*/
 		return 1;
@@ -115,7 +123,13 @@ int lcd_initStateMachine()
  *
  *
  */
-int lcd_cyclic()
+/*********************************************************/
+void
+lcd_cyclic()
+/** LCD module FSM
+** Handles the string displaying, screen cleaning and timeout for string display length
+**
+********************************************************/
 {
 
 	switch (state)
@@ -137,13 +151,13 @@ int lcd_cyclic()
 
 	case LCD_IDLE:
 
-		if (i < REAL_LEN)	/*check if any data still needs to be transmitted */
+		if (CHAR_COUNT < REAL_LEN)	/*check if any data still needs to be transmitted */
 		{
-			flag = 1;	/*set the appropriate flag to indicate transmission */
+			DATA_TO_SEND = 1;	/*set the appropriate flag to indicate transmission */
 
 		} else
 		{
-			flag = 0;
+			DATA_TO_SEND = 0;
 			state = LCD_WAIT_STATE;
 			break;
 		}
@@ -151,7 +165,7 @@ int lcd_cyclic()
 		{
 			state = LCD_CLEAR_DISPLAY;
 			break;
-		} else if (flag == 1) /*data to be transmitted */
+		} else if (DATA_TO_SEND == 1) /*data to be transmitted */
 		{
 			state = LCD_BUSY;
 			break;
@@ -162,46 +176,21 @@ int lcd_cyclic()
 
 	case LCD_BUSY:
 
-		if (UART_sendByte(strMeasurement[i]) == uart_SUCCESS)
+		if (UART_sendByte(strMeasurement[CHAR_COUNT]) == uart_SUCCESS)
 		{
 			state = LCD_IDLE;
-			i++;
+			CHAR_COUNT++;
 			break;
 		} else { state = LCD_IDLE; } /*in case of failure go check flags again */
 
-		if (i == MAX_ROW && row_flag == 1) /* if last character reached and there's a need for row change */
-		{
-			state = LCD_ROW_CHANGE;
-		}
 		break;
-
-	case LCD_ROW_CHANGE:
-
-
-		if (UART_sendByte(MOVE_CURSOR[e]) == uart_SUCCESS)
-		{
-			state = LCD_ROW_CHANGE;
-			e++;
-			break;
-
-		} else
-		{
-			state = LCD_ROW_CHANGE;
-		}
-
-		if (e > 1)
-		{
-			state = LCD_BUSY;
-			row_flag = 0;
-			break;
-		}
 
 	case LCD_CLEAR_DISPLAY:
 
-		if (UART_sendByte(DISPLAY[f]) == uart_SUCCESS)
+		if (UART_sendByte(DISPLAY[CLEAR_DISPLAY_INDEX]) == uart_SUCCESS)
 		{
 			state = LCD_CLEAR_DISPLAY;
-			f++;
+			CLEAR_DISPLAY_INDEX++;
 
 
 		} else
@@ -209,16 +198,15 @@ int lcd_cyclic()
 			state = LCD_CLEAR_DISPLAY;
 		}
 
-		if (f > 1)
+		if (CLEAR_DISPLAY_INDEX > 1)
 		{
 			state = LCD_IDLE;
 			puhasta_flag = 0;
-			flag=0;
-			f = 0;
+			DATA_TO_SEND=0;
+			CLEAR_DISPLAY_INDEX = 0;
 			break;
 
 		}
 	}
 
-	return 1;
 }

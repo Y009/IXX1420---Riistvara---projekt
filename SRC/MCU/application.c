@@ -28,26 +28,6 @@ unsigned long int distance;						/**< Local variable of distance to be converted
 char String[16] = "Kaugus : ";					/**< String to be displayed on the LCD \b after the distance has been added to it */
 char StringError[16] = "Error!         ";		/**< String to be displayed on the LCD \b if the distance fell out of the measurable range */
 
-#define TRUE 1
-#define FALSE 0
-#define WAITTIME 77
-int ready = 0;
-
-void
-readyTime()
-
-{
-    if ((counter_getOverflow() - lastCounter2) > WAITTIME){
-        ready = TRUE;
-        lastCounter2 = counter_getOverflow();
-    }
-    else
-    {
-        ready = FALSE;
-    }
-
-}
-
 void 
 application_cyclic()
 /**	The main cyclic function to control the workflow.
@@ -59,23 +39,22 @@ application_cyclic()
 **/
 {
 
-	//readyTime();
 	timer_checkFlag();
 	button_debounceBtn();
 
-    if(button_getBtn() && (ultraS_getValidStatus() != US_WORKING) && (ultraS_getValidStatus()!= US_OK)){
+    if(button_getBtn() && (ultraS_getValidStatus() != US_WORKING)){
     	ultraS_sendSignal();
     }
 
     if (ultraS_getValidStatus() == US_OK /*&& ready*/) {
 
-    	if (ultraS_getDataStatus() == (US_DATA_FALSEMAX || US_DATA_FALSEMIN)){
+    	if (ultraS_getDataStatus() == (US_DATA_FALSEMAX || US_DATA_FALSEMIN || US_DATA_FALSE)){
 
-    		if(lcd_getState() == lcd_IDLE)
-    		{
+   		if(lcd_getState() == lcd_IDLE)
+   		{
     			lcd_sendString(StringError);
-    		}
 
+   		}
 
     	}
     	else {
