@@ -16,7 +16,7 @@
 **[*] --> LCD_IDLE : Power on
 **LCD_IDLE --> LCD_BUSY : transmission start
 **LCD_BUSY --> LCD_BUSY : data to transmit
-*LCD_BUSY --> LCD_WAIT_STATE : data transmission ended
+**LCD_BUSY --> LCD_WAIT_STATE : data transmission ended
 **LCD_CLEAR_DISPLAY --> LCD_CLEAR_DISPLAY: display clearing in process
 **LCD_CLEAR_DISPLAY --> LCD_WAIT_STATE: display cleared
 **LCD_WAIT_STATE --> LCD_WAIT_STATE: timeout not reached
