@@ -10,7 +10,20 @@
 /** \file lcd.c
 **	\brief Documentation for the lcd module.
 **
-**  Describes the workings of the lcd state machine.
+**  Describes the workings of the lcd state machine
+**
+**@startuml {lcdFSM.png}
+**[*] --> LCD_IDLE : Power on
+**LCD_IDLE --> LCD_BUSY : transmission start
+**LCD_BUSY --> LCD_BUSY : data to transmit
+*LCD_BUSY --> LCD_WAIT_STATE : data transmission ended
+**LCD_CLEAR_DISPLAY --> LCD_CLEAR_DISPLAY: display clearing in process
+**LCD_CLEAR_DISPLAY --> LCD_WAIT_STATE: display cleared
+**LCD_WAIT_STATE --> LCD_WAIT_STATE: timeout not reached
+**LCD_WAIT_STATE --> LCD_CLEAR_DISPLAY: timeout reached
+**LCD_WAIT_STATE --> LCD_IDLE: timeout reached and display cleared
+**LCD_IDLE -> [*] : Power off
+**@enduml
 **/
 
 //***** Header Files **********************************************************
