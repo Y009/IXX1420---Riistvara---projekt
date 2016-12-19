@@ -38,7 +38,7 @@
 #include "counter.h"
 #include "../HW/ultraS.h"
 #include "../HW/gpio.h"
-#include "application.h"
+#include "../LOGIC/application.h"
 
 //MISC
 #define DELAY 10000000 //0.625 second delay
@@ -61,10 +61,11 @@ void main(void)
 
 	__bis_SR_register(GIE); 						/* Global interrupt enable. */
 
-	UART_sendByte(COMMAND);
-	__delay_cycles(DELAY/1000);
-	UART_sendByte(CLEAR_DISPLAY);
-    lcd_sendString(" Hello and bye! ");				/* Welcome message -.-*/
+	if(lcd_getState()==lcd_IDLE)
+	{
+		lcd_sendString(" Hello and bye! ");				/* Welcome message -.-*/
+	}
+
 
 	while(1){
 		application_cyclic();

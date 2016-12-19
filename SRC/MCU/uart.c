@@ -7,18 +7,26 @@
 
 #include "uart.h"
 
-//*****************************************************************************
-//
-// UART baud rate defines, taken from MSP430F5x family guide
-//
-//*****************************************************************************
-#define UART_PRESCALE 0x0682 //setting for 16MHz clock
-#define UART_FIRST_MOD_REG 0x00
-#define UART_SECOND_MOD_REG 0x06
+/** \file uart.c
+**	\brief Documentation for the UART module.
+**
+**  Basic initialisation of UART peripheral.
+**/
 
-uint8_t reciveData = 0;
+#define UART_PRESCALE 0x0682  /**< constant for clockPrescalar variable in USCI_A_UART_initParam construct, see family guide for further info  */
+#define UART_FIRST_MOD_REG 0x00 /**< constant for firstModReg variable in USCI_A_UART_initParam construct, see family guide for further info  */
+#define UART_SECOND_MOD_REG 0x06 /**< constant for secondModReg variable in USCI_A_UART_initParam construct, see family guide for further info  */
 
-void UART_init(){
+uint8_t reciveData = 0; /**< variable for byte transfer  */
+
+/*********************************************************/
+void 
+UART_init()
+/** Basic UART peripheral initialisation for 9600 baud rate
+**
+**  
+********************************************************/
+{
 	    USCI_A_UART_initParam param = {0};
 	    param.selectClockSource = USCI_A_UART_CLOCKSOURCE_SMCLK;
 	    param.clockPrescalar = UART_PRESCALE;
@@ -39,23 +47,36 @@ void UART_init(){
 
 }
 
-int UART_sendByte(uint8_t transmitData){
+/*********************************************************/
+int 
+UART_sendByte(
+uint8_t transmitData)  /**< byte to be sent in hexadecimal */
+/** cyclic byte sending using UART
+**\return uart_SUCCESS on successful byte transfer
+**\return uart_FAILURE on failed byte transfer
+********************************************************/
+{
     
-     //USCI_A_UART_transmitData(USCI_A0_BASE,
-     //                            transmitData);
 
      if( USCI_A_UART_getInterruptStatus(USCI_A0_BASE,
              USCI_A_UART_TRANSMIT_INTERRUPT_FLAG) == UCTXIFG ){
 
     	 UCA0TXBUF = transmitData;
 
-    	 return (SUCCESS);
+    	 return (uart_SUCCESS);
      }
 
-     return (FAILURE);
+     return (uart_FAILURE);
 }
 
-uint8_t UART_reciveByte(){
+/*********************************************************/
+uint8_t 
+UART_reciveByte()
+/** cyclic byte recieving using UART
+**\return recived byte on success
+**\return uart_FAILURE on failed byte transfer
+********************************************************/
+{
     
     if( USCI_A_UART_getInterruptStatus(USCI_A0_BASE,
              USCI_A_UART_RECEIVE_INTERRUPT_FLAG) == UCRXIFG ){
@@ -65,7 +86,7 @@ uint8_t UART_reciveByte(){
     	return reciveData;
      }
      
-    return (FAILURE);
+    return (uart_FAILURE);
     
 }
 

@@ -1,0 +1,65 @@
+\hypertarget{counter_8h}{}\section{M\+C\+U/counter.h File Reference}
+\label{counter_8h}\index{M\+C\+U/counter.\+h@{M\+C\+U/counter.\+h}}
+
+
+\subsection{Detailed Description}
+Documentation for the counter module\textquotesingle{}s header. 
+
+Global macro defines. This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{counter_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{counter_8h_a383bc9817a0a055d07f3b2b948fb0b7e}{counter\+\_\+en\+T\+BI}(timer\+Base)~Timer\+\_\+\+B\+\_\+enable\+Interrupt(timer\+Base)			/$\ast$ Enable interrupts by Timer B $\ast$/
+\begin{DoxyCompactList}\small\item\em Sets local gpio to appropriate board function of similar name. \end{DoxyCompactList}\item 
+\#define \hyperlink{counter_8h_ad53f7cf4741c618c5cce65f273bd52c9}{counter\+\_\+di\+T\+BI}(timer\+Base)~Timer\+\_\+\+B\+\_\+disable\+Interrupt(timer\+Base)			/$\ast$ Disable interrupts by Timer B $\ast$/
+\begin{DoxyCompactList}\small\item\em Sets local gpio to appropriate board function of similar name. \end{DoxyCompactList}\item 
+\#define \hyperlink{counter_8h_abffd74faf0296b433da654c54555bf91}{counter\+\_\+get\+Count\+Value}(timer\+Base)~Timer\+\_\+\+B\+\_\+get\+Counter\+Value(timer\+Base);
+\begin{DoxyCompactList}\small\item\em Sets local gpio to appropriate board function of similar name. \end{DoxyCompactList}\item 
+\#define \hyperlink{counter_8h_a987db31c103beded52c16d4553224150}{counter\+\_\+timer\+Base}~T\+I\+M\+E\+R\+\_\+\+B0\+\_\+\+B\+A\+SE
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{counter_8h_ad53f7cf4741c618c5cce65f273bd52c9}{}\label{counter_8h_ad53f7cf4741c618c5cce65f273bd52c9} 
+\index{counter.\+h@{counter.\+h}!counter\+\_\+di\+T\+BI@{counter\+\_\+di\+T\+BI}}
+\index{counter\+\_\+di\+T\+BI@{counter\+\_\+di\+T\+BI}!counter.\+h@{counter.\+h}}
+\subsubsection{\texorpdfstring{counter\+\_\+di\+T\+BI}{counter\_diTBI}}
+{\footnotesize\ttfamily \#define counter\+\_\+di\+T\+BI(\begin{DoxyParamCaption}\item[{}]{timer\+Base }\end{DoxyParamCaption})~Timer\+\_\+\+B\+\_\+disable\+Interrupt(timer\+Base)			/$\ast$ Disable interrupts by Timer B $\ast$/}
+
+
+
+Sets local gpio to appropriate board function of similar name. 
+
+Disables interrupts by {\bfseries timer\+Base} timer. \hypertarget{counter_8h_a383bc9817a0a055d07f3b2b948fb0b7e}{}\label{counter_8h_a383bc9817a0a055d07f3b2b948fb0b7e} 
+\index{counter.\+h@{counter.\+h}!counter\+\_\+en\+T\+BI@{counter\+\_\+en\+T\+BI}}
+\index{counter\+\_\+en\+T\+BI@{counter\+\_\+en\+T\+BI}!counter.\+h@{counter.\+h}}
+\subsubsection{\texorpdfstring{counter\+\_\+en\+T\+BI}{counter\_enTBI}}
+{\footnotesize\ttfamily \#define counter\+\_\+en\+T\+BI(\begin{DoxyParamCaption}\item[{}]{timer\+Base }\end{DoxyParamCaption})~Timer\+\_\+\+B\+\_\+enable\+Interrupt(timer\+Base)			/$\ast$ Enable interrupts by Timer B $\ast$/}
+
+
+
+Sets local gpio to appropriate board function of similar name. 
+
+Enables interrupts by {\bfseries timer\+Base} timer. \hypertarget{counter_8h_abffd74faf0296b433da654c54555bf91}{}\label{counter_8h_abffd74faf0296b433da654c54555bf91} 
+\index{counter.\+h@{counter.\+h}!counter\+\_\+get\+Count\+Value@{counter\+\_\+get\+Count\+Value}}
+\index{counter\+\_\+get\+Count\+Value@{counter\+\_\+get\+Count\+Value}!counter.\+h@{counter.\+h}}
+\subsubsection{\texorpdfstring{counter\+\_\+get\+Count\+Value}{counter\_getCountValue}}
+{\footnotesize\ttfamily \#define counter\+\_\+get\+Count\+Value(\begin{DoxyParamCaption}\item[{}]{timer\+Base }\end{DoxyParamCaption})~Timer\+\_\+\+B\+\_\+get\+Counter\+Value(timer\+Base);}
+
+
+
+Sets local gpio to appropriate board function of similar name. 
+
+Gets the current timer value form {\bfseries timer\+Base} timer. \hypertarget{counter_8h_a987db31c103beded52c16d4553224150}{}\label{counter_8h_a987db31c103beded52c16d4553224150} 
+\index{counter.\+h@{counter.\+h}!counter\+\_\+timer\+Base@{counter\+\_\+timer\+Base}}
+\index{counter\+\_\+timer\+Base@{counter\+\_\+timer\+Base}!counter.\+h@{counter.\+h}}
+\subsubsection{\texorpdfstring{counter\+\_\+timer\+Base}{counter\_timerBase}}
+{\footnotesize\ttfamily \#define counter\+\_\+timer\+Base~T\+I\+M\+E\+R\+\_\+\+B0\+\_\+\+B\+A\+SE}
+
+The used timer\textquotesingle{}s timer\+Base for the counter module 

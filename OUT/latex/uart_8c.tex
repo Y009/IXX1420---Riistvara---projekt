@@ -1,0 +1,111 @@
+\hypertarget{uart_8c}{}\section{M\+C\+U/uart.c File Reference}
+\label{uart_8c}\index{M\+C\+U/uart.\+c@{M\+C\+U/uart.\+c}}
+
+
+\subsection{Detailed Description}
+Documentation for the U\+A\+RT module. 
+
+Basic initialisation of U\+A\+RT peripheral. Include dependency graph for uart.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=146pt]{uart_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{uart_8c_a4ac2174fadbbbd9b570bebe61845f7af}{U\+A\+R\+T\+\_\+\+P\+R\+E\+S\+C\+A\+LE}~0x0682
+\item 
+\#define \hyperlink{uart_8c_ae5bf5c2fb4bf3140554d4fc8b454fade}{U\+A\+R\+T\+\_\+\+F\+I\+R\+S\+T\+\_\+\+M\+O\+D\+\_\+\+R\+EG}~0x00
+\item 
+\#define \hyperlink{uart_8c_ac8c445e3463c8179ec20e87ef38316a1}{U\+A\+R\+T\+\_\+\+S\+E\+C\+O\+N\+D\+\_\+\+M\+O\+D\+\_\+\+R\+EG}~0x06
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{uart_8c_a3f4ebb565f4802a75c80bd3d72df4e72}{U\+A\+R\+T\+\_\+init} ()
+\item 
+int \hyperlink{uart_8c_a52320a5501d81c9a80911f8f7bcb74eb}{U\+A\+R\+T\+\_\+send\+Byte} (uint8\+\_\+t transmit\+Data)
+\item 
+uint8\+\_\+t \hyperlink{uart_8c_a2c49b1c76a1a8dbb10897ab42bcc470b}{U\+A\+R\+T\+\_\+recive\+Byte} ()
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \hyperlink{uart_8c_a5ea2370c7b87cd7c2d25210e9f150539}{recive\+Data} = 0
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{uart_8c_ae5bf5c2fb4bf3140554d4fc8b454fade}{}\label{uart_8c_ae5bf5c2fb4bf3140554d4fc8b454fade} 
+\index{uart.\+c@{uart.\+c}!U\+A\+R\+T\+\_\+\+F\+I\+R\+S\+T\+\_\+\+M\+O\+D\+\_\+\+R\+EG@{U\+A\+R\+T\+\_\+\+F\+I\+R\+S\+T\+\_\+\+M\+O\+D\+\_\+\+R\+EG}}
+\index{U\+A\+R\+T\+\_\+\+F\+I\+R\+S\+T\+\_\+\+M\+O\+D\+\_\+\+R\+EG@{U\+A\+R\+T\+\_\+\+F\+I\+R\+S\+T\+\_\+\+M\+O\+D\+\_\+\+R\+EG}!uart.\+c@{uart.\+c}}
+\subsubsection{\texorpdfstring{U\+A\+R\+T\+\_\+\+F\+I\+R\+S\+T\+\_\+\+M\+O\+D\+\_\+\+R\+EG}{UART\_FIRST\_MOD\_REG}}
+{\footnotesize\ttfamily \#define U\+A\+R\+T\+\_\+\+F\+I\+R\+S\+T\+\_\+\+M\+O\+D\+\_\+\+R\+EG~0x00}
+
+constant for first\+Mod\+Reg variable in U\+S\+C\+I\+\_\+\+A\+\_\+\+U\+A\+R\+T\+\_\+init\+Param construct, see family guide for further info \hypertarget{uart_8c_a4ac2174fadbbbd9b570bebe61845f7af}{}\label{uart_8c_a4ac2174fadbbbd9b570bebe61845f7af} 
+\index{uart.\+c@{uart.\+c}!U\+A\+R\+T\+\_\+\+P\+R\+E\+S\+C\+A\+LE@{U\+A\+R\+T\+\_\+\+P\+R\+E\+S\+C\+A\+LE}}
+\index{U\+A\+R\+T\+\_\+\+P\+R\+E\+S\+C\+A\+LE@{U\+A\+R\+T\+\_\+\+P\+R\+E\+S\+C\+A\+LE}!uart.\+c@{uart.\+c}}
+\subsubsection{\texorpdfstring{U\+A\+R\+T\+\_\+\+P\+R\+E\+S\+C\+A\+LE}{UART\_PRESCALE}}
+{\footnotesize\ttfamily \#define U\+A\+R\+T\+\_\+\+P\+R\+E\+S\+C\+A\+LE~0x0682}
+
+constant for clock\+Prescalar variable in U\+S\+C\+I\+\_\+\+A\+\_\+\+U\+A\+R\+T\+\_\+init\+Param construct, see family guide for further info \hypertarget{uart_8c_ac8c445e3463c8179ec20e87ef38316a1}{}\label{uart_8c_ac8c445e3463c8179ec20e87ef38316a1} 
+\index{uart.\+c@{uart.\+c}!U\+A\+R\+T\+\_\+\+S\+E\+C\+O\+N\+D\+\_\+\+M\+O\+D\+\_\+\+R\+EG@{U\+A\+R\+T\+\_\+\+S\+E\+C\+O\+N\+D\+\_\+\+M\+O\+D\+\_\+\+R\+EG}}
+\index{U\+A\+R\+T\+\_\+\+S\+E\+C\+O\+N\+D\+\_\+\+M\+O\+D\+\_\+\+R\+EG@{U\+A\+R\+T\+\_\+\+S\+E\+C\+O\+N\+D\+\_\+\+M\+O\+D\+\_\+\+R\+EG}!uart.\+c@{uart.\+c}}
+\subsubsection{\texorpdfstring{U\+A\+R\+T\+\_\+\+S\+E\+C\+O\+N\+D\+\_\+\+M\+O\+D\+\_\+\+R\+EG}{UART\_SECOND\_MOD\_REG}}
+{\footnotesize\ttfamily \#define U\+A\+R\+T\+\_\+\+S\+E\+C\+O\+N\+D\+\_\+\+M\+O\+D\+\_\+\+R\+EG~0x06}
+
+constant for second\+Mod\+Reg variable in U\+S\+C\+I\+\_\+\+A\+\_\+\+U\+A\+R\+T\+\_\+init\+Param construct, see family guide for further info 
+
+\subsection{Function Documentation}
+\hypertarget{uart_8c_a3f4ebb565f4802a75c80bd3d72df4e72}{}\label{uart_8c_a3f4ebb565f4802a75c80bd3d72df4e72} 
+\index{uart.\+c@{uart.\+c}!U\+A\+R\+T\+\_\+init@{U\+A\+R\+T\+\_\+init}}
+\index{U\+A\+R\+T\+\_\+init@{U\+A\+R\+T\+\_\+init}!uart.\+c@{uart.\+c}}
+\subsubsection{\texorpdfstring{U\+A\+R\+T\+\_\+init()}{UART\_init()}}
+{\footnotesize\ttfamily void U\+A\+R\+T\+\_\+init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Basic U\+A\+RT peripheral initialisation for 9600 baud rate \hypertarget{uart_8c_a2c49b1c76a1a8dbb10897ab42bcc470b}{}\label{uart_8c_a2c49b1c76a1a8dbb10897ab42bcc470b} 
+\index{uart.\+c@{uart.\+c}!U\+A\+R\+T\+\_\+recive\+Byte@{U\+A\+R\+T\+\_\+recive\+Byte}}
+\index{U\+A\+R\+T\+\_\+recive\+Byte@{U\+A\+R\+T\+\_\+recive\+Byte}!uart.\+c@{uart.\+c}}
+\subsubsection{\texorpdfstring{U\+A\+R\+T\+\_\+recive\+Byte()}{UART\_reciveByte()}}
+{\footnotesize\ttfamily uint8\+\_\+t U\+A\+R\+T\+\_\+recive\+Byte (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+cyclic byte recieving using U\+A\+RT \begin{DoxyReturn}{Returns}
+recived byte on success 
+
+uart\+\_\+\+F\+A\+I\+L\+U\+RE on failed byte transfer 
+\end{DoxyReturn}
+\hypertarget{uart_8c_a52320a5501d81c9a80911f8f7bcb74eb}{}\label{uart_8c_a52320a5501d81c9a80911f8f7bcb74eb} 
+\index{uart.\+c@{uart.\+c}!U\+A\+R\+T\+\_\+send\+Byte@{U\+A\+R\+T\+\_\+send\+Byte}}
+\index{U\+A\+R\+T\+\_\+send\+Byte@{U\+A\+R\+T\+\_\+send\+Byte}!uart.\+c@{uart.\+c}}
+\subsubsection{\texorpdfstring{U\+A\+R\+T\+\_\+send\+Byte()}{UART\_sendByte()}}
+{\footnotesize\ttfamily int U\+A\+R\+T\+\_\+send\+Byte (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{transmit\+Data }\end{DoxyParamCaption})}
+
+cyclic byte sending using U\+A\+RT \begin{DoxyReturn}{Returns}
+uart\+\_\+\+S\+U\+C\+C\+E\+SS on successful byte transfer 
+
+uart\+\_\+\+F\+A\+I\+L\+U\+RE on failed byte transfer 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em transmit\+Data} & byte to be sent in hexadecimal \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=265pt]{uart_8c_a52320a5501d81c9a80911f8f7bcb74eb_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Variable Documentation}
+\hypertarget{uart_8c_a5ea2370c7b87cd7c2d25210e9f150539}{}\label{uart_8c_a5ea2370c7b87cd7c2d25210e9f150539} 
+\index{uart.\+c@{uart.\+c}!recive\+Data@{recive\+Data}}
+\index{recive\+Data@{recive\+Data}!uart.\+c@{uart.\+c}}
+\subsubsection{\texorpdfstring{recive\+Data}{reciveData}}
+{\footnotesize\ttfamily uint8\+\_\+t recive\+Data = 0}
+
+variable for byte transfer 

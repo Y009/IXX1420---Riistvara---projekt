@@ -1,0 +1,9 @@
+<map id="LOGIC" name="LOGIC">
+<area shape="rect" id="node1" href="dir_f7b269915b002652e8fce37c3f975c99.html" title="LOGIC" alt="" coords="41,5,113,53"/>
+<area shape="rect" id="node2" href="dir_b301fd45e05ac70352f1d68b9ce97377.html" title="HW" alt="" coords="5,101,77,149"/>
+<area shape="rect" id="edge2-headlabel" href="dir_000001_000000.html" title="2" alt="" coords="61,80,69,95"/>
+<area shape="rect" id="node3" href="dir_9838586c8e1b8c41d059e79659516442.html" title="MCU" alt="" coords="5,197,77,245"/>
+<area shape="rect" id="edge3-headlabel" href="dir_000001_000002.html" title="3" alt="" coords="76,180,84,195"/>
+<area shape="rect" id="edge1-headlabel" href="dir_000000_000002.html" title="5" alt="" coords="37,171,45,186"/>
+<area shape="rect" id="edge4-headlabel" href="dir_000002_000000.html" title="3" alt="" coords="38,161,46,176"/>
+</map>

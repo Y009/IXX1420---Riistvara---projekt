@@ -5,6 +5,12 @@
  *      Author: Y009
  */
 
+/** \file gpio.h
+**	\brief Documentation for the gpio module's header.
+**
+**  Global macro defines.
+**/
+
 #ifndef GPIO_H_
 #define GPIO_H_
 
@@ -12,13 +18,69 @@
 
 // Getting all used gpio calls to go through the gpio module to preserve hierachy.
 
+/**
+** \def gpio_getPinInput(port, pin) 				GPIO_getInputPinValue(port, pin)
+**	\brief Sets local gpio to appropriate board function of similar name.
+**
+** Gets \b port \b pin's logical value.
+**/
+
+/**
+** \def gpio_setPinHigh(port, pin) 				GPIO_setOutputHighOnPin(port, pin)
+**	\brief Sets local gpio to appropriate board function of similar name.
+** 
+** Sets \b port's \b pin to a logical 1
+**/
+
+/**
+** \def gpio_setPinLow(port, pin) 				GPIO_setOutputLowOnPin(port, pin)
+**	\brief Sets local gpio to appropriate board function of similar name.
+**
+** Sets \b port's \b pin to a logical 0
+**/
+
+/**
+** \def gpio_getInterrupt(port, pin)				GPIO_getInterruptStatus(port, pin)
+**	\brief Sets local gpio to appropriate board function of similar name.
+**
+** Gets \b port \b pin's pending interrupt status.
+**/
+
+/**
+** \def gpio_setInterruptEdge(port, pin, edge)		GPIO_selectInterruptEdge(port, pin, edge)
+**	\brief Sets local gpio to appropriate board function of similar name.
+**
+** Sets \b port's \b pin interrupt status to be set by either a falling or a rising edge.
+**/
+
+/**
+** \def gpio_clearInterrupt(port, pin)				GPIO_clearInterrupt(port, pin)
+**	\brief Sets local gpio to appropriate board function of similar name.
+**
+** Used to clear serviced interrupts on \b port's \b pin
+**/
+
+/**
+** \def gpio_getInterrupt(port, pin)				GPIO_getInterruptStatus(port, pin)
+**	\brief Sets local gpio to appropriate board function of similar name.
+**
+** Sets \b port's pin to a logical 1
+**/
+
 #define gpio_getPinInput(port, pin) 				GPIO_getInputPinValue(port, pin)
 #define gpio_setPinHigh(port, pin) 					GPIO_setOutputHighOnPin(port, pin)
 #define gpio_setPinLow(port, pin) 					GPIO_setOutputLowOnPin(port, pin)
 #define gpio_getInterrupt(port, pin)				GPIO_getInterruptStatus(port, pin)
 #define gpio_setInterruptEdge(port, pin, edge)		GPIO_selectInterruptEdge(port, pin, edge)
 #define gpio_clearInterrupt(port, pin)				GPIO_clearInterrupt(port, pin)
-#define gpio_getInterrupt(port, pin)				GPIO_getInterruptStatus(port, pin)
+
+//*****************************************************************************
+//
+// The following are values that can be passed to the port parameter
+// for macros :gpio_getPinInput, gpio_setPinHigh, gpio_setPinLow, gpio_getInterrupt,
+// gpio_setInterruptEdge and clearInterrupt
+//
+//*****************************************************************************
 
 #define gpio_PORT_P1                        GPIO_PORT_P1
 #define gpio_PORT_P2                        GPIO_PORT_P2
@@ -39,6 +101,14 @@
 #define gpio_PORT_PF                        GPIO_PORT_PF
 #define gpio_PORT_PJ                        GPIO_PORT_PJ
 
+//*****************************************************************************
+//
+// The following are values that can be passed to the pin parameter
+// for macros :gpio_getPinInput, gpio_setPinHigh, gpio_setPinLow, gpio_getInterrupt,
+// gpio_setInterruptEdge and clearInterrupt
+//
+//*****************************************************************************
+
 #define gpio_PIN0                           GPIO_PIN0
 #define gpio_PIN1                           GPIO_PIN1
 #define gpio_PIN2                           GPIO_PIN2
@@ -58,10 +128,18 @@
 #define gpio_PIN_ALL8                 		GPIO_PIN_ALL8
 #define gpio_PIN_ALL16                 		GPIO_PIN_ALL16
 
+//*****************************************************************************
+//
+// The following are values that can be passed to the edge parameter
+// for macro : gpio_setInterruptEdge
+//
+//*****************************************************************************
 #define gpio_HIGH_TO_LOW_TRANSITION         GPIO_HIGH_TO_LOW_TRANSITION
 #define gpio_LOW_TO_HIGH_TRANSITION         GPIO_LOW_TO_HIGH_TRANSITION
 
 //***** Prototypes *************************************************
+/** \cond IGNORE*/
 void gpio_init(void);
+/** \endcond IGNORE*/
 
 #endif /* GPIO_H_ */

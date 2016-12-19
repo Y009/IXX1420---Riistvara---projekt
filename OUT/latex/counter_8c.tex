@@ -1,0 +1,87 @@
+\hypertarget{counter_8c}{}\section{M\+C\+U/counter.c File Reference}
+\label{counter_8c}\index{M\+C\+U/counter.\+c@{M\+C\+U/counter.\+c}}
+
+
+\subsection{Detailed Description}
+Documentation for the counter module. 
+
+Describes the workings of the counter module. Free running timer for ultrasonic module interrupt. Include dependency graph for counter.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=212pt]{counter_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{counter_8c_a1bc63400ff91806a4c1a79caefead705}{T\+I\+M\+E\+TO}~0x\+F\+D\+E8
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+unsigned long long int \hyperlink{counter_8c_a71d01976549f4cd7e7ee980186cbe4cb}{counter\+\_\+get\+Overflow} (void)
+\item 
+void \hyperlink{counter_8c_aba214904e1b489fd2c9a8d6fd85b4756}{counter\+\_\+init} (void)
+\item 
+\+\_\+\+\_\+interrupt void \hyperlink{counter_8c_aa65b39e29d27a10bf91108fff1f8e852}{counter\+\_\+add\+To\+Timer} (void)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+unsigned long long int \hyperlink{counter_8c_a75e2a4049f11db7e514573608bebadf9}{timer\+B\+\_\+overflow}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{counter_8c_a1bc63400ff91806a4c1a79caefead705}{}\label{counter_8c_a1bc63400ff91806a4c1a79caefead705} 
+\index{counter.\+c@{counter.\+c}!T\+I\+M\+E\+TO@{T\+I\+M\+E\+TO}}
+\index{T\+I\+M\+E\+TO@{T\+I\+M\+E\+TO}!counter.\+c@{counter.\+c}}
+\subsubsection{\texorpdfstring{T\+I\+M\+E\+TO}{TIMETO}}
+{\footnotesize\ttfamily \#define T\+I\+M\+E\+TO~0x\+F\+D\+E8}
+
+32.\+5 ms cycle for timer A. Calculated with 16\+M\+Hz S\+M\+C\+LK with divider 16 
+
+\subsection{Function Documentation}
+\hypertarget{counter_8c_aa65b39e29d27a10bf91108fff1f8e852}{}\label{counter_8c_aa65b39e29d27a10bf91108fff1f8e852} 
+\index{counter.\+c@{counter.\+c}!counter\+\_\+add\+To\+Timer@{counter\+\_\+add\+To\+Timer}}
+\index{counter\+\_\+add\+To\+Timer@{counter\+\_\+add\+To\+Timer}!counter.\+c@{counter.\+c}}
+\subsubsection{\texorpdfstring{counter\+\_\+add\+To\+Timer()}{counter\_addToTimer()}}
+{\footnotesize\ttfamily \+\_\+\+\_\+interrupt void counter\+\_\+add\+To\+Timer (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Interrupt vector for timer\+B0.
+
+Is triggered when the timerB\textquotesingle{}s value reaches T\+I\+M\+E\+TO and resets back to 0. \hypertarget{counter_8c_a71d01976549f4cd7e7ee980186cbe4cb}{}\label{counter_8c_a71d01976549f4cd7e7ee980186cbe4cb} 
+\index{counter.\+c@{counter.\+c}!counter\+\_\+get\+Overflow@{counter\+\_\+get\+Overflow}}
+\index{counter\+\_\+get\+Overflow@{counter\+\_\+get\+Overflow}!counter.\+c@{counter.\+c}}
+\subsubsection{\texorpdfstring{counter\+\_\+get\+Overflow()}{counter\_getOverflow()}}
+{\footnotesize\ttfamily unsigned long long int counter\+\_\+get\+Overflow (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Get timerA\textquotesingle{}s interrupt\+Counter.
+
+\begin{DoxyReturn}{Returns}
+timer\+B\+\_\+overflow 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{counter_8c_a71d01976549f4cd7e7ee980186cbe4cb_icgraph}
+\end{center}
+\end{figure}
+\hypertarget{counter_8c_aba214904e1b489fd2c9a8d6fd85b4756}{}\label{counter_8c_aba214904e1b489fd2c9a8d6fd85b4756} 
+\index{counter.\+c@{counter.\+c}!counter\+\_\+init@{counter\+\_\+init}}
+\index{counter\+\_\+init@{counter\+\_\+init}!counter.\+c@{counter.\+c}}
+\subsubsection{\texorpdfstring{counter\+\_\+init()}{counter\_init()}}
+{\footnotesize\ttfamily void counter\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Initializes Timer B in up mode with T\+I\+M\+E\+TO ms cycle time. 
+
+\subsection{Variable Documentation}
+\hypertarget{counter_8c_a75e2a4049f11db7e514573608bebadf9}{}\label{counter_8c_a75e2a4049f11db7e514573608bebadf9} 
+\index{counter.\+c@{counter.\+c}!timer\+B\+\_\+overflow@{timer\+B\+\_\+overflow}}
+\index{timer\+B\+\_\+overflow@{timer\+B\+\_\+overflow}!counter.\+c@{counter.\+c}}
+\subsubsection{\texorpdfstring{timer\+B\+\_\+overflow}{timerB\_overflow}}
+{\footnotesize\ttfamily unsigned long long int timer\+B\+\_\+overflow}
+
+Maximum time; Will only result in false data when it overflow itself. $\sim$4 years 
