@@ -1,0 +1,42 @@
+\hypertarget{clock_8c}{}\section{M\+C\+U/clock.c File Reference}
+\label{clock_8c}\index{M\+C\+U/clock.\+c@{M\+C\+U/clock.\+c}}
+
+
+\subsection{Detailed Description}
+Documentation for the clock initialisation. 
+
+Basic configuration for master and peripheral clocks. Include dependency graph for clock.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=204pt]{clock_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{clock_8c_a5bc79585bbccdf863fbd03234d61f1ae}{}\label{clock_8c_a5bc79585bbccdf863fbd03234d61f1ae} 
+\#define {\bfseries L\+F\+\_\+\+C\+R\+Y\+S\+T\+A\+L\+\_\+\+F\+R\+E\+Q\+U\+E\+N\+C\+Y\+\_\+\+I\+N\+\_\+\+HZ}~32768
+\item 
+\hypertarget{clock_8c_a6fafe000e28cc2d1aa536affd1c62595}{}\label{clock_8c_a6fafe000e28cc2d1aa536affd1c62595} 
+\#define {\bfseries H\+F\+\_\+\+C\+R\+Y\+S\+T\+A\+L\+\_\+\+F\+R\+E\+Q\+U\+E\+N\+C\+Y\+\_\+\+I\+N\+\_\+\+HZ}~4000000
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{clock_8c_a1f3d94949dfa6362c59745783a03d5d8}{clk\+Init} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{clock_8c_a1f3d94949dfa6362c59745783a03d5d8}{}\label{clock_8c_a1f3d94949dfa6362c59745783a03d5d8} 
+\index{clock.\+c@{clock.\+c}!clk\+Init@{clk\+Init}}
+\index{clk\+Init@{clk\+Init}!clock.\+c@{clock.\+c}}
+\subsubsection{\texorpdfstring{clk\+Init()}{clkInit()}}
+{\footnotesize\ttfamily void clk\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Function to initialize master and peripheral clock
+
+Sets proper core voltage level. ~\newline
+ Uses on board X\+T2 (4\+Mhz) as a refrence for both clocks.

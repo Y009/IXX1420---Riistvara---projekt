@@ -1,5 +1,10 @@
 var searchData=
 [
+  ['char_5fcount',['CHAR_COUNT',['../lcd_8c.html#a7eba1480c265e23b3e9ca864a915ff51',1,'lcd.c']]],
+  ['clear_5fdisplay_5findex',['CLEAR_DISPLAY_INDEX',['../lcd_8c.html#ab3e749ddaefd0cda3aa8561b910543cc',1,'lcd.c']]],
+  ['clkinit',['clkInit',['../clock_8c.html#a1f3d94949dfa6362c59745783a03d5d8',1,'clock.c']]],
+  ['clock_2ec',['clock.c',['../clock_8c.html',1,'']]],
+  ['clock_2eh',['clock.h',['../clock_8h.html',1,'']]],
   ['cmconst',['CMCONST',['../ultra_s_8c.html#a0212ca8fac649015507d58329b4e2cfc',1,'ultraS.c']]],
   ['convertudec',['convertUDec',['../application_8c.html#a9dff310201803ed56106c927a9ced9cd',1,'application.c']]],
   ['counter_2ec',['counter.c',['../counter_8c.html',1,'']]],

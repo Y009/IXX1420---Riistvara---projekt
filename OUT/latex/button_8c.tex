@@ -1,14 +1,18 @@
-\hypertarget{button_8c}{}\section{S\+R\+C/\+H\+W/button.c File Reference}
-\label{button_8c}\index{S\+R\+C/\+H\+W/button.\+c@{S\+R\+C/\+H\+W/button.\+c}}
+\hypertarget{button_8c}{}\section{H\+W/button.c File Reference}
+\label{button_8c}\index{H\+W/button.\+c@{H\+W/button.\+c}}
 
 
-Documentation for the button module.  
+\subsection{Detailed Description}
+Documentation for the button module. 
 
-
-{\ttfamily \#include $<$driverlib.\+h$>$}\newline
-{\ttfamily \#include \char`\"{}button.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}../\+M\+C\+U/timer.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}gpio.\+h\char`\"{}}\newline
+Describes the debouncing of a button press. Include dependency graph for button.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{button_8c__incl}
+\end{center}
+\end{figure}
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
@@ -39,11 +43,6 @@ volatile short \hyperlink{button_8c_aa33b84d1f3b7878bc221656d47324cd4}{B\+TN} = 
 unsigned long long int \hyperlink{button_8c_af53beb5d7b0435f29d82d7326945eb2c}{last\+Counter} = 0
 \end{DoxyCompactItemize}
 
-
-\subsection{Detailed Description}
-Documentation for the button module. 
-
-Describes the debouncing of a button press. 
 
 \subsection{Macro Definition Documentation}
 \hypertarget{button_8c_a390936ddde1874ed563e6427681e5a23}{}\label{button_8c_a390936ddde1874ed563e6427681e5a23} 
@@ -94,6 +93,22 @@ Debounces a button press based on time and how the value on the button changes i
  This process is repeated until a desired value is reached at which point the button is debounced. \begin{DoxyAttention}{Attention}
 Button\textquotesingle{}s value is not changed during the debug process -\/ only when the N\+O\+T\+D\+E\+B\+O\+U\+N\+C\+ED or D\+E\+B\+O\+U\+N\+C\+ED values have been reached. 
 \end{DoxyAttention}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=313pt]{button_8c_ae3e592eedd316ea878ef061218417c6f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=316pt]{button_8c_ae3e592eedd316ea878ef061218417c6f_icgraph}
+\end{center}
+\end{figure}
 \hypertarget{button_8c_a186ee6b09e00657d71468c4a98f2bccd}{}\label{button_8c_a186ee6b09e00657d71468c4a98f2bccd} 
 \index{button.\+c@{button.\+c}!button\+\_\+get\+Btn@{button\+\_\+get\+Btn}}
 \index{button\+\_\+get\+Btn@{button\+\_\+get\+Btn}!button.\+c@{button.\+c}}
@@ -103,6 +118,14 @@ Button\textquotesingle{}s value is not changed during the debug process -\/ only
 Get debounced value pressed button. \begin{DoxyReturn}{Returns}
 B\+TN 
 \end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=287pt]{button_8c_a186ee6b09e00657d71468c4a98f2bccd_icgraph}
+\end{center}
+\end{figure}
 
 
 \subsection{Variable Documentation}

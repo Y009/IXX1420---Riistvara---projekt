@@ -1,16 +1,26 @@
-\hypertarget{application_8c}{}\section{S\+R\+C/\+M\+C\+U/application.c File Reference}
-\label{application_8c}\index{S\+R\+C/\+M\+C\+U/application.\+c@{S\+R\+C/\+M\+C\+U/application.\+c}}
+\hypertarget{application_8c}{}\section{L\+O\+G\+I\+C/application.c File Reference}
+\label{application_8c}\index{L\+O\+G\+I\+C/application.\+c@{L\+O\+G\+I\+C/application.\+c}}
 
 
-Documentation for the application module.  
+\subsection{Detailed Description}
+Documentation for the application module. 
+
+The application module serves as an intermediary between modules to handle work sequence.
+
+Example of how the application module works\+:
 
 
-{\ttfamily \#include \char`\"{}timer.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}../\+H\+W/button.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}../\+H\+W/ultra\+S.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}../\+H\+W/lcd.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}uart.\+h\char`\"{}}\newline
-{\ttfamily \#include $<$stdio.\+h$>$}\newline
+\begin{DoxyImageNoCaption}
+  \mbox{\includegraphics[width=\textwidth,height=\textheight/2,keepaspectratio=true]{inline_umlgraph_2}}
+\end{DoxyImageNoCaption}
+ Include dependency graph for application.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{application_8c__incl}
+\end{center}
+\end{figure}
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
@@ -34,11 +44,6 @@ char \hyperlink{application_8c_a6b6430d8f5edc9acef65aa3f3ebfaa51}{String\+Error}
 \end{DoxyCompactItemize}
 
 
-\subsection{Detailed Description}
-Documentation for the application module. 
-
-The application module serves as an intermediary between modules to handle work sequence. 
-
 \subsection{Macro Definition Documentation}
 \hypertarget{application_8c_a62249e384b997229a3e2ae74ade334e2}{}\label{application_8c_a62249e384b997229a3e2ae74ade334e2} 
 \index{application.\+c@{application.\+c}!D\+E\+L\+AY@{D\+E\+L\+AY}}
@@ -60,7 +65,15 @@ The main cyclic function to control the workflow.
 Initiates check on button. ~\newline
  If the button has been debounced starts the work (if not already in progress.) ~\newline
  Clears the display and checks with ultrasonic module. ~\newline
- Sends a string to the L\+CD module to be displayed based on value from the ultrasonic module. \hypertarget{application_8c_a9dff310201803ed56106c927a9ced9cd}{}\label{application_8c_a9dff310201803ed56106c927a9ced9cd} 
+ Sends a string to the L\+CD module to be displayed based on value from the ultrasonic module. Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{application_8c_aca9e2d049a005223eab8810cc5443efb_cgraph}
+\end{center}
+\end{figure}
+\hypertarget{application_8c_a9dff310201803ed56106c927a9ced9cd}{}\label{application_8c_a9dff310201803ed56106c927a9ced9cd} 
 \index{application.\+c@{application.\+c}!convert\+U\+Dec@{convert\+U\+Dec}}
 \index{convert\+U\+Dec@{convert\+U\+Dec}!application.\+c@{application.\+c}}
 \subsubsection{\texorpdfstring{convert\+U\+Dec()}{convertUDec()}}
@@ -80,6 +93,14 @@ Currently limited to 4 digit numbers.
 {\em n} & Numeric value to be converted to string. \\
 \hline
 \end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=281pt]{application_8c_a9dff310201803ed56106c927a9ced9cd_icgraph}
+\end{center}
+\end{figure}
 
 
 \subsection{Variable Documentation}

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['lastcounter',['lastCounter',['../button_8c.html#af53beb5d7b0435f29d82d7326945eb2c',1,'button.c']]]
+  ['interruptcounter',['interruptCounter',['../timer_8c.html#a34a34f6517460d2f8fff3dbfc8764ac0',1,'timer.c']]]
 ];

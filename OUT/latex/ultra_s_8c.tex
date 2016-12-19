@@ -1,16 +1,24 @@
-\hypertarget{ultra_s_8c}{}\section{S\+R\+C/\+H\+W/ultraS.c File Reference}
-\label{ultra_s_8c}\index{S\+R\+C/\+H\+W/ultra\+S.\+c@{S\+R\+C/\+H\+W/ultra\+S.\+c}}
+\hypertarget{ultra_s_8c}{}\section{H\+W/ultraS.c File Reference}
+\label{ultra_s_8c}\index{H\+W/ultra\+S.\+c@{H\+W/ultra\+S.\+c}}
 
 
-Documentation for the ultrasonic module.  
+\subsection{Detailed Description}
+Documentation for the ultrasonic module. 
+
+Describes the workings of the ultrasonic module.
 
 
-{\ttfamily \#include $<$driverlib.\+h$>$}\newline
-{\ttfamily \#include \char`\"{}ultra\+S.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}../\+M\+C\+U/counter.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}../\+M\+C\+U/timer.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}stdio.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}gpio.\+h\char`\"{}}\newline
+\begin{DoxyImageNoCaption}
+  \mbox{\includegraphics[width=\textwidth,height=\textheight/2,keepaspectratio=true]{umlFSM}}
+\end{DoxyImageNoCaption}
+ Include dependency graph for ultra\+S.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ultra_s_8c__incl}
+\end{center}
+\end{figure}
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
@@ -37,13 +45,13 @@ void \hyperlink{ultra_s_8c_a186e138633dbd47cca8dec6f41f86fb4}{ultra\+S\+\_\+cycl
 \item 
 unsigned int \hyperlink{ultra_s_8c_a85065971712e1812bab36f1366bc0416}{ultra\+S\+\_\+get\+Valid\+Status} ()
 \item 
-void \hyperlink{ultra_s_8c_a3aa336805b30c760503c3a2c9792d1b0}{ultra\+S\+\_\+set\+Valid\+Status} (enum \hyperlink{ultra_s_8h_a015eb90e0de9f16e87bd149d4b9ce959}{status} valid\+Status)
+void \hyperlink{ultra_s_8c_a1030b82552b283571261c0977872f329}{ultra\+S\+\_\+set\+Valid\+Status} (\hyperlink{ultra_s_8h_a015eb90e0de9f16e87bd149d4b9ce959}{status} valid\+Status)
 \item 
 unsigned int \hyperlink{ultra_s_8c_ac80c09ba6b899105f44bdfe0be849296}{ultra\+S\+\_\+get\+Distance} ()
 \item 
 int \hyperlink{ultra_s_8c_ad5c0f2f041f3985396910a4b8c325b2a}{ultra\+S\+\_\+get\+Data\+Status} ()
 \item 
-void \hyperlink{ultra_s_8c_a8a5d4bdd11c244c8b0341256f5998d13}{ultra\+S\+\_\+set\+Data\+Status} (enum \hyperlink{ultra_s_8h_a5af22166e4d97bfcc7589baec25bec7b}{data\+Status} valid\+Status)
+void \hyperlink{ultra_s_8c_a905d422d987ede5de76032575870b0f9}{ultra\+S\+\_\+set\+Data\+Status} (\hyperlink{ultra_s_8h_a5af22166e4d97bfcc7589baec25bec7b}{data\+Status} valid\+Status)
 \item 
 \+\_\+\+\_\+interrupt void \hyperlink{ultra_s_8c_aa8c3f90478a445d776dff99fc0c98b57}{ultra\+S\+\_\+\+I\+SR} (void)
 \end{DoxyCompactItemize}
@@ -60,16 +68,11 @@ unsigned volatile long long int \hyperlink{ultra_s_8c_a6221a55ce2abd90d7398b6199
 \item 
 unsigned volatile long int \hyperlink{ultra_s_8c_a71ff771a4087c8674a0fa6720182d23f}{distance}
 \item 
-enum \hyperlink{ultra_s_8h_a015eb90e0de9f16e87bd149d4b9ce959}{status} \hyperlink{ultra_s_8c_a25c9f4eb624319b65b1fc6f64db7d410}{us\+Status} = \hyperlink{ultra_s_8h_a015eb90e0de9f16e87bd149d4b9ce959a4444eecc516e45f891e67e9278efd311}{U\+S\+\_\+\+I\+D\+LE}
+\hyperlink{ultra_s_8h_a015eb90e0de9f16e87bd149d4b9ce959}{status} \hyperlink{ultra_s_8c_a48b9dc63ee68bf7aee75f129d6631678}{us\+Status} = \hyperlink{ultra_s_8h_a015eb90e0de9f16e87bd149d4b9ce959a4444eecc516e45f891e67e9278efd311}{U\+S\+\_\+\+I\+D\+LE}
 \item 
-enum \hyperlink{ultra_s_8h_a5af22166e4d97bfcc7589baec25bec7b}{data\+Status} \hyperlink{ultra_s_8c_ad28bb54ae6e9031bd6205e4069042cc2}{us\+Data\+Status} = \hyperlink{ultra_s_8h_a5af22166e4d97bfcc7589baec25bec7bae27f17d8a7ef52a5d6d5b8c4e562d453}{U\+S\+\_\+\+D\+A\+T\+A\+\_\+\+F\+A\+L\+SE}
+\hyperlink{ultra_s_8h_a5af22166e4d97bfcc7589baec25bec7b}{data\+Status} \hyperlink{ultra_s_8c_a211460b7d3250f3d56a6944d1f516858}{us\+Data\+Status} = \hyperlink{ultra_s_8h_a5af22166e4d97bfcc7589baec25bec7bae27f17d8a7ef52a5d6d5b8c4e562d453}{U\+S\+\_\+\+D\+A\+T\+A\+\_\+\+F\+A\+L\+SE}
 \end{DoxyCompactItemize}
 
-
-\subsection{Detailed Description}
-Documentation for the ultrasonic module. 
-
-Describes the workings of the ultrasonic module. 
 
 \subsection{Macro Definition Documentation}
 \hypertarget{ultra_s_8c_a0212ca8fac649015507d58329b4e2cfc}{}\label{ultra_s_8c_a0212ca8fac649015507d58329b4e2cfc} 
@@ -108,6 +111,14 @@ Timer size -\/ added to end\+Time when rollover happens. \hypertarget{ultra_s_8c
 Reset start and end time to 0 to insure proper results. \begin{DoxyAttention}{Attention}
 Private function. 
 \end{DoxyAttention}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=254pt]{ultra_s_8c_afded4b6fd641aaf196a2bf062b82615d_icgraph}
+\end{center}
+\end{figure}
 \hypertarget{ultra_s_8c_a186e138633dbd47cca8dec6f41f86fb4}{}\label{ultra_s_8c_a186e138633dbd47cca8dec6f41f86fb4} 
 \index{ultra\+S.\+c@{ultra\+S.\+c}!ultra\+S\+\_\+cyclic@{ultra\+S\+\_\+cyclic}}
 \index{ultra\+S\+\_\+cyclic@{ultra\+S\+\_\+cyclic}!ultra\+S.\+c@{ultra\+S.\+c}}
@@ -119,6 +130,14 @@ Ultrasonic modules main finite state machine.
 Controls the work regarding the ultrasonic hardware. Finite state machine to decide state of system. \begin{DoxyAttention}{Attention}
 U\+S\+\_\+\+W\+O\+R\+K\+I\+NG state is further controlled by another state machine. 
 \end{DoxyAttention}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=270pt]{ultra_s_8c_a186e138633dbd47cca8dec6f41f86fb4_cgraph}
+\end{center}
+\end{figure}
 \hypertarget{ultra_s_8c_ad5c0f2f041f3985396910a4b8c325b2a}{}\label{ultra_s_8c_ad5c0f2f041f3985396910a4b8c325b2a} 
 \index{ultra\+S.\+c@{ultra\+S.\+c}!ultra\+S\+\_\+get\+Data\+Status@{ultra\+S\+\_\+get\+Data\+Status}}
 \index{ultra\+S\+\_\+get\+Data\+Status@{ultra\+S\+\_\+get\+Data\+Status}!ultra\+S.\+c@{ultra\+S.\+c}}
@@ -130,6 +149,14 @@ Get ultrasonic modules workings state.
 Get the inner F\+SM\textquotesingle{}s state. \begin{DoxyReturn}{Returns}
 us\+Data\+Status
 \end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=320pt]{ultra_s_8c_ad5c0f2f041f3985396910a4b8c325b2a_icgraph}
+\end{center}
+\end{figure}
 \hypertarget{ultra_s_8c_ac80c09ba6b899105f44bdfe0be849296}{}\label{ultra_s_8c_ac80c09ba6b899105f44bdfe0be849296} 
 \index{ultra\+S.\+c@{ultra\+S.\+c}!ultra\+S\+\_\+get\+Distance@{ultra\+S\+\_\+get\+Distance}}
 \index{ultra\+S\+\_\+get\+Distance@{ultra\+S\+\_\+get\+Distance}!ultra\+S.\+c@{ultra\+S.\+c}}
@@ -141,6 +168,14 @@ Get measured distance.
 \begin{DoxyReturn}{Returns}
 Distance 
 \end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=309pt]{ultra_s_8c_ac80c09ba6b899105f44bdfe0be849296_icgraph}
+\end{center}
+\end{figure}
 \hypertarget{ultra_s_8c_a85065971712e1812bab36f1366bc0416}{}\label{ultra_s_8c_a85065971712e1812bab36f1366bc0416} 
 \index{ultra\+S.\+c@{ultra\+S.\+c}!ultra\+S\+\_\+get\+Valid\+Status@{ultra\+S\+\_\+get\+Valid\+Status}}
 \index{ultra\+S\+\_\+get\+Valid\+Status@{ultra\+S\+\_\+get\+Valid\+Status}!ultra\+S.\+c@{ultra\+S.\+c}}
@@ -152,6 +187,14 @@ Get ultrasonic modules state.
 \begin{DoxyReturn}{Returns}
 us\+Status 
 \end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=321pt]{ultra_s_8c_a85065971712e1812bab36f1366bc0416_icgraph}
+\end{center}
+\end{figure}
 \hypertarget{ultra_s_8c_a76007e39c7b3397710dee9bab7b5d9b5}{}\label{ultra_s_8c_a76007e39c7b3397710dee9bab7b5d9b5} 
 \index{ultra\+S.\+c@{ultra\+S.\+c}!ultra\+S\+\_\+init@{ultra\+S\+\_\+init}}
 \index{ultra\+S\+\_\+init@{ultra\+S\+\_\+init}!ultra\+S.\+c@{ultra\+S.\+c}}
@@ -160,7 +203,15 @@ us\+Status
 
 Set ultrasonic module to be ready for work.
 
-Set\textquotesingle{}s appropriate F\+SM states and resets start and end times to 0. \hypertarget{ultra_s_8c_aa8c3f90478a445d776dff99fc0c98b57}{}\label{ultra_s_8c_aa8c3f90478a445d776dff99fc0c98b57} 
+Set\textquotesingle{}s appropriate F\+SM states and resets start and end times to 0. Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=241pt]{ultra_s_8c_a76007e39c7b3397710dee9bab7b5d9b5_cgraph}
+\end{center}
+\end{figure}
+\hypertarget{ultra_s_8c_aa8c3f90478a445d776dff99fc0c98b57}{}\label{ultra_s_8c_aa8c3f90478a445d776dff99fc0c98b57} 
 \index{ultra\+S.\+c@{ultra\+S.\+c}!ultra\+S\+\_\+\+I\+SR@{ultra\+S\+\_\+\+I\+SR}}
 \index{ultra\+S\+\_\+\+I\+SR@{ultra\+S\+\_\+\+I\+SR}!ultra\+S.\+c@{ultra\+S.\+c}}
 \subsubsection{\texorpdfstring{ultra\+S\+\_\+\+I\+S\+R()}{ultraS\_ISR()}}
@@ -183,6 +234,14 @@ Only when rollover happens!
 
 Adds the entire counter size to end\+Time to compensate for potential rollover. 
 \end{DoxyAttention}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=270pt]{ultra_s_8c_acdff37f2f4e581b47645303906a09417_icgraph}
+\end{center}
+\end{figure}
 \hypertarget{ultra_s_8c_a2dc7671dcfab4e1cb316c3443f709a85}{}\label{ultra_s_8c_a2dc7671dcfab4e1cb316c3443f709a85} 
 \index{ultra\+S.\+c@{ultra\+S.\+c}!ultra\+S\+\_\+send\+Signal@{ultra\+S\+\_\+send\+Signal}}
 \index{ultra\+S\+\_\+send\+Signal@{ultra\+S\+\_\+send\+Signal}!ultra\+S.\+c@{ultra\+S.\+c}}
@@ -192,11 +251,19 @@ Adds the entire counter size to end\+Time to compensate for potential rollover.
 Send signal to the physical ultrasonic module.
 
 Set\textquotesingle{}s appropriate F\+SM state. Send\textquotesingle{}s a high signal for required time -\/ 10uS. ~\newline
- Delays system to not send multiple signals at the same time. \hypertarget{ultra_s_8c_a8a5d4bdd11c244c8b0341256f5998d13}{}\label{ultra_s_8c_a8a5d4bdd11c244c8b0341256f5998d13} 
+ Delays system to not send multiple signals at the same time. Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=305pt]{ultra_s_8c_a2dc7671dcfab4e1cb316c3443f709a85_icgraph}
+\end{center}
+\end{figure}
+\hypertarget{ultra_s_8c_a905d422d987ede5de76032575870b0f9}{}\label{ultra_s_8c_a905d422d987ede5de76032575870b0f9} 
 \index{ultra\+S.\+c@{ultra\+S.\+c}!ultra\+S\+\_\+set\+Data\+Status@{ultra\+S\+\_\+set\+Data\+Status}}
 \index{ultra\+S\+\_\+set\+Data\+Status@{ultra\+S\+\_\+set\+Data\+Status}!ultra\+S.\+c@{ultra\+S.\+c}}
 \subsubsection{\texorpdfstring{ultra\+S\+\_\+set\+Data\+Status()}{ultraS\_setDataStatus()}}
-{\footnotesize\ttfamily void ultra\+S\+\_\+set\+Data\+Status (\begin{DoxyParamCaption}\item[{enum \hyperlink{ultra_s_8h_a5af22166e4d97bfcc7589baec25bec7b}{data\+Status}}]{valid\+Status }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void ultra\+S\+\_\+set\+Data\+Status (\begin{DoxyParamCaption}\item[{\hyperlink{ultra_s_8h_a5af22166e4d97bfcc7589baec25bec7b}{data\+Status}}]{valid\+Status }\end{DoxyParamCaption})}
 
 Set ultrasonic modules workings state.
 
@@ -205,11 +272,19 @@ Set the inner F\+SM\textquotesingle{}s state.
 {\em valid\+Status} & Status to set \\
 \hline
 \end{DoxyParams}
-\hypertarget{ultra_s_8c_a3aa336805b30c760503c3a2c9792d1b0}{}\label{ultra_s_8c_a3aa336805b30c760503c3a2c9792d1b0} 
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=320pt]{ultra_s_8c_a905d422d987ede5de76032575870b0f9_icgraph}
+\end{center}
+\end{figure}
+\hypertarget{ultra_s_8c_a1030b82552b283571261c0977872f329}{}\label{ultra_s_8c_a1030b82552b283571261c0977872f329} 
 \index{ultra\+S.\+c@{ultra\+S.\+c}!ultra\+S\+\_\+set\+Valid\+Status@{ultra\+S\+\_\+set\+Valid\+Status}}
 \index{ultra\+S\+\_\+set\+Valid\+Status@{ultra\+S\+\_\+set\+Valid\+Status}!ultra\+S.\+c@{ultra\+S.\+c}}
 \subsubsection{\texorpdfstring{ultra\+S\+\_\+set\+Valid\+Status()}{ultraS\_setValidStatus()}}
-{\footnotesize\ttfamily void ultra\+S\+\_\+set\+Valid\+Status (\begin{DoxyParamCaption}\item[{enum \hyperlink{ultra_s_8h_a015eb90e0de9f16e87bd149d4b9ce959}{status}}]{valid\+Status }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void ultra\+S\+\_\+set\+Valid\+Status (\begin{DoxyParamCaption}\item[{\hyperlink{ultra_s_8h_a015eb90e0de9f16e87bd149d4b9ce959}{status}}]{valid\+Status }\end{DoxyParamCaption})}
 
 Set ultrasonic modules state. 
 \begin{DoxyParams}{Parameters}
@@ -249,16 +324,16 @@ Time captured on usmodule\textquotesingle{}s rising edge echo signal. \hypertarg
 \subsubsection{\texorpdfstring{start\+Time\+Mult}{startTimeMult}}
 {\footnotesize\ttfamily unsigned volatile long long int start\+Time\+Mult}
 
-Insurance variable to insure that start\+Time and end\+Time are correct. \hypertarget{ultra_s_8c_ad28bb54ae6e9031bd6205e4069042cc2}{}\label{ultra_s_8c_ad28bb54ae6e9031bd6205e4069042cc2} 
+Insurance variable to insure that start\+Time and end\+Time are correct. \hypertarget{ultra_s_8c_a211460b7d3250f3d56a6944d1f516858}{}\label{ultra_s_8c_a211460b7d3250f3d56a6944d1f516858} 
 \index{ultra\+S.\+c@{ultra\+S.\+c}!us\+Data\+Status@{us\+Data\+Status}}
 \index{us\+Data\+Status@{us\+Data\+Status}!ultra\+S.\+c@{ultra\+S.\+c}}
 \subsubsection{\texorpdfstring{us\+Data\+Status}{usDataStatus}}
-{\footnotesize\ttfamily enum \hyperlink{ultra_s_8h_a5af22166e4d97bfcc7589baec25bec7b}{data\+Status} us\+Data\+Status = \hyperlink{ultra_s_8h_a5af22166e4d97bfcc7589baec25bec7bae27f17d8a7ef52a5d6d5b8c4e562d453}{U\+S\+\_\+\+D\+A\+T\+A\+\_\+\+F\+A\+L\+SE}}
+{\footnotesize\ttfamily \hyperlink{ultra_s_8h_a5af22166e4d97bfcc7589baec25bec7b}{data\+Status} us\+Data\+Status = \hyperlink{ultra_s_8h_a5af22166e4d97bfcc7589baec25bec7bae27f17d8a7ef52a5d6d5b8c4e562d453}{U\+S\+\_\+\+D\+A\+T\+A\+\_\+\+F\+A\+L\+SE}}
 
-Set finite state machine to start in false state to insure no false information. \hypertarget{ultra_s_8c_a25c9f4eb624319b65b1fc6f64db7d410}{}\label{ultra_s_8c_a25c9f4eb624319b65b1fc6f64db7d410} 
+Set finite state machine to start in false state to insure no false information. \hypertarget{ultra_s_8c_a48b9dc63ee68bf7aee75f129d6631678}{}\label{ultra_s_8c_a48b9dc63ee68bf7aee75f129d6631678} 
 \index{ultra\+S.\+c@{ultra\+S.\+c}!us\+Status@{us\+Status}}
 \index{us\+Status@{us\+Status}!ultra\+S.\+c@{ultra\+S.\+c}}
 \subsubsection{\texorpdfstring{us\+Status}{usStatus}}
-{\footnotesize\ttfamily enum \hyperlink{ultra_s_8h_a015eb90e0de9f16e87bd149d4b9ce959}{status} us\+Status = \hyperlink{ultra_s_8h_a015eb90e0de9f16e87bd149d4b9ce959a4444eecc516e45f891e67e9278efd311}{U\+S\+\_\+\+I\+D\+LE}}
+{\footnotesize\ttfamily \hyperlink{ultra_s_8h_a015eb90e0de9f16e87bd149d4b9ce959}{status} us\+Status = \hyperlink{ultra_s_8h_a015eb90e0de9f16e87bd149d4b9ce959a4444eecc516e45f891e67e9278efd311}{U\+S\+\_\+\+I\+D\+LE}}
 
 Set finite state machine to idle/waiting state. 

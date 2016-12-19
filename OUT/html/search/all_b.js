@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['resettimes',['resetTimes',['../ultra_s_8c.html#afded4b6fd641aaf196a2bf062b82615d',1,'ultraS.c']]]
+  ['puhasta_5fflag',['puhasta_flag',['../lcd_8c.html#a34f7046ca55b8a66ec681c79bfd11e3d',1,'lcd.c']]]
 ];

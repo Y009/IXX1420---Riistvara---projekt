@@ -1,0 +1,73 @@
+/**
+\mainpage
+
+Hardware project for course "IXX1420 Riistvara projekt" 
+\n TTY 2016 
+
+
+\n <b>  Students: </b> 
+\n Henry Juhanson 
+\n Karl Laanemets 
+\n
+\n \b Instructor: 
+\n Maksim Gorev 
+\n
+\n <b> A distance measurer based on the Texas Instruments Launchpad - MSP430F5529 </b>
+\n
+\n <b>  Also using: </b>  
+\n -Ulrasonic Module HC/SR04 Arduino 
+\n -Basic 16x2 Character LCD 
+\n --SparkFun Serial Enabled LCD Backpack 
+\n -INTRONIX LogicPort LA1034 
+
+
+**/
+
+
+\page layers Layers
+	\section sec1 Logic Layer
+		\ref application.c
+	\section sec2 Hardware Layer
+		\ref button.c
+\n		\ref gpio.c
+\n		\ref gpio.h
+\n		\ref lcd.c
+\n		\ref ultraS.c
+\n		\ref ultraS.h
+	\section sec3 MCU Layer
+		\ref clock.c
+\n		\ref counter.c
+\n		\ref counter.h
+\n		\ref timer.c
+\n		\ref timer.h
+\n		\ref uart.c
+
+
+application example with button press
+
+@startuml
+Application -> Timer : Check flag
+Application -> Button : Debounce
+
+Application --> Button : Get button
+Application <-- Button : Return button
+Application --> Ultrasonic : Get status
+Application <-- Ultrasonic : Return status
+
+Application --> Ultrasonic : Send signal
+Ultrasonic --> usHardware : High signal
+Ultrasonic --> usHardware : Low signal
+
+Application -> Ultrasonic : Get status
+Application <- Ultrasonic : Return status
+Application --> Ultrasonic : Get data status
+Application <-- Ultrasonic : Return data status
+
+Application --> Ultrasonic : Get distance
+Application <-- Ultrasonic : Return distance
+Application --> Application : Convert distance to string
+
+Application --> LCD : Get state
+Application <-- LCD : Return state
+Application --> LCD : Send string
+@enduml

@@ -1,12 +1,18 @@
-\hypertarget{timer_8c}{}\section{S\+R\+C/\+M\+C\+U/timer.c File Reference}
-\label{timer_8c}\index{S\+R\+C/\+M\+C\+U/timer.\+c@{S\+R\+C/\+M\+C\+U/timer.\+c}}
+\hypertarget{timer_8c}{}\section{M\+C\+U/timer.c File Reference}
+\label{timer_8c}\index{M\+C\+U/timer.\+c@{M\+C\+U/timer.\+c}}
 
 
-Documentation for the timer module.  
+\subsection{Detailed Description}
+Documentation for the timer module. 
 
-
-{\ttfamily \#include $<$driverlib.\+h$>$}\newline
-{\ttfamily \#include \char`\"{}timer.\+h\char`\"{}}\newline
+Describes the workings of the timer module. Is used to debounce a button press. Include dependency graph for timer.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=202pt]{timer_8c__incl}
+\end{center}
+\end{figure}
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
@@ -32,11 +38,6 @@ short \hyperlink{timer_8c_a0939402298c3765d4bbc62cea55ea0be}{timer\+Flag} = 0
 \end{DoxyCompactItemize}
 
 
-\subsection{Detailed Description}
-Documentation for the timer module. 
-
-Describes the workings of the timer module. Is used to debounce a button press. 
-
 \subsection{Macro Definition Documentation}
 \hypertarget{timer_8c_a1bc63400ff91806a4c1a79caefead705}{}\label{timer_8c_a1bc63400ff91806a4c1a79caefead705} 
 \index{timer.\+c@{timer.\+c}!T\+I\+M\+E\+TO@{T\+I\+M\+E\+TO}}
@@ -55,7 +56,15 @@ Describes the workings of the timer module. Is used to debounce a button press.
 
 Checks whether there has been a timer interrupt and increments a counter if so.
 
-Is called from application level in every cycle. timer\+Flag is set to true whenever a timer A interrupt has occurred. Is used to get a delay of T\+I\+M\+E\+TO $\ast$ interrupt\+Counter. \hypertarget{timer_8c_a5c04b6546e82f2e5f0af1410addf382c}{}\label{timer_8c_a5c04b6546e82f2e5f0af1410addf382c} 
+Is called from application level in every cycle. timer\+Flag is set to true whenever a timer A interrupt has occurred. Is used to get a delay of T\+I\+M\+E\+TO $\ast$ interrupt\+Counter. Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=299pt]{timer_8c_a50eeb50a751ec06e0d58643f45c92874_icgraph}
+\end{center}
+\end{figure}
+\hypertarget{timer_8c_a5c04b6546e82f2e5f0af1410addf382c}{}\label{timer_8c_a5c04b6546e82f2e5f0af1410addf382c} 
 \index{timer.\+c@{timer.\+c}!timer\+\_\+debouncing\+Btn@{timer\+\_\+debouncing\+Btn}}
 \index{timer\+\_\+debouncing\+Btn@{timer\+\_\+debouncing\+Btn}!timer.\+c@{timer.\+c}}
 \subsubsection{\texorpdfstring{timer\+\_\+debouncing\+Btn()}{timer\_debouncingBtn()}}
@@ -74,6 +83,14 @@ Get timerA\textquotesingle{}s interrupt\+Counter.
 \begin{DoxyReturn}{Returns}
 interrupt\+Counter 
 \end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{timer_8c_a1021e8241d2431ad3c33e4dca3479e30_icgraph}
+\end{center}
+\end{figure}
 \hypertarget{timer_8c_a7b8ab79df77b57475a5494f5f81c3bd9}{}\label{timer_8c_a7b8ab79df77b57475a5494f5f81c3bd9} 
 \index{timer.\+c@{timer.\+c}!timer\+\_\+init@{timer\+\_\+init}}
 \index{timer\+\_\+init@{timer\+\_\+init}!timer.\+c@{timer.\+c}}

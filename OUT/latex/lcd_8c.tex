@@ -1,0 +1,205 @@
+\hypertarget{lcd_8c}{}\section{H\+W/lcd.c File Reference}
+\label{lcd_8c}\index{H\+W/lcd.\+c@{H\+W/lcd.\+c}}
+
+
+\subsection{Detailed Description}
+Documentation for the lcd module. 
+
+Describes the workings of the lcd state machine. Include dependency graph for lcd.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=326pt]{lcd_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+short \hyperlink{lcd_8c_aab0ee26d9dc07933dbe1d0b3c4fa6024}{lcd\+\_\+get\+State} (void)
+\item 
+int \hyperlink{lcd_8c_a40661e82f50f453a683e037a06119e28}{lcd\+\_\+send\+String} (char $\ast$e)
+\item 
+int \hyperlink{lcd_8c_aaba865dac7e000ac3c3c268278939354}{lcd\+\_\+init\+State\+Machine} ()
+\item 
+void \hyperlink{lcd_8c_a5340ee451d877c939113f4de85c851bb}{lcd\+\_\+cyclic} ()
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \hyperlink{lcd_8c_a768e5e81fdcf4426cb064063686f691f}{str\+Measurement} \mbox{[}\hyperlink{lcd_8h_aabf4f709c8199e41cf279c77112345fe}{M\+A\+X\+\_\+\+L\+EN}\mbox{]}
+\item 
+uint8\+\_\+t \hyperlink{lcd_8c_a62019be58e700f83c1f460800b6512b0}{D\+I\+S\+P\+L\+AY} \mbox{[}2\mbox{]} = \{ C\+O\+M\+M\+A\+ND, C\+L\+E\+A\+R\+\_\+\+D\+I\+S\+P\+L\+AY \}
+\item 
+unsigned long long int \hyperlink{lcd_8c_a139747944625a8daae17bfb394a4996a}{S\+EC} = 0
+\item 
+\hyperlink{lcd_8h_afcb76009767ef607d9b2a624bba0ab0e}{lcd\+\_\+states} \hyperlink{lcd_8c_a03c8d0682886d47a8e6f744bb7aac09f}{state} = \hyperlink{lcd_8h_afcb76009767ef607d9b2a624bba0ab0ea1f550a5b614f9373553df16a59d133b0}{L\+C\+D\+\_\+\+W\+A\+I\+T\+\_\+\+S\+T\+A\+TE}
+\item 
+int \hyperlink{lcd_8c_a7eba1480c265e23b3e9ca864a915ff51}{C\+H\+A\+R\+\_\+\+C\+O\+U\+NT}
+\item 
+int \hyperlink{lcd_8c_ab3e749ddaefd0cda3aa8561b910543cc}{C\+L\+E\+A\+R\+\_\+\+D\+I\+S\+P\+L\+A\+Y\+\_\+\+I\+N\+D\+EX} = 0
+\item 
+int \hyperlink{lcd_8c_aa9db2c2f7f06e39eacb5382219b512a3}{D\+A\+T\+A\+\_\+\+T\+O\+\_\+\+S\+E\+ND} = 0
+\item 
+int \hyperlink{lcd_8c_aa154f02999c6874c250a57b4645fade3}{trans\+\_\+flag} =1
+\item 
+int \hyperlink{lcd_8c_a34f7046ca55b8a66ec681c79bfd11e3d}{puhasta\+\_\+flag} = 1
+\item 
+int \hyperlink{lcd_8c_a8ba2b33c01bc3dca08a2848375d6cc3b}{R\+E\+A\+L\+\_\+\+L\+EN} = 0
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{lcd_8c_a5340ee451d877c939113f4de85c851bb}{}\label{lcd_8c_a5340ee451d877c939113f4de85c851bb} 
+\index{lcd.\+c@{lcd.\+c}!lcd\+\_\+cyclic@{lcd\+\_\+cyclic}}
+\index{lcd\+\_\+cyclic@{lcd\+\_\+cyclic}!lcd.\+c@{lcd.\+c}}
+\subsubsection{\texorpdfstring{lcd\+\_\+cyclic()}{lcd\_cyclic()}}
+{\footnotesize\ttfamily void lcd\+\_\+cyclic (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+L\+CD module F\+SM Handles the string displaying, screen cleaning and timeout for string display length Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=280pt]{lcd_8c_a5340ee451d877c939113f4de85c851bb_cgraph}
+\end{center}
+\end{figure}
+\hypertarget{lcd_8c_aab0ee26d9dc07933dbe1d0b3c4fa6024}{}\label{lcd_8c_aab0ee26d9dc07933dbe1d0b3c4fa6024} 
+\index{lcd.\+c@{lcd.\+c}!lcd\+\_\+get\+State@{lcd\+\_\+get\+State}}
+\index{lcd\+\_\+get\+State@{lcd\+\_\+get\+State}!lcd.\+c@{lcd.\+c}}
+\subsubsection{\texorpdfstring{lcd\+\_\+get\+State()}{lcd\_getState()}}
+{\footnotesize\ttfamily short lcd\+\_\+get\+State (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Get current status of the machine
+
+\begin{DoxyReturn}{Returns}
+lcd\+\_\+\+I\+D\+LE 
+
+lcd\+\_\+\+B\+U\+SY 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{lcd_8c_aab0ee26d9dc07933dbe1d0b3c4fa6024_icgraph}
+\end{center}
+\end{figure}
+\hypertarget{lcd_8c_aaba865dac7e000ac3c3c268278939354}{}\label{lcd_8c_aaba865dac7e000ac3c3c268278939354} 
+\index{lcd.\+c@{lcd.\+c}!lcd\+\_\+init\+State\+Machine@{lcd\+\_\+init\+State\+Machine}}
+\index{lcd\+\_\+init\+State\+Machine@{lcd\+\_\+init\+State\+Machine}!lcd.\+c@{lcd.\+c}}
+\subsubsection{\texorpdfstring{lcd\+\_\+init\+State\+Machine()}{lcd\_initStateMachine()}}
+{\footnotesize\ttfamily int lcd\+\_\+init\+State\+Machine (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Initializes the F\+SM. \begin{DoxyReturn}{Returns}
+1 on success 
+
+0 on failure 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=327pt]{lcd_8c_aaba865dac7e000ac3c3c268278939354_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{lcd_8c_aaba865dac7e000ac3c3c268278939354_icgraph}
+\end{center}
+\end{figure}
+\hypertarget{lcd_8c_a40661e82f50f453a683e037a06119e28}{}\label{lcd_8c_a40661e82f50f453a683e037a06119e28} 
+\index{lcd.\+c@{lcd.\+c}!lcd\+\_\+send\+String@{lcd\+\_\+send\+String}}
+\index{lcd\+\_\+send\+String@{lcd\+\_\+send\+String}!lcd.\+c@{lcd.\+c}}
+\subsubsection{\texorpdfstring{lcd\+\_\+send\+String()}{lcd\_sendString()}}
+{\footnotesize\ttfamily int lcd\+\_\+send\+String (\begin{DoxyParamCaption}\item[{char $\ast$}]{e }\end{DoxyParamCaption})}
+
+Send a string to the display. Initializes flags for transmission. Resolves the string legth and prepares it for transit. 
+\begin{DoxyParams}{Parameters}
+{\em e} & Pointer to the first character of the string \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{lcd_8c_a40661e82f50f453a683e037a06119e28_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=291pt]{lcd_8c_a40661e82f50f453a683e037a06119e28_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Variable Documentation}
+\hypertarget{lcd_8c_a7eba1480c265e23b3e9ca864a915ff51}{}\label{lcd_8c_a7eba1480c265e23b3e9ca864a915ff51} 
+\index{lcd.\+c@{lcd.\+c}!C\+H\+A\+R\+\_\+\+C\+O\+U\+NT@{C\+H\+A\+R\+\_\+\+C\+O\+U\+NT}}
+\index{C\+H\+A\+R\+\_\+\+C\+O\+U\+NT@{C\+H\+A\+R\+\_\+\+C\+O\+U\+NT}!lcd.\+c@{lcd.\+c}}
+\subsubsection{\texorpdfstring{C\+H\+A\+R\+\_\+\+C\+O\+U\+NT}{CHAR\_COUNT}}
+{\footnotesize\ttfamily int C\+H\+A\+R\+\_\+\+C\+O\+U\+NT}
+
+index of the current character in transmission \hypertarget{lcd_8c_ab3e749ddaefd0cda3aa8561b910543cc}{}\label{lcd_8c_ab3e749ddaefd0cda3aa8561b910543cc} 
+\index{lcd.\+c@{lcd.\+c}!C\+L\+E\+A\+R\+\_\+\+D\+I\+S\+P\+L\+A\+Y\+\_\+\+I\+N\+D\+EX@{C\+L\+E\+A\+R\+\_\+\+D\+I\+S\+P\+L\+A\+Y\+\_\+\+I\+N\+D\+EX}}
+\index{C\+L\+E\+A\+R\+\_\+\+D\+I\+S\+P\+L\+A\+Y\+\_\+\+I\+N\+D\+EX@{C\+L\+E\+A\+R\+\_\+\+D\+I\+S\+P\+L\+A\+Y\+\_\+\+I\+N\+D\+EX}!lcd.\+c@{lcd.\+c}}
+\subsubsection{\texorpdfstring{C\+L\+E\+A\+R\+\_\+\+D\+I\+S\+P\+L\+A\+Y\+\_\+\+I\+N\+D\+EX}{CLEAR\_DISPLAY\_INDEX}}
+{\footnotesize\ttfamily int C\+L\+E\+A\+R\+\_\+\+D\+I\+S\+P\+L\+A\+Y\+\_\+\+I\+N\+D\+EX = 0}
+
+Display cleaning array index \hypertarget{lcd_8c_aa9db2c2f7f06e39eacb5382219b512a3}{}\label{lcd_8c_aa9db2c2f7f06e39eacb5382219b512a3} 
+\index{lcd.\+c@{lcd.\+c}!D\+A\+T\+A\+\_\+\+T\+O\+\_\+\+S\+E\+ND@{D\+A\+T\+A\+\_\+\+T\+O\+\_\+\+S\+E\+ND}}
+\index{D\+A\+T\+A\+\_\+\+T\+O\+\_\+\+S\+E\+ND@{D\+A\+T\+A\+\_\+\+T\+O\+\_\+\+S\+E\+ND}!lcd.\+c@{lcd.\+c}}
+\subsubsection{\texorpdfstring{D\+A\+T\+A\+\_\+\+T\+O\+\_\+\+S\+E\+ND}{DATA\_TO\_SEND}}
+{\footnotesize\ttfamily int D\+A\+T\+A\+\_\+\+T\+O\+\_\+\+S\+E\+ND = 0}
+
+Flag to indicate if is any data to send, 0 if no \hypertarget{lcd_8c_a62019be58e700f83c1f460800b6512b0}{}\label{lcd_8c_a62019be58e700f83c1f460800b6512b0} 
+\index{lcd.\+c@{lcd.\+c}!D\+I\+S\+P\+L\+AY@{D\+I\+S\+P\+L\+AY}}
+\index{D\+I\+S\+P\+L\+AY@{D\+I\+S\+P\+L\+AY}!lcd.\+c@{lcd.\+c}}
+\subsubsection{\texorpdfstring{D\+I\+S\+P\+L\+AY}{DISPLAY}}
+{\footnotesize\ttfamily uint8\+\_\+t D\+I\+S\+P\+L\+AY\mbox{[}2\mbox{]} = \{ C\+O\+M\+M\+A\+ND, C\+L\+E\+A\+R\+\_\+\+D\+I\+S\+P\+L\+AY \}}
+
+Array for sending the display clean command to lcd \hypertarget{lcd_8c_a34f7046ca55b8a66ec681c79bfd11e3d}{}\label{lcd_8c_a34f7046ca55b8a66ec681c79bfd11e3d} 
+\index{lcd.\+c@{lcd.\+c}!puhasta\+\_\+flag@{puhasta\+\_\+flag}}
+\index{puhasta\+\_\+flag@{puhasta\+\_\+flag}!lcd.\+c@{lcd.\+c}}
+\subsubsection{\texorpdfstring{puhasta\+\_\+flag}{puhasta\_flag}}
+{\footnotesize\ttfamily int puhasta\+\_\+flag = 1}
+
+flag to indicate need for cleaning the display \hypertarget{lcd_8c_a8ba2b33c01bc3dca08a2848375d6cc3b}{}\label{lcd_8c_a8ba2b33c01bc3dca08a2848375d6cc3b} 
+\index{lcd.\+c@{lcd.\+c}!R\+E\+A\+L\+\_\+\+L\+EN@{R\+E\+A\+L\+\_\+\+L\+EN}}
+\index{R\+E\+A\+L\+\_\+\+L\+EN@{R\+E\+A\+L\+\_\+\+L\+EN}!lcd.\+c@{lcd.\+c}}
+\subsubsection{\texorpdfstring{R\+E\+A\+L\+\_\+\+L\+EN}{REAL\_LEN}}
+{\footnotesize\ttfamily int R\+E\+A\+L\+\_\+\+L\+EN = 0}
+
+length of the string to be displayed \hypertarget{lcd_8c_a139747944625a8daae17bfb394a4996a}{}\label{lcd_8c_a139747944625a8daae17bfb394a4996a} 
+\index{lcd.\+c@{lcd.\+c}!S\+EC@{S\+EC}}
+\index{S\+EC@{S\+EC}!lcd.\+c@{lcd.\+c}}
+\subsubsection{\texorpdfstring{S\+EC}{SEC}}
+{\footnotesize\ttfamily unsigned long long int S\+EC = 0}
+
+Timeout start time \hypertarget{lcd_8c_a03c8d0682886d47a8e6f744bb7aac09f}{}\label{lcd_8c_a03c8d0682886d47a8e6f744bb7aac09f} 
+\index{lcd.\+c@{lcd.\+c}!state@{state}}
+\index{state@{state}!lcd.\+c@{lcd.\+c}}
+\subsubsection{\texorpdfstring{state}{state}}
+{\footnotesize\ttfamily \hyperlink{lcd_8h_afcb76009767ef607d9b2a624bba0ab0e}{lcd\+\_\+states} state = \hyperlink{lcd_8h_afcb76009767ef607d9b2a624bba0ab0ea1f550a5b614f9373553df16a59d133b0}{L\+C\+D\+\_\+\+W\+A\+I\+T\+\_\+\+S\+T\+A\+TE}}
+
+Set finite state machine to idle/waiting state. \hypertarget{lcd_8c_a768e5e81fdcf4426cb064063686f691f}{}\label{lcd_8c_a768e5e81fdcf4426cb064063686f691f} 
+\index{lcd.\+c@{lcd.\+c}!str\+Measurement@{str\+Measurement}}
+\index{str\+Measurement@{str\+Measurement}!lcd.\+c@{lcd.\+c}}
+\subsubsection{\texorpdfstring{str\+Measurement}{strMeasurement}}
+{\footnotesize\ttfamily uint8\+\_\+t str\+Measurement\mbox{[}\hyperlink{lcd_8h_aabf4f709c8199e41cf279c77112345fe}{M\+A\+X\+\_\+\+L\+EN}\mbox{]}}
+
+Array for transmission ready string \hypertarget{lcd_8c_aa154f02999c6874c250a57b4645fade3}{}\label{lcd_8c_aa154f02999c6874c250a57b4645fade3} 
+\index{lcd.\+c@{lcd.\+c}!trans\+\_\+flag@{trans\+\_\+flag}}
+\index{trans\+\_\+flag@{trans\+\_\+flag}!lcd.\+c@{lcd.\+c}}
+\subsubsection{\texorpdfstring{trans\+\_\+flag}{trans\_flag}}
+{\footnotesize\ttfamily int trans\+\_\+flag =1}
+
+Flag to indicate if transmission has ended, 1 if yes 

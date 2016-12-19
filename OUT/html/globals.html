@@ -9,6 +9,13 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -43,6 +50,20 @@ $(function() {
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('globals.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -84,6 +105,15 @@ $(function() {
 
 
 <h3><a id="index_c"></a>- c -</h3><ul>
+<li>CHAR_COUNT
+: <a class="el" href="lcd_8c.html#a7eba1480c265e23b3e9ca864a915ff51">lcd.c</a>
+</li>
+<li>CLEAR_DISPLAY_INDEX
+: <a class="el" href="lcd_8c.html#ab3e749ddaefd0cda3aa8561b910543cc">lcd.c</a>
+</li>
+<li>clkInit()
+: <a class="el" href="clock_8c.html#a1f3d94949dfa6362c59745783a03d5d8">clock.c</a>
+</li>
 <li>CMCONST
 : <a class="el" href="ultra_s_8c.html#a0212ca8fac649015507d58329b4e2cfc">ultraS.c</a>
 </li>
@@ -118,6 +148,9 @@ $(function() {
 
 
 <h3><a id="index_d"></a>- d -</h3><ul>
+<li>DATA_TO_SEND
+: <a class="el" href="lcd_8c.html#aa9db2c2f7f06e39eacb5382219b512a3">lcd.c</a>
+</li>
 <li>dataStatus
 : <a class="el" href="ultra_s_8h.html#a5af22166e4d97bfcc7589baec25bec7b">ultraS.h</a>
 </li>
@@ -126,6 +159,9 @@ $(function() {
 </li>
 <li>DELAY
 : <a class="el" href="application_8c.html#a62249e384b997229a3e2ae74ade334e2">application.c</a>
+</li>
+<li>DISPLAY
+: <a class="el" href="lcd_8c.html#a62019be58e700f83c1f460800b6512b0">lcd.c</a>
 </li>
 <li>distance
 : <a class="el" href="ultra_s_8c.html#a71ff771a4087c8674a0fa6720182d23f">ultraS.c</a>
@@ -180,12 +216,54 @@ $(function() {
 <li>lastCounter
 : <a class="el" href="button_8c.html#af53beb5d7b0435f29d82d7326945eb2c">button.c</a>
 </li>
+<li>LCD_BUSY
+: <a class="el" href="lcd_8h.html#afcb76009767ef607d9b2a624bba0ab0eae882aab8cbbe71a56948b0ac8132d93f">lcd.h</a>
+</li>
+<li>lcd_BUSY
+: <a class="el" href="lcd_8h.html#a1e37cae5e6a9d1d4d4b624e2e7caf594">lcd.h</a>
+</li>
+<li>LCD_CLEAR_DISPLAY
+: <a class="el" href="lcd_8h.html#afcb76009767ef607d9b2a624bba0ab0ea950cc014e917398acc019e48c3bff843">lcd.h</a>
+</li>
+<li>lcd_cyclic()
+: <a class="el" href="lcd_8c.html#a5340ee451d877c939113f4de85c851bb">lcd.c</a>
+</li>
+<li>lcd_getState()
+: <a class="el" href="lcd_8c.html#aab0ee26d9dc07933dbe1d0b3c4fa6024">lcd.c</a>
+</li>
+<li>LCD_IDLE
+: <a class="el" href="lcd_8h.html#afcb76009767ef607d9b2a624bba0ab0ea5eb4651f6bc82b41acb5e3bf34001b14">lcd.h</a>
+</li>
+<li>lcd_IDLE
+: <a class="el" href="lcd_8h.html#a150fcf41d7bda4efd5315145c6983dc1">lcd.h</a>
+</li>
+<li>lcd_initStateMachine()
+: <a class="el" href="lcd_8c.html#aaba865dac7e000ac3c3c268278939354">lcd.c</a>
+</li>
+<li>lcd_sendString()
+: <a class="el" href="lcd_8c.html#a40661e82f50f453a683e037a06119e28">lcd.c</a>
+</li>
+<li>lcd_states
+: <a class="el" href="lcd_8h.html#afcb76009767ef607d9b2a624bba0ab0e">lcd.h</a>
+</li>
+<li>LCD_WAIT_STATE
+: <a class="el" href="lcd_8h.html#afcb76009767ef607d9b2a624bba0ab0ea1f550a5b614f9373553df16a59d133b0">lcd.h</a>
+</li>
 </ul>
 
 
 <h3><a id="index_m"></a>- m -</h3><ul>
+<li>MAX_LEN
+: <a class="el" href="lcd_8h.html#aabf4f709c8199e41cf279c77112345fe">lcd.h</a>
+</li>
 <li>MAXDIST
 : <a class="el" href="ultra_s_8c.html#ad20257241c97c3e731b64608dcdc5096">ultraS.c</a>
+</li>
+<li>MCLK_DESIRED_FREQUENCY
+: <a class="el" href="clock_8h.html#a53d6e7ec528adc55f17f799aeb23a69c">clock.h</a>
+</li>
+<li>MCLK_FLLREF_RATIO
+: <a class="el" href="clock_8h.html#af7993674062ee8ab58389bc907f3b458">clock.h</a>
 </li>
 <li>MINDIST
 : <a class="el" href="ultra_s_8c.html#abd40c30aeb838e9729fd6ebd4c4787d8">ultraS.c</a>
@@ -210,7 +288,20 @@ $(function() {
 </ul>
 
 
+<h3><a id="index_p"></a>- p -</h3><ul>
+<li>puhasta_flag
+: <a class="el" href="lcd_8c.html#a34f7046ca55b8a66ec681c79bfd11e3d">lcd.c</a>
+</li>
+</ul>
+
+
 <h3><a id="index_r"></a>- r -</h3><ul>
+<li>REAL_LEN
+: <a class="el" href="lcd_8c.html#a8ba2b33c01bc3dca08a2848375d6cc3b">lcd.c</a>
+</li>
+<li>reciveData
+: <a class="el" href="uart_8c.html#a5ea2370c7b87cd7c2d25210e9f150539">uart.c</a>
+</li>
 <li>resetTimes()
 : <a class="el" href="ultra_s_8c.html#afded4b6fd641aaf196a2bf062b82615d">ultraS.c</a>
 </li>
@@ -218,11 +309,17 @@ $(function() {
 
 
 <h3><a id="index_s"></a>- s -</h3><ul>
+<li>SEC
+: <a class="el" href="lcd_8c.html#a139747944625a8daae17bfb394a4996a">lcd.c</a>
+</li>
 <li>startTime
 : <a class="el" href="ultra_s_8c.html#a844b54572135dff378b658bd65221263">ultraS.c</a>
 </li>
 <li>startTimeMult
 : <a class="el" href="ultra_s_8c.html#a349cd5cafa77914b2cc6166055010c9b">ultraS.c</a>
+</li>
+<li>state
+: <a class="el" href="lcd_8c.html#a03c8d0682886d47a8e6f744bb7aac09f">lcd.c</a>
 </li>
 <li>status
 : <a class="el" href="ultra_s_8h.html#a015eb90e0de9f16e87bd149d4b9ce959">ultraS.h</a>
@@ -232,6 +329,9 @@ $(function() {
 </li>
 <li>StringError
 : <a class="el" href="application_8c.html#a6b6430d8f5edc9acef65aa3f3ebfaa51">application.c</a>
+</li>
+<li>strMeasurement
+: <a class="el" href="lcd_8c.html#a768e5e81fdcf4426cb064063686f691f">lcd.c</a>
 </li>
 </ul>
 
@@ -268,10 +368,37 @@ $(function() {
 : <a class="el" href="counter_8c.html#a1bc63400ff91806a4c1a79caefead705">counter.c</a>
 , <a class="el" href="timer_8c.html#a1bc63400ff91806a4c1a79caefead705">timer.c</a>
 </li>
+<li>trans_flag
+: <a class="el" href="lcd_8c.html#aa154f02999c6874c250a57b4645fade3">lcd.c</a>
+</li>
 </ul>
 
 
 <h3><a id="index_u"></a>- u -</h3><ul>
+<li>uart_FAILURE
+: <a class="el" href="uart_8h.html#a6f7eecdac5afabba8f7bf0f6babdb706">uart.h</a>
+</li>
+<li>UART_FIRST_MOD_REG
+: <a class="el" href="uart_8c.html#ae5bf5c2fb4bf3140554d4fc8b454fade">uart.c</a>
+</li>
+<li>UART_init()
+: <a class="el" href="uart_8c.html#a3f4ebb565f4802a75c80bd3d72df4e72">uart.c</a>
+</li>
+<li>UART_PRESCALE
+: <a class="el" href="uart_8c.html#a4ac2174fadbbbd9b570bebe61845f7af">uart.c</a>
+</li>
+<li>UART_reciveByte()
+: <a class="el" href="uart_8c.html#a2c49b1c76a1a8dbb10897ab42bcc470b">uart.c</a>
+</li>
+<li>UART_SECOND_MOD_REG
+: <a class="el" href="uart_8c.html#ac8c445e3463c8179ec20e87ef38316a1">uart.c</a>
+</li>
+<li>UART_sendByte()
+: <a class="el" href="uart_8c.html#a52320a5501d81c9a80911f8f7bcb74eb">uart.c</a>
+</li>
+<li>uart_SUCCESS
+: <a class="el" href="uart_8h.html#a369559d72999ef5fa9240380664399be">uart.h</a>
+</li>
 <li>ultraS_cyclic()
 : <a class="el" href="ultra_s_8c.html#a186e138633dbd47cca8dec6f41f86fb4">ultraS.c</a>
 </li>
@@ -297,10 +424,10 @@ $(function() {
 : <a class="el" href="ultra_s_8c.html#a2dc7671dcfab4e1cb316c3443f709a85">ultraS.c</a>
 </li>
 <li>ultraS_setDataStatus()
-: <a class="el" href="ultra_s_8c.html#a8a5d4bdd11c244c8b0341256f5998d13">ultraS.c</a>
+: <a class="el" href="ultra_s_8c.html#a905d422d987ede5de76032575870b0f9">ultraS.c</a>
 </li>
 <li>ultraS_setValidStatus()
-: <a class="el" href="ultra_s_8c.html#a3aa336805b30c760503c3a2c9792d1b0">ultraS.c</a>
+: <a class="el" href="ultra_s_8c.html#a1030b82552b283571261c0977872f329">ultraS.c</a>
 </li>
 <li>unbouncedBTN
 : <a class="el" href="button_8c.html#a45bcd1a7980fadae48fb73f7eabf66bf">button.c</a>
@@ -336,18 +463,21 @@ $(function() {
 : <a class="el" href="ultra_s_8h.html#a015eb90e0de9f16e87bd149d4b9ce959a8b86e148c08da560ab163c02be34254c">ultraS.h</a>
 </li>
 <li>usDataStatus
-: <a class="el" href="ultra_s_8c.html#ad28bb54ae6e9031bd6205e4069042cc2">ultraS.c</a>
+: <a class="el" href="ultra_s_8c.html#a211460b7d3250f3d56a6944d1f516858">ultraS.c</a>
 </li>
 <li>usStatus
-: <a class="el" href="ultra_s_8c.html#a25c9f4eb624319b65b1fc6f64db7d410">ultraS.c</a>
+: <a class="el" href="ultra_s_8c.html#a48b9dc63ee68bf7aee75f129d6631678">ultraS.c</a>
 </li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.12
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.12 </li>
+  </ul>
+</div>
 </body>
 </html>

@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['starttime',['startTime',['../ultra_s_8c.html#a844b54572135dff378b658bd65221263',1,'ultraS.c']]],
-  ['starttimemult',['startTimeMult',['../ultra_s_8c.html#a349cd5cafa77914b2cc6166055010c9b',1,'ultraS.c']]],
-  ['status',['status',['../ultra_s_8h.html#a015eb90e0de9f16e87bd149d4b9ce959',1,'ultraS.h']]],
-  ['string',['String',['../application_8c.html#a9678f24f03848defae48d7a9568ddcb4',1,'application.c']]],
-  ['stringerror',['StringError',['../application_8c.html#a6b6430d8f5edc9acef65aa3f3ebfaa51',1,'application.c']]]
+  ['real_5flen',['REAL_LEN',['../lcd_8c.html#a8ba2b33c01bc3dca08a2848375d6cc3b',1,'lcd.c']]],
+  ['recivedata',['reciveData',['../uart_8c.html#a5ea2370c7b87cd7c2d25210e9f150539',1,'uart.c']]],
+  ['resettimes',['resetTimes',['../ultra_s_8c.html#afded4b6fd641aaf196a2bf062b82615d',1,'ultraS.c']]]
 ];

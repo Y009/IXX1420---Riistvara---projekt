@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['distance',['distance',['../ultra_s_8c.html#a71ff771a4087c8674a0fa6720182d23f',1,'distance():&#160;ultraS.c'],['../application_8c.html#a74c36f72b6828fd5e43189b2c52f7828',1,'distance():&#160;application.c']]]
+  ['char_5fcount',['CHAR_COUNT',['../lcd_8c.html#a7eba1480c265e23b3e9ca864a915ff51',1,'lcd.c']]],
+  ['clear_5fdisplay_5findex',['CLEAR_DISPLAY_INDEX',['../lcd_8c.html#ab3e749ddaefd0cda3aa8561b910543cc',1,'lcd.c']]]
 ];

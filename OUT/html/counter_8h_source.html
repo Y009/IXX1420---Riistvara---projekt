@@ -5,10 +5,17 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.12"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Ultrasonic distance measurer: SRC/MCU/counter.h Source File</title>
+<title>Ultrasonic distance measurer: MCU/counter.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -42,6 +49,21 @@ $(function() {
 });
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('counter_8h_source.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -56,11 +78,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_1e771ff450ae847412a8c28572c155bb.html">SRC</a></li><li class="navelem"><a class="el" href="dir_142cde9bafce3889a52a924db9af27c0.html">MCU</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">counter.h</div>  </div>
@@ -68,11 +85,15 @@ $(function() {
 <div class="contents">
 <a href="counter_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * counter.h</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *  Created on: 31. okt 2016</span></div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *      Author: Y009</span></div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> */</span></div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#ifndef COUNTER_H_</span></div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#define COUNTER_H_</span></div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">//***** Defines ***************************************************************</span></div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div><div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="counter_8h.html#a383bc9817a0a055d07f3b2b948fb0b7e">   40</a></span>&#160;<span class="preprocessor">#define counter_enTBI(timerBase)            Timer_B_enableInterrupt(timerBase)          </span><span class="comment">/* Enable interrupts by Timer B */</span><span class="preprocessor"></span></div><div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="counter_8h.html#ad53f7cf4741c618c5cce65f273bd52c9">   41</a></span>&#160;<span class="preprocessor">#define counter_diTBI(timerBase)            Timer_B_disableInterrupt(timerBase)         </span><span class="comment">/* Disable interrupts by Timer B */</span><span class="preprocessor"></span></div><div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="counter_8h.html#abffd74faf0296b433da654c54555bf91">   42</a></span>&#160;<span class="preprocessor">#define counter_getCountValue(timerBase)    Timer_B_getCounterValue(timerBase);</span></div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div><div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="counter_8h.html#a987db31c103beded52c16d4553224150">   44</a></span>&#160;<span class="preprocessor">#define counter_timerBase                   TIMER_B0_BASE                       </span></div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">unsigned long long int counter_getOverflow(void);</span></div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keywordtype">void</span> <a class="code" href="counter_8c.html#aba214904e1b489fd2c9a8d6fd85b4756">counter_init</a>(<span class="keywordtype">void</span>);</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* COUNTER_H_ */</span><span class="preprocessor"></span></div><div class="ttc" id="counter_8c_html_aba214904e1b489fd2c9a8d6fd85b4756"><div class="ttname"><a href="counter_8c.html#aba214904e1b489fd2c9a8d6fd85b4756">counter_init</a></div><div class="ttdeci">void counter_init(void)</div><div class="ttdef"><b>Definition:</b> counter.c:37</div></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.12
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_9838586c8e1b8c41d059e79659516442.html">MCU</a></li><li class="navelem"><a class="el" href="counter_8h.html">counter.h</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.12 </li>
+  </ul>
+</div>
 </body>
 </html>

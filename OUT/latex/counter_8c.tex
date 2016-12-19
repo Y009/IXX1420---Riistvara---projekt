@@ -1,12 +1,18 @@
-\hypertarget{counter_8c}{}\section{S\+R\+C/\+M\+C\+U/counter.c File Reference}
-\label{counter_8c}\index{S\+R\+C/\+M\+C\+U/counter.\+c@{S\+R\+C/\+M\+C\+U/counter.\+c}}
+\hypertarget{counter_8c}{}\section{M\+C\+U/counter.c File Reference}
+\label{counter_8c}\index{M\+C\+U/counter.\+c@{M\+C\+U/counter.\+c}}
 
 
-Documentation for the counter module.  
+\subsection{Detailed Description}
+Documentation for the counter module. 
 
-
-{\ttfamily \#include $<$driverlib.\+h$>$}\newline
-{\ttfamily \#include \char`\"{}counter.\+h\char`\"{}}\newline
+Describes the workings of the counter module. Free running timer for ultrasonic module interrupt. Include dependency graph for counter.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=212pt]{counter_8c__incl}
+\end{center}
+\end{figure}
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
@@ -27,11 +33,6 @@ void \hyperlink{counter_8c_aba214904e1b489fd2c9a8d6fd85b4756}{counter\+\_\+init}
 unsigned long long int \hyperlink{counter_8c_a75e2a4049f11db7e514573608bebadf9}{timer\+B\+\_\+overflow}
 \end{DoxyCompactItemize}
 
-
-\subsection{Detailed Description}
-Documentation for the counter module. 
-
-Describes the workings of the counter module. Free running timer for ultrasonic module interrupt. 
 
 \subsection{Macro Definition Documentation}
 \hypertarget{counter_8c_a1bc63400ff91806a4c1a79caefead705}{}\label{counter_8c_a1bc63400ff91806a4c1a79caefead705} 
@@ -62,6 +63,14 @@ Get timerA\textquotesingle{}s interrupt\+Counter.
 \begin{DoxyReturn}{Returns}
 timer\+B\+\_\+overflow 
 \end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{counter_8c_a71d01976549f4cd7e7ee980186cbe4cb_icgraph}
+\end{center}
+\end{figure}
 \hypertarget{counter_8c_aba214904e1b489fd2c9a8d6fd85b4756}{}\label{counter_8c_aba214904e1b489fd2c9a8d6fd85b4756} 
 \index{counter.\+c@{counter.\+c}!counter\+\_\+init@{counter\+\_\+init}}
 \index{counter\+\_\+init@{counter\+\_\+init}!counter.\+c@{counter.\+c}}

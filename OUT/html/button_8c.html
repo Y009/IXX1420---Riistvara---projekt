@@ -5,10 +5,17 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.12"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Ultrasonic distance measurer: SRC/HW/button.c File Reference</title>
+<title>Ultrasonic distance measurer: HW/button.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -42,6 +49,21 @@ $(function() {
 });
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('button_8c.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -56,11 +78,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_1e771ff450ae847412a8c28572c155bb.html">SRC</a></li><li class="navelem"><a class="el" href="dir_f653105c4220c3a096946ee9429e309c.html">HW</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#define-members">Macros</a> &#124;
@@ -70,13 +87,19 @@ $(function() {
 <div class="title">button.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-
-<p>Documentation for the button module.  
-<a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;driverlib.h&gt;</code><br />
-<code>#include &quot;button.h&quot;</code><br />
-<code>#include &quot;<a class="el" href="timer_8h_source.html">../MCU/timer.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="gpio_8h_source.html">gpio.h</a>&quot;</code><br />
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Documentation for the button module. </p>
+<p>Describes the debouncing of a button press. </p>
+</div><div class="textblock"><div class="dynheader">
+Include dependency graph for button.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="button_8c__incl.png" border="0" usemap="#_h_w_2button_8c" alt=""/></div>
+<map name="_h_w_2button_8c" id="_h_w_2button_8c">
+<area shape="rect" id="node3" href="button_8h_source.html" title="button.h" alt="" coords="106,80,175,107"/>
+<area shape="rect" id="node4" href="timer_8h.html" title="Documentation for the timer module&#39;s header. " alt="" coords="199,80,306,107"/>
+<area shape="rect" id="node5" href="gpio_8h.html" title="Documentation for the gpio module&#39;s header. " alt="" coords="331,80,388,107"/>
+</map>
+</div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
@@ -107,10 +130,7 @@ Variables</h2></td></tr>
 <tr class="memitem:af53beb5d7b0435f29d82d7326945eb2c"><td class="memItemLeft" align="right" valign="top">unsigned long long int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="button_8c.html#af53beb5d7b0435f29d82d7326945eb2c">lastCounter</a> = 0</td></tr>
 <tr class="separator:af53beb5d7b0435f29d82d7326945eb2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Documentation for the button module. </p>
-<p>Describes the debouncing of a button press. </p>
-</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a390936ddde1874ed563e6427681e5a23"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a390936ddde1874ed563e6427681e5a23">&sect;&nbsp;</a></span>ACCUARCY</h2>
 
@@ -207,6 +227,22 @@ Variables</h2></td></tr>
  Check time is based on the <b>ACCUARCY</b> variable. Increasing or decreasing it makes this function faster or slower accordingly. <br />
  Debounces by shifting the unbouncedBTN variable left everytime it enter the conditional then replaces the least significant bit with the current value given by the pin. <br />
  This process is repeated until a desired value is reached at which point the button is debounced. </p><dl class="section attention"><dt>Attention</dt><dd>Button's value is not changed during the debug process - only when the NOTDEBOUNCED or DEBOUNCED values have been reached. </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="button_8c_ae3e592eedd316ea878ef061218417c6f_cgraph.png" border="0" usemap="#button_8c_ae3e592eedd316ea878ef061218417c6f_cgraph" alt=""/></div>
+<map name="button_8c_ae3e592eedd316ea878ef061218417c6f_cgraph" id="button_8c_ae3e592eedd316ea878ef061218417c6f_cgraph">
+<area shape="rect" id="node2" href="timer_8c.html#a1021e8241d2431ad3c33e4dca3479e30" title="timer_getCounter" alt="" coords="195,5,316,32"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="button_8c_ae3e592eedd316ea878ef061218417c6f_icgraph.png" border="0" usemap="#button_8c_ae3e592eedd316ea878ef061218417c6f_icgraph" alt=""/></div>
+<map name="button_8c_ae3e592eedd316ea878ef061218417c6f_icgraph" id="button_8c_ae3e592eedd316ea878ef061218417c6f_icgraph">
+<area shape="rect" id="node2" href="application_8c.html#aca9e2d049a005223eab8810cc5443efb" title="application_cyclic" alt="" coords="195,5,320,32"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -225,6 +261,14 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Get debounced value pressed button. </p><dl class="section return"><dt>Returns</dt><dd>BTN </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="button_8c_a186ee6b09e00657d71468c4a98f2bccd_icgraph.png" border="0" usemap="#button_8c_a186ee6b09e00657d71468c4a98f2bccd_icgraph" alt=""/></div>
+<map name="button_8c_a186ee6b09e00657d71468c4a98f2bccd_icgraph" id="button_8c_a186ee6b09e00657d71468c4a98f2bccd_icgraph">
+<area shape="rect" id="node2" href="application_8c.html#aca9e2d049a005223eab8810cc5443efb" title="application_cyclic" alt="" coords="156,5,281,32"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -275,11 +319,15 @@ Variables</h2></td></tr>
 </div>
 </div>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.12
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_b301fd45e05ac70352f1d68b9ce97377.html">HW</a></li><li class="navelem"><a class="el" href="button_8c.html">button.c</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.12 </li>
+  </ul>
+</div>
 </body>
 </html>
